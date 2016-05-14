@@ -100,7 +100,7 @@ public class InformationNewestFragment extends BaseFragment {
         }, InformationNewestBean.class);
         requestQueue.add(gsonRequest);
 
-
+        Log.d("InformationNewestFragme", "gsonRequest:" + gsonRequest);
 
 
         GsonRequest<BannerBean> gsonRequest1 = new GsonRequest<>(Request.Method.GET,
@@ -115,14 +115,16 @@ public class InformationNewestFragment extends BaseFragment {
                 bannerBean = response;
                 addBanner(response);
 
+
                 Log.d("InformationNewestFragme", "bannerBean:" + response.getData().get(0).getTitle());
+
 
             }
         }, BannerBean.class);
 
         requestQueue.add(gsonRequest1);
 
-
+        Log.d("InformationNewestFragme", "gsonRequest1:" + gsonRequest1);
 
 
         listView.setAdapter(informationNewestAdapter);
@@ -137,6 +139,27 @@ public class InformationNewestFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
+
+
+        // 开启新线程, 5秒更新一次Banner
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Activity aty = (Activity) mContext;
+                while (!isStop) {
+                    SystemClock.sleep(5000);
+
+                    aty.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+                        }
+                    });
+                }
+
+            }
+        }).start();
+
 
     }
 
@@ -171,6 +194,7 @@ public class InformationNewestFragment extends BaseFragment {
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             mList.add(imageView);
 
+
             // 设置圆圈点
             View view = new View(getContext());
 
@@ -182,9 +206,6 @@ public class InformationNewestFragment extends BaseFragment {
             mLinearLayout.addView(view);
         }
 
-        informationNewestPagerAdapter = new InformationNewestPagerAdapter(mList);
-        mViewPager.setAdapter(informationNewestPagerAdapter);
-
 
         bannerListener = new BannerListener();
         mViewPager.setOnPageChangeListener(bannerListener);
@@ -195,24 +216,8 @@ public class InformationNewestFragment extends BaseFragment {
         mLinearLayout.getChildAt(pointIndex).setEnabled(true);
 
 
-        // 开启新线程, 5秒更新一次Banner
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Activity aty = (Activity) mContext;
-                while (!isStop) {
-                    SystemClock.sleep(5000);
-
-                    aty.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
-                        }
-                    });
-                }
-
-            }
-        }).start();
+        informationNewestPagerAdapter = new InformationNewestPagerAdapter(mList);
+        mViewPager.setAdapter(informationNewestPagerAdapter);
 
 
     }

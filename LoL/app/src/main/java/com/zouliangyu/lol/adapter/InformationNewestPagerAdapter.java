@@ -4,6 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import java.util.List;
 
 /**
@@ -14,13 +15,13 @@ public class InformationNewestPagerAdapter extends PagerAdapter {
 
     public InformationNewestPagerAdapter(List<ImageView> mList) {
         this.mList = mList;
-       notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
         // 取超大的数, 实现无限循环效果
-        return Integer.MAX_VALUE;
+        return mList == null ? 0 : Integer.MAX_VALUE;
     }
 
     @Override

@@ -24,9 +24,11 @@ import it.sephiroth.android.library.picasso.Picasso;
 /**
  * Created by zouliangyu on 16/5/12.
  */
-public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyViewHolder>{
+public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyViewHolder> {
     private VideoBean videoBean;
     private Context context;
+    private MyItemClickListener mItemClickListener;
+
 
     public VideoPlayAdapter(Context context) {
         this.context = context;
@@ -37,37 +39,25 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
         notifyDataSetChanged();
     }
 
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.item_video,parent,false);
-        MyViewHolder viewHolder = new MyViewHolder(itemView);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
+        MyViewHolder viewHolder = new MyViewHolder(itemView,mItemClickListener);
         return viewHolder;
     }
+
+    public void setOnItemClickListener(MyItemClickListener listener){
+        this.mItemClickListener = listener;
+
+    }
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-//        Bitmap map = null;
-//        try {
-//            URL url = new URL(videoBean.getData().get(0).getCatword_id().get(position).getPic_url());
-//            URLConnection connection = url.openConnection();
-//            connection.connect();
-//            InputStream in = connection.getInputStream();
-//            map = BitmapFactory.decodeStream(in);
-//
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        holder.topIv.setImageBitmap(map);
-
-
-
         Picasso.with(context).load(videoBean.getData().get(0).getCatword_id().get(position).getPic_url()).
                 placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.topIv);
-
         holder.bottomTv.setText(videoBean.getData().get(0).getCatword_id().get(position).getName());
     }
 
@@ -76,14 +66,35 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
         return videoBean == null ? 0 : videoBean.getData().get(0).getCatword_id().size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView topIv;
         TextView bottomTv;
+        private MyItemClickListener mListener;
 
-        public MyViewHolder(View itemView) {
+
+
+
+
+        public MyViewHolder(View itemView, MyItemClickListener listener) {
             super(itemView);
             topIv = (ImageView) itemView.findViewById(R.id.item_video_iv);
             bottomTv = (TextView) itemView.findViewById(R.id.item_video_tv);
+
+            this.mListener = listener;
+            itemView.setOnClickListener(this);
         }
+
+
+        @Override
+        public void onClick(View v) {
+            if (mListener != null){
+                mListener.onItemClickListener(v, getPosition());
+            }
+        }
+    }
+
+
+    public interface MyItemClickListener {
+        void onItemClickListener(View view, int position);
     }
 }

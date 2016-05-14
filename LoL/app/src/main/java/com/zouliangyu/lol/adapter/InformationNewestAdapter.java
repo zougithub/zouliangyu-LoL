@@ -8,12 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.zouliangyu.lol.R;
-import com.zouliangyu.lol.bean.Bean;
 import com.zouliangyu.lol.bean.InformationNewestBean;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/10.
@@ -50,7 +48,7 @@ public class InformationNewestAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_information, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {

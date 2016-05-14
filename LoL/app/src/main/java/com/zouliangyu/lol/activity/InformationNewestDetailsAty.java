@@ -29,8 +29,9 @@ public class InformationNewestDetailsAty extends BaseActivity{
 
         Intent intent = getIntent();
         String ids = intent.getStringExtra("ids");
+        String url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755282&p_=18191&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
         // 用于加载URL对应的网页
-        webView.loadUrl("http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755282&p_=18191&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle\"");
+        webView.loadUrl(url);
 
         webView.getSettings().setJavaScriptEnabled(true);
 
