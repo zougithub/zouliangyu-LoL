@@ -9,7 +9,7 @@ import com.zouliangyu.lol.base.BaseActivity;
 /**
  * Created by zouliangyu on 16/5/12.
  */
-public class InformationNewestDetailsAty extends BaseActivity{
+public class InformationItemDetailsAty extends BaseActivity{
     private WebView webView;
 
     @Override

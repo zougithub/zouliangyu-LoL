@@ -6,20 +6,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
 
         <ImageView
             android:id="@+id/item_video_details_bottom_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/item_video_details_top_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_marginTop="@dimen/layout_marginRight"
             android:src="@mipmap/video_play" />
 
         <TextView
@@ -37,5 +39,13 @@
             android:layout_alignLeft="@id/item_video_details_title_tv"
             android:layout_below="@id/item_video_details_title_tv"
             android:text="2222222222" />
+
+        <TextView
+            android:id="@+id/item_video_details_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/item_video_details_desc_tv"
+            android:text="15:00" />
     </RelativeLayout>
 </LinearLayout>

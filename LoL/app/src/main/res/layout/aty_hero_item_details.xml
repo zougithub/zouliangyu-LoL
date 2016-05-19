@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorHeroItemDetailsHeadBackground"
+        android:padding="@dimen/layout_marginLeft">
+
+
+        <ImageView
+            android:id="@+id/aty_hero_item_details_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_head"
+            android:layout_toRightOf="@id/aty_hero_item_details_head"
+            android:text="大发明家"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/aty_hero_item_details_code"
+            android:text="-"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/aty_hero_item_details_one"
+            android:text="黑默丁格"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/aty_hero_item_details_name"
+            android:background="@android:color/holo_blue_light"
+            android:text="法师"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/aty_hero_item_details_code"
+            android:layout_below="@id/aty_hero_item_details_code"
+            android:text="金币" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_gold_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_gold"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/aty_hero_item_details_gold"
+            android:text="3150" />
+
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_gold_money"
+            android:layout_toRightOf="@id/aty_hero_item_details_gold_money"
+            android:text="点券" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_coupon_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_coupon"
+            android:layout_toRightOf="@id/aty_hero_item_details_coupon"
+            android:text="2500" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/aty_hero_item_details_coupon_money"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/aty_hero_item_details_coupon_money"
+            android:src="@mipmap/hero_defav" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/aty_hero_item_details_replace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/aty_hero_item_details_introduce"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/hero_details_introduce_selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center" />
+
+        <RadioButton
+            android:id="@+id/aty_hero_item_details_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/hero_details_data_selector"
+            android:button="@null"
+            android:gravity="center" />
+
+        <RadioButton
+            android:id="@+id/aty_hero_item_details_play"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/hero_details_play_selector"
+            android:button="@null"
+            android:gravity="center" />
+
+        <RadioButton
+            android:id="@+id/aty_hero_item_details_guide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/hero_details_guide_selector"
+            android:button="@null"
+            android:gravity="center" />
+
+        <RadioButton
+            android:id="@+id/aty_hero_item_details_around"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/hero_details_around_selector"
+            android:button="@null"
+            android:gravity="center" />
+    </RadioGroup>
+
+</LinearLayout>

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.zouliangyu.lol.R;
-import com.zouliangyu.lol.SlidingMenu;
+import com.zouliangyu.lol.util.SlidingMenu;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.fragment.community.CommunityFragment;
 import com.zouliangyu.lol.fragment.hero.HeroFragment;

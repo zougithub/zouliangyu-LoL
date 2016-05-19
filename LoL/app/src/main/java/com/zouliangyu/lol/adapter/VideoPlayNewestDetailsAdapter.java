@@ -7,8 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.bean.VideoPlayNewestDetailsBean;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import it.sephiroth.android.library.picasso.Picasso;
 
 /**
@@ -60,20 +65,30 @@ public class VideoPlayNewestDetailsAdapter extends BaseAdapter {
         holder.titleTv.setText(videoPlayNewestDetailsBeans.getData().get(position).getTitle());
         holder.descTv.setText(videoPlayNewestDetailsBeans.getData().get(position).getDesc());
 
+        Date date = new Date(videoPlayNewestDetailsBeans.getData().get(position).getPublished());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        String time = simpleDateFormat.format(date);
+        holder.timeTv.setText(time);
+
         return convertView;
     }
+
 
     class ViewHolder {
         ImageView bottomIv;
         TextView titleTv;
         TextView descTv;
+        TextView timeTv;
 
         public ViewHolder(View itemView) {
             bottomIv = (ImageView) itemView.findViewById(R.id.item_video_details_bottom_iv);
             titleTv = (TextView) itemView.findViewById(R.id.item_video_details_title_tv);
             descTv = (TextView) itemView.findViewById(R.id.item_video_details_desc_tv);
+            timeTv = (TextView) itemView.findViewById(R.id.item_video_details_time_tv);
 
 
         }
+
+
     }
 }

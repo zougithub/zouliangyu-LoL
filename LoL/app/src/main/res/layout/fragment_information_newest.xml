@@ -4,12 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<include layout="@layout/drawer"-->
+    <!--<include layout="@layout/banner"-->
     <!--android:id="@+id/information_newest_include"/>-->
 
-    <ListView
-        android:id="@+id/information_newest_lv"
+
+    <com.zouliangyu.lol.util.SwipeRefreshLoadingLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/information_newest_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.zouliangyu.lol.util.SwipeRefreshLoadingLayout>
 
 </LinearLayout>

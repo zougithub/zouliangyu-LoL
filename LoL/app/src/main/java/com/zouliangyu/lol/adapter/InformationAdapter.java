@@ -16,11 +16,11 @@ import java.util.Date;
 /**
  * Created by zouliangyu on 16/5/10.
  */
-public class InformationNewestAdapter extends BaseAdapter {
+public class InformationAdapter extends BaseAdapter {
     private InformationNewestBean informationNewestBeanList;
     private Context context;
 
-    public InformationNewestAdapter(Context context) {
+    public InformationAdapter(Context context) {
         this.context = context;
     }
 

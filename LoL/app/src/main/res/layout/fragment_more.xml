@@ -10,129 +10,286 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/more_check_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_fight_record_icon"
             android:gravity="center_horizontal"
             android:text="战绩查询" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
         <TextView
+            android:id="@+id/more_match_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/match_schedule_icon"
             android:gravity="center_horizontal"
             android:text="赛事" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
         <TextView
+            android:id="@+id/more_hero_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_hero_icon"
             android:gravity="center_horizontal"
             android:text="英雄榜" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
         <TextView
+            android:id="@+id/more_player_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_player_icon"
             android:gravity="center_horizontal"
             android:text="大神榜" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/more_topic_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_topic_icon"
             android:gravity="center_horizontal"
             android:text="精彩专栏" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
         <TextView
+            android:id="@+id/more_talent_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_talent_icon"
             android:gravity="center_horizontal"
             android:text="s6天赋模拟" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
         <TextView
+            android:id="@+id/more_rune_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_rune_icon"
             android:gravity="center_horizontal"
             android:text="符文模拟" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
+
         <TextView
+            android:id="@+id/more_skills_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_skills_icon"
             android:gravity="center_horizontal"
             android:text="召唤师技能" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/more_equipment_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_equipment_icon"
             android:gravity="center_horizontal"
             android:text="装备查询" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
+
         <TextView
+            android:id="@+id/more_novel_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_novel_icon"
             android:gravity="center_horizontal"
             android:text="小说" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
+
         <TextView
+            android:id="@+id/more_ring_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_ring_icon"
             android:gravity="center_horizontal"
             android:text="铃声" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
+
         <TextView
+            android:id="@+id/more_img_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/more_img_icon"
             android:gravity="center_horizontal"
             android:text="壁纸" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:orientation="horizontal"
         android:weightSum="4">
 
         <TextView
+            android:id="@+id/more_game_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
             android:drawableTop="@mipmap/mini_game_icon"
             android:gravity="center_horizontal"
             android:text="娱乐" />
 
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
 
+
+        <TextView
+            android:id="@+id/more_store_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/layout_marginRight"
+            android:drawableTop="@mipmap/more_store_icon"
+            android:gravity="center_horizontal"
+            android:text="商城" />
+
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="@dimen/view_layout_height"
+            android:layout_height="match_parent"
+            android:background="@color/colorCommunityView" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
 </LinearLayout>

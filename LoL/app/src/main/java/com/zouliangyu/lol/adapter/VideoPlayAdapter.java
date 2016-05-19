@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zouliangyu.lol.R;
+import com.zouliangyu.lol.activity.VideoDetailsAty;
 import com.zouliangyu.lol.bean.VideoBean;
 
 import java.io.IOException;
@@ -30,9 +31,18 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
     private MyItemClickListener mItemClickListener;
 
 
-    public VideoPlayAdapter(Context context) {
+    private int pos;
+    public VideoPlayAdapter(Context context, int pos) {
         this.context = context;
+        this.pos = pos;
     }
+
+
+
+
+//    public VideoPlayAdapter(Context context) {
+//        this.context = context;
+//    }
 
     public void setVideoBean(VideoBean videoBean) {
         this.videoBean = videoBean;
@@ -43,11 +53,11 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
-        MyViewHolder viewHolder = new MyViewHolder(itemView,mItemClickListener);
+        MyViewHolder viewHolder = new MyViewHolder(itemView, mItemClickListener);
         return viewHolder;
     }
 
-    public void setOnItemClickListener(MyItemClickListener listener){
+    public void setOnItemClickListener(MyItemClickListener listener) {
         this.mItemClickListener = listener;
 
     }
@@ -56,23 +66,21 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Picasso.with(context).load(videoBean.getData().get(0).getCatword_id().get(position).getPic_url()).
+
+        Picasso.with(context).load(videoBean.getData().get(pos).getCatword_id().get(position).getPic_url()).
                 placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.topIv);
-        holder.bottomTv.setText(videoBean.getData().get(0).getCatword_id().get(position).getName());
+        holder.bottomTv.setText(videoBean.getData().get(pos).getCatword_id().get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return videoBean == null ? 0 : videoBean.getData().get(0).getCatword_id().size();
+        return videoBean == null ? 0 : videoBean.getData().get(pos).getCatword_id().size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView topIv;
         TextView bottomTv;
         private MyItemClickListener mListener;
-
-
-
 
 
         public MyViewHolder(View itemView, MyItemClickListener listener) {
@@ -87,7 +95,7 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
 
         @Override
         public void onClick(View v) {
-            if (mListener != null){
+            if (mListener != null) {
                 mListener.onItemClickListener(v, getPosition());
             }
         }

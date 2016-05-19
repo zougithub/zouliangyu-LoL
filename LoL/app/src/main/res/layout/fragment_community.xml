@@ -2,10 +2,193 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorCommunityBackground"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="444444444" />
+    <!-- 第一部分 -->
+    <LinearLayout
+        android:id="@+id/community_content_one"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/layout_marginRight"
+        android:layout_marginRight="@dimen/layout_marginRight"
+        android:layout_marginTop="@dimen/layout_marginRight"
+        android:layout_weight="1"
+        android:background="@color/colorBackground"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_marginLeft">
+
+            <ImageView
+                android:id="@+id/community_one_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/community_usershow_icon" />
+
+            <TextView
+                android:id="@+id/community_one_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_marginRight"
+                android:layout_toRightOf="@id/community_one_left"
+                android:text="真人秀" />
+
+            <ImageView
+                android:id="@+id/community_one_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/community_in" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_toLeftOf="@id/community_one_right"
+                android:text="进入" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_layout_height"
+            android:background="@color/colorCommunityView" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_marginRight"
+            android:scaleType="fitXY"
+            android:src="@mipmap/community_usershow_default" />
+    </LinearLayout>
+
+    <!--第二部分 -->
+    <LinearLayout
+        android:id="@+id/community_content_two"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/layout_marginRight"
+        android:layout_marginRight="@dimen/layout_marginRight"
+        android:layout_marginTop="@dimen/layout_marginRight"
+        android:layout_weight="1"
+        android:background="@color/colorBackground"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_marginLeft">
+
+            <ImageView
+                android:id="@+id/community_two_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/community_equipment_icon" />
+
+            <TextView
+                android:id="@+id/community_two_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_toRightOf="@id/community_two_left"
+                android:text="晒玩法" />
+
+            <ImageView
+                android:id="@+id/community_two_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/community_in" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_toLeftOf="@id/community_two_right"
+                android:text="进入" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_layout_height"
+            android:background="@color/colorCommunityView" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_marginLeft"
+            android:scaleType="fitXY"
+            android:src="@mipmap/community_equipment_default" />
+    </LinearLayout>
+
+    <!-- 第三部分 -->
+    <LinearLayout
+        android:id="@+id/community_content_three"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/layout_marginRight"
+        android:layout_marginRight="@dimen/layout_marginRight"
+        android:layout_marginTop="@dimen/layout_marginRight"
+        android:layout_weight="1"
+        android:background="@color/colorBackground"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_marginLeft">
+
+            <ImageView
+                android:id="@+id/community_three_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/community_find_friend_icon" />
+
+            <TextView
+                android:id="@+id/community_three_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_toRightOf="@id/community_three_left"
+                android:text="找战友" />
+
+            <ImageView
+                android:id="@+id/community_three_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/community_in" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_toLeftOf="@id/community_three_right"
+                android:text="进入" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_layout_height"
+            android:background="@color/colorCommunityView" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_marginLeft"
+            android:scaleType="fitXY"
+            android:src="@mipmap/community_find_friend_default" />
+    </LinearLayout>
+
 </LinearLayout>

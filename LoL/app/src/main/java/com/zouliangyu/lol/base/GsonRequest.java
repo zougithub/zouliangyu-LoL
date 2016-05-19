@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by zouliangyu on 16/5/11.
  */
-public class GsonRequest<T> extends Request<T>{
+public class GsonRequest<T> extends Request<T> {
     private Response.Listener<T> mListener;
     private Gson mGson;
     private Class<T> mClass;
@@ -26,15 +26,13 @@ public class GsonRequest<T> extends Request<T>{
 
     @Override
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
-
         try {
             String data = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            return Response.success(mGson.fromJson(data,mClass),HttpHeaderParser.parseCacheHeaders(response));
+            return Response.success(mGson.fromJson(data, mClass), HttpHeaderParser.parseCacheHeaders(response));
 
         } catch (UnsupportedEncodingException e) {
-           return  Response.error(new ParseError(e));
+            return Response.error(new ParseError(e));
         }
-
     }
 
     @Override

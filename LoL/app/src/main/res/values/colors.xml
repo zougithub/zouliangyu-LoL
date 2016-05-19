@@ -6,4 +6,8 @@
     <color name="colorTitleBackground">#434450</color>
     <color name="colorTitleWriting">#bec3d7</color>
     <color name="colorView">#000000</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorCommunityBackground">#6A6B6C</color>
+    <color name="colorCommunityView">#D6D6D6</color>
+    <color name="colorHeroItemDetailsHeadBackground">#2b2c32</color>
 </resources>

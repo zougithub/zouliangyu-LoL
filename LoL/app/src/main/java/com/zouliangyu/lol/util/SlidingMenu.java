@@ -1,4 +1,4 @@
-package com.zouliangyu.lol;
+package com.zouliangyu.lol.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,6 +12,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
 import com.nineoldandroids.view.ViewHelper;
+import com.zouliangyu.lol.R;
 
 /**
  * Created by zouliangyu on 16/5/13.

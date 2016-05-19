@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
+
+        <TextView
+            android:id="@+id/item_community_play_details_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布者" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_community_play_details_publish"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_community_play_details_one"
+            android:text="和辅助不得不说的秘密" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="20:43" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/layout_marginLeft"
+            android:layout_toLeftOf="@id/item_community_play_details_time"
+            android:src="@mipmap/publish_time_icon" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
+
+        <ImageView
+            android:id="@+id/item_community_play_details_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_head"
+            android:layout_toRightOf="@id/item_community_play_details_head"
+            android:text="瞬间秒C位" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_pattern"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_community_play_details_type"
+            android:layout_below="@id/item_community_play_details_type"
+            android:layout_marginTop="@dimen/left_menu_marginRight"
+            android:text="经典模式" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_pattern"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item_community_play_details_pattern"
+            android:text="-" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_colon"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item_community_play_details_colon"
+            android:text="召唤师峡谷" />
+
+        <ImageView
+            android:id="@+id/item_community_play_details_area_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_community_play_details_pattern"
+            android:layout_below="@id/item_community_play_details_pattern"
+            android:layout_marginTop="@dimen/left_menu_marginRight"
+            android:src="@mipmap/sn_icon" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_area_icon"
+            android:layout_toRightOf="@id/item_community_play_details_area_icon"
+            android:text="战争学院" />
+
+        <TextView
+            android:id="@+id/item_community_play_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_area"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_community_play_details_area"
+            android:text="国服第y1辅助、" />
+
+        <ImageView
+            android:id="@+id/item_community_play_details_combat_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_name"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_community_play_details_name"
+            android:src="@mipmap/zdl_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_play_details_combat_icon"
+            android:layout_toRightOf="@id/item_community_play_details_combat_icon"
+            android:text="12999" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_marginLeft"
+        android:layout_marginRight="@dimen/layout_margin"
+        android:layout_marginTop="@dimen/layout_marginLeft"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+
+</LinearLayout>

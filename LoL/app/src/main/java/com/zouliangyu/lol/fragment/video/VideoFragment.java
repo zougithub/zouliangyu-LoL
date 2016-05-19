@@ -38,9 +38,9 @@ public class VideoFragment extends BaseFragment{
         videoPagerAdapter = new VideoPagerAdapter(manager);
 
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new VideoPlayFragment());
-        fragments.add(new VideoCommentatorFragment());
-        fragments.add(new VideoMatchFragment());
+        fragments.add(new VideoPlayFragment(0));
+        fragments.add(new VideoPlayFragment(1));
+        fragments.add(new VideoPlayFragment(2));
         videoPagerAdapter.setFragments(fragments);
 
         videoVp.setAdapter(videoPagerAdapter);

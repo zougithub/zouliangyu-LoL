@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * Created by zouliangyu on 16/5/10.
  */
-public class InformationNewestPagerAdapter extends PagerAdapter {
+public class InformationBannerPagerAdapter extends PagerAdapter {
     private List<ImageView> mList;
 
-    public InformationNewestPagerAdapter(List<ImageView> mList) {
+    public InformationBannerPagerAdapter(List<ImageView> mList) {
         this.mList = mList;
         notifyDataSetChanged();
     }
