@@ -21,6 +21,8 @@ import com.zouliangyu.lol.bean.VideoBean;
 
 /**
  * Created by zouliangyu on 16/5/10.
+ *
+ * 视频的tab
  */
 public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.MyItemClickListener {
     private RecyclerView recyclerView;
@@ -53,6 +55,7 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
     public void initData() {
         videoPlayAdapter = new VideoPlayAdapter(getContext(), pos);
 
+
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         // 获取视频三个页面的数据
         GsonRequest<VideoBean> gsonRequest = new GsonRequest<>(Request.Method.GET, "http://lol.zhangyoubao.com/apis/rest/CatalogsService/all?cattype=video&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755336&p_=18353&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
@@ -66,7 +69,7 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
             public void onResponse(VideoBean response) {
                 videoBean = response;
                 videoPlayAdapter.setVideoBean(response);
-                Log.d("VideoPlayFragment", response.getData().get(0).getCatword_id().get(0).getName());
+                Log.d("VideoPlayFragment", response.getData().get(pos).getCatword_id().get(0).getName());
 //                videoDetailsAty.setVideoBean(response);
             }
         }, VideoBean.class);

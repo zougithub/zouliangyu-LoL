@@ -1,15 +1,15 @@
-package com.zouliangyu.lol.fragment.video;
+package com.zouliangyu.lol.fragment.more.morematch;
 
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.BaseFragment;
 
 /**
- * Created by zouliangyu on 16/5/10.
+ * Created by zouliangyu on 16/5/22.
  */
-public class VideoMatchFragment extends BaseFragment{
+public class MatchResultsFragment extends BaseFragment {
     @Override
     public int initLayout() {
-        return R.layout.fragment_video_match;
+        return R.layout.fragment_match_results;
     }
 
     @Override

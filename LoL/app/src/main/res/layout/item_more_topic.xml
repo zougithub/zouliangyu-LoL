@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
+    android:padding="@dimen/layout_marginLeft"
+    android:layout_marginBottom="@dimen/layout_marginLeft">
+
+    <TextView
+        android:id="@+id/item_more_topic_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第12期111111111111" />
+
+    <ImageView
+        android:id="@+id/item_more_topic_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_more_topic_name_tv"
+        android:layout_alignLeft="@id/item_more_topic_name_tv"
+        android:layout_marginTop="@dimen/layout_marginLeft"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
+</RelativeLayout>

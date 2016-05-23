@@ -24,6 +24,8 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/12.
+ *
+ * 视频tap的 adapter
  */
 public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyViewHolder> {
     private VideoBean videoBean;

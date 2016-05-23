@@ -34,6 +34,8 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/9.
+ *
+ * 资讯  最新界面
  */
 public class InformationNewestFragment extends BaseFragment {
     private ViewPager mViewPager;
@@ -68,10 +70,9 @@ public class InformationNewestFragment extends BaseFragment {
     }
 
 
-
     private SwipeRefreshLoadingLayout swipeRefreshLoadingLayout;
 
-
+    private BannerBean bannerBean;
 
 
     @Override
@@ -90,6 +91,7 @@ public class InformationNewestFragment extends BaseFragment {
     @Override
     public void initData() {
 
+        // 头布局,轮播图
         View headerView = getLayoutInflater(null).inflate(R.layout.banner, null);
         mViewPager = (ViewPager) headerView.findViewById(R.id.viewpager);
         mLinearLayout = (LinearLayout) headerView.findViewById(R.id.points);
@@ -129,11 +131,11 @@ public class InformationNewestFragment extends BaseFragment {
                 }, new Response.Listener<BannerBean>() {
             @Override
             public void onResponse(BannerBean response) {
+                bannerBean = response;
+                addBanner(bannerBean);
 
-                addBanner(response);
 
-
-                Log.d("InformationNewestFragme", "bannerBean:" + response.getData().get(0).getTitle());
+                Log.d("123456", "bannerBean:" + response.getData().get(0).getTitle());
 
 
             }
@@ -144,12 +146,12 @@ public class InformationNewestFragment extends BaseFragment {
         Log.d("InformationNewestFragme", "gsonRequest1:" + gsonRequest1);
 
 
-
         listView.setAdapter(informationAdapter);
 
         swipeRefreshLoadingLayout.setOnRefreshListener(new SwipeRefreshLoadingLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
                 listView.setAdapter(informationAdapter);
                 swipeRefreshLoadingLayout.setRefreshing(false);
             }
@@ -157,14 +159,18 @@ public class InformationNewestFragment extends BaseFragment {
         swipeRefreshLoadingLayout.setOnLoadListener(new SwipeRefreshLoadingLayout.OnLoadListener() {
             @Override
             public void onLoad() {
+                BannerBean bean = new BannerBean();
+                for (int i = 0;i<bean.getData().size();i++){
+                    bannerBean.getData().add(bean.getData().get(i));
+                }
+
                 listView.setAdapter(informationAdapter);
                 swipeRefreshLoadingLayout.setLoading(false);
             }
         });
 
 
-
-
+        // 轮播图下数据 每行的监听
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -207,13 +213,10 @@ public class InformationNewestFragment extends BaseFragment {
         LinearLayout.LayoutParams params;
 
 
-        String a = bannerBean.getData().get(0).getPic_ad_url();
-        String b = bannerBean.getData().get(1).getPic_ad_url();
-        String c = bannerBean.getData().get(2).getPic_ad_url();
-        String d = bannerBean.getData().get(3).getPic_ad_url();
-
-
-        urls = new String[]{a, b, c, d};
+        // 图片的网址
+        urls = new String[]{bannerBean.getData().get(0).getPic_ad_url(),
+                bannerBean.getData().get(1).getPic_ad_url(),
+                bannerBean.getData().get(2).getPic_ad_url()};
 
 
         for (int i = 0; i < urls.length; i++) {
@@ -234,21 +237,21 @@ public class InformationNewestFragment extends BaseFragment {
 
             mList.add(imageView);
 
+            // 轮播图的监听
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int id = imageView.getId();
                     Log.d("InformationNeqqqwestFragme", "id:" + id);
                     Intent intent1 = new Intent(getContext(), InformationBannerDetailsAty.class);
+                    // 轮播图的id传到 详情页
                     String[] ids = {bannerBean.getData().get(0).getGoto_param().getItemid(),
                             bannerBean.getData().get(1).getGoto_param().getItemid(),
-                            bannerBean.getData().get(2).getGoto_param().getItemid(),
-                            bannerBean.getData().get(3).getGoto_param().getItemid()};
-
-                    Log.d("111111111", bannerBean.getData().get(0).getGoto_param().getItemid());
-                    Log.d("111111111", bannerBean.getData().get(1).getGoto_param().getItemid());
-                    Log.d("111111111", bannerBean.getData().get(2).getGoto_param().getItemid());
-                    Log.d("111111111", bannerBean.getData().get(3).getGoto_param().getItemid());
+                            bannerBean.getData().get(2).getGoto_param().getItemid()};
+//                    Log.d("111111111", bannerBean.getData().get(0).getGoto_param().getItemid());
+//                    Log.d("111111111", bannerBean.getData().get(1).getGoto_param().getItemid());
+//                    Log.d("111111111", bannerBean.getData().get(2).getGoto_param().getItemid());
+//                    Log.d("111111111", bannerBean.getData().get(3).getGoto_param().getItemid());
 
 
                     Log.d("InformationNe24345westFragme", "ids:" + ids);
@@ -282,9 +285,7 @@ public class InformationNewestFragment extends BaseFragment {
         informationBannerPagerAdapter = new InformationBannerPagerAdapter(mList);
         mViewPager.setAdapter(informationBannerPagerAdapter);
 
-
     }
-
 
     class BannerListener implements ViewPager.OnPageChangeListener {
         @Override

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground">
+
+    <ImageView
+        android:id="@+id/novel_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/novel_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/novel_iv"
+        android:layout_toRightOf="@id/novel_iv"
+        android:text="德玛西亚" />
+
+    <TextView
+        android:id="@+id/novel_desc_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/novel_name_tv"
+        android:layout_below="@id/novel_name_tv"
+        android:text="啦啦啦啦德玛西亚"
+        android:maxLength="15"/>
+
+    <View
+        android:id="@+id/novel_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:layout_below="@id/novel_desc_tv"
+        android:layout_toRightOf="@id/novel_iv"
+        android:background="@color/colorCommunityView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/novel_view"
+        android:layout_below="@id/novel_view"
+        android:text="05-19 更新" />
+
+</RelativeLayout>

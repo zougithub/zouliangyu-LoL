@@ -15,11 +15,14 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/9.
+ *
+ * 视频界面
  */
-public class VideoFragment extends BaseFragment{
+public class VideoFragment extends BaseFragment {
     private TabLayout videoTab;
     private ViewPager videoVp;
     private VideoPagerAdapter videoPagerAdapter;
+
     @Override
     public int initLayout() {
         return R.layout.fragment_video;
@@ -46,7 +49,7 @@ public class VideoFragment extends BaseFragment{
         videoVp.setAdapter(videoPagerAdapter);
         videoTab.setupWithViewPager(videoVp);
         videoTab.setTabTextColors(Color.rgb(198, 204, 225), Color.rgb(98, 118, 184));
-        videoTab.setSelectedTabIndicatorColor(Color.rgb(98,118,184));
+        videoTab.setSelectedTabIndicatorColor(Color.rgb(98, 118, 184));
 
     }
 }

@@ -2,6 +2,8 @@ package com.zouliangyu.lol.bean;
 
 /**
  * Created by zouliangyu on 16/5/16.
+ *
+ * 英雄假数据
  */
 public class HeroFreeFalseData {
     private int topIv;

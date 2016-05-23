@@ -5,6 +5,8 @@ import com.zouliangyu.lol.base.BaseFragment;
 
 /**
  * Created by zouliangyu on 16/5/17.
+ * <p>
+ * 英雄 item详情 数据界面
  */
 public class HeroDetailsDataFragment extends BaseFragment {
     @Override

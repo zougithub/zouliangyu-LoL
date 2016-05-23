@@ -2,6 +2,8 @@ package com.zouliangyu.lol.bean;
 
 /**
  * Created by zouliangyu on 16/5/18.
+ *
+ * 视频 Item详情 里的详情数据类
  */
 public class VideoDetailsItemDetailsBean {
 

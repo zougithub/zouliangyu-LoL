@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/13.
+ *
+ * 轮播图数据类
  */
 public class BannerBean {
 

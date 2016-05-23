@@ -10,6 +10,8 @@ import com.zouliangyu.lol.base.BaseFragment;
 
 /**
  * Created by zouliangyu on 16/5/10.
+ *
+ *  英雄  周免/折扣  界面
  */
 public class HeroFreeOrDiscountFragment extends BaseFragment implements View.OnClickListener {
     private RadioButton freeRb;
@@ -27,16 +29,14 @@ public class HeroFreeOrDiscountFragment extends BaseFragment implements View.OnC
         freeRb.setOnClickListener(this);
         discountRb.setOnClickListener(this);
 
-
-        FragmentManager manager = getChildFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.hero_free_or_discount_replace, new HeroFreeFragment());
-        transaction.commit();
-
     }
 
     @Override
     public void initData() {
+        FragmentManager manager = getChildFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.hero_free_or_discount_replace, new HeroFreeFragment());
+        transaction.commit();
 
 
     }

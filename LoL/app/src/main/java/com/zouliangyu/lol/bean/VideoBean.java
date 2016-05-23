@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/12.
+ *
+ * 视频数据类
  */
 public class VideoBean {
 

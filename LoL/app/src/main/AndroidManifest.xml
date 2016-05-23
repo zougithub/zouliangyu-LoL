@@ -25,6 +25,16 @@
         <activity android:name=".activity.HeroItemDetailsAty" />
         <activity android:name=".activity.InformationBannerDetailsAty" />
         <activity android:name=".activity.VideoDetailsItemDetailsAty" />
+        <activity android:name=".activity.CommunityShowDetailsAty" />
+        <activity android:name=".activity.MoreImageActivity" />
+        <activity android:name=".activity.MoreRingActivity" />
+        <activity android:name=".activity.MoreNovelActivity" />
+        <activity android:name=".activity.MoreNovelDetailsItemDetailsAty" />
+        <activity android:name=".activity.MoreTopicActivity" />
+        <activity android:name=".activity.MoreTopicDetailsActivity" />
+        <activity android:name=".activity.CommunityFriendDetailsAty" />
+        <activity android:name=".activity.MoreMatchActivity" />
+        <activity android:name=".activity.MoreFightActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/layout_marginLeft">
+
+    <!-- 没用了 1111111111-->
+
+    <TextView
+        android:id="@+id/item_more_topic_head_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="111111111111" />
+
+    <ImageView
+        android:id="@+id/item_more_topic_head_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/layout_marginLeft">
+
+        <TextView
+            android:id="@+id/title_one_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2222222222" />
+
+        <TextView
+            android:id="@+id/desc_one_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_one_tv"
+            android:text="3333333333" />
+
+        <TextView
+            android:id="@+id/time_one_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/title_one_tv"
+            android:text="05-19" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
+
+        <TextView
+            android:id="@+id/title_two_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2222222222" />
+
+        <TextView
+            android:id="@+id/desc_two_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_two_tv"
+            android:text="3333333333" />
+
+        <TextView
+            android:id="@+id/time_two_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/title_two_tv"
+            android:text="05-19" />
+    </RelativeLayout>
+</LinearLayout>

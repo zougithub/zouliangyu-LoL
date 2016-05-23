@@ -15,8 +15,10 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/9.
+ * <p>
+ * 英雄界面
  */
-public class HeroFragment extends BaseFragment{
+public class HeroFragment extends BaseFragment {
     private TabLayout heroTab;
     private ViewPager heroVp;
     private HeroPagerAdapter heroPagerAdapter;
@@ -36,15 +38,19 @@ public class HeroFragment extends BaseFragment{
     public void initData() {
         FragmentManager manager = getChildFragmentManager();
         heroPagerAdapter = new HeroPagerAdapter(manager);
+
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HeroFreeOrDiscountFragment());
         fragments.add(new HeroMyHeroFragment());
         fragments.add(new HeroAllHeroFragment());
         heroPagerAdapter.setFragments(fragments);
+
         heroVp.setAdapter(heroPagerAdapter);
+
         heroTab.setupWithViewPager(heroVp);
+
         heroTab.setTabTextColors(Color.rgb(198, 204, 225), Color.rgb(98, 118, 184));
-        heroTab.setSelectedTabIndicatorColor(Color.rgb(98,118,184));
+        heroTab.setSelectedTabIndicatorColor(Color.rgb(98, 118, 184));
 
     }
 }

@@ -4,29 +4,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/title" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorTitleBackground">
-
-        <TextView
-            android:id="@+id/video_details_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="标题"
-            android:textColor="@color/colorBackground" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
 
         <ImageView
-            android:id="@+id/video_details_exit"
+            android:id="@+id/video_item_details_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/global_back_d" />
+            android:src="@mipmap/ic_launcher" />
 
+        <TextView
+            android:id="@+id/video_item_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/video_item_details_iv"
+            android:layout_toRightOf="@id/video_item_details_iv"
+            android:text="1111111" />
+
+        <TextView
+            android:id="@+id/video_item_details_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/video_item_details_name"
+            android:layout_below="@id/video_item_details_name"
+            android:text="2222222" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/community_in" />
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft"
+        android:text="专辑列表" />
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:background="@color/colorTitleBackground">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/video_details_title"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:text="标题"-->
+    <!--android:textColor="@color/colorBackground" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/video_details_exit"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:src="@mipmap/global_back_d" />-->
+
+    <!--</RelativeLayout>-->
 
     <ListView
         android:id="@+id/video_details_lv"

@@ -16,6 +16,8 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/16.
+ *
+ *  英雄  周免/折扣  周免界面
  */
 public class HeroFreeFragment extends BaseFragment implements HeroFreeAdapter.MyItemClickListener {
     private RecyclerView recyclerView;

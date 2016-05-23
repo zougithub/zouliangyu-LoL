@@ -2,6 +2,7 @@ package com.zouliangyu.lol.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
@@ -23,6 +24,7 @@ import com.zouliangyu.lol.bean.VideoDetailsItemDetailsBean;
 
 /**
  * Created by zouliangyu on 16/5/18.
+ * 视频Item详情页面  内的视频的详情
  */
 public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnClickListener {
 
@@ -61,6 +63,8 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
 
     @Override
     protected void initData() {
+        titleTv.setTextColor(Color.WHITE);
+
         Intent intent = getIntent();
         String ids = intent.getStringExtra("ids");
 
@@ -115,6 +119,7 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
                 finish();
                 break;
             case R.id.title_right_iv:
+
                 break;
         }
 

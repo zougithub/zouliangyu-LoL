@@ -4,8 +4,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/title" />
+
     <ListView
         android:id="@+id/community_play_details_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorCommunityBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+    <LinearLayout
+        android:id="@+id/show_publish_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/news_comment_send_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/publish_play" />
+
+    </LinearLayout>
 </LinearLayout>

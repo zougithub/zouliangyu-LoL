@@ -18,6 +18,8 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/14.
+ *
+ * 视频Item详情 adapter
  */
 public class VideoPlayNewestDetailsAdapter extends BaseAdapter {
     private VideoPlayNewestDetailsBean videoPlayNewestDetailsBeans;

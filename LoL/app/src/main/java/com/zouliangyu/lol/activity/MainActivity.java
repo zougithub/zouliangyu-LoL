@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.util.SlidingMenu;
 import com.zouliangyu.lol.base.BaseActivity;
@@ -25,11 +26,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView titleTv;
     private ImageView rightIv;
 
+    private int[] ids = {R.id.main_information_rb, R.id.main_video_rb,
+            R.id.main_hero_rb, R.id.main_community_rb, R.id.main_more_rb};
+
     private SlidingMenu mLeftMenu;
-
-
-
-//    private DrawerLayout drawerLayout;
 
 
     @Override
@@ -40,27 +40,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initView() {
 
+        for (int i = 0; i < ids.length; i++) {
+            findViewById(ids[i]).setOnClickListener(this);
+        }
 
-        findViewById(R.id.main_information_rb).setOnClickListener(this);
-        findViewById(R.id.main_video_rb).setOnClickListener(this);
-        findViewById(R.id.main_hero_rb).setOnClickListener(this);
-        findViewById(R.id.main_community_rb).setOnClickListener(this);
-        findViewById(R.id.main_more_rb).setOnClickListener(this);
         titleTv = (TextView) findViewById(R.id.title_tv);
         rightIv = (ImageView) findViewById(R.id.title_right_iv);
         mLeftMenu = (SlidingMenu) findViewById(R.id.menu);
 
 
-//        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//
-//        ImageView leftIv = (ImageView) findViewById(R.id.title_left_iv);
-//        leftIv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                drawerLayout.openDrawer(Gravity.LEFT);
-//            }
-//        });
+    }
 
+    @Override
+    protected void initData() {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -68,13 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         titleTv.setText(titles[0]);
         titleTv.setTextColor(Color.WHITE);
         rightIv.setImageResource(R.mipmap.information_search);
-
         transaction.commit();
-
-    }
-
-    @Override
-    protected void initData() {
 
     }
 
@@ -86,7 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.main_information_rb:
                 transaction.replace(R.id.main_replace, new InformationFragment());
                 titleTv.setText(titles[0]);
-                titleTv.setTextColor(Color.WHITE);
+//                titleTv.setTextColor(Color.WHITE);
                 rightIv.setImageResource(R.mipmap.information_search);
                 rightIv.setVisibility(View.VISIBLE);
                 break;

@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.zouliangyu.lol.R;
+import com.zouliangyu.lol.activity.CommunityFriendDetailsAty;
 import com.zouliangyu.lol.activity.CommunityPlayDetailsAty;
+import com.zouliangyu.lol.activity.CommunityShowDetailsAty;
 import com.zouliangyu.lol.activity.HeroItemDetailsAty;
 import com.zouliangyu.lol.activity.WelcomeActivity;
 import com.zouliangyu.lol.base.BaseFragment;
@@ -13,6 +15,8 @@ import com.zouliangyu.lol.fragment.information.InformationFragment;
 
 /**
  * Created by zouliangyu on 16/5/9.
+ * <p>
+ * 社区界面
  */
 public class CommunityFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout contentOne;
@@ -44,7 +48,7 @@ public class CommunityFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.community_content_one:
-                Intent intent = new Intent(getContext(), WelcomeActivity.class);
+                Intent intent = new Intent(getContext(), CommunityShowDetailsAty.class);
                 startActivity(intent);
                 break;
             case R.id.community_content_two:
@@ -52,8 +56,9 @@ public class CommunityFragment extends BaseFragment implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.community_content_three:
-                Intent intent2 = new Intent(getContext(), WelcomeActivity.class);
-                startActivity(intent2);
+                // 跳到找战友界面
+                Intent intentFriend = new Intent(getContext(), CommunityFriendDetailsAty.class);
+                startActivity(intentFriend);
                 break;
 
 

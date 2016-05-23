@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/video_match_rv"
+    <ListView
+        android:id="@+id/novel_details_item_details_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

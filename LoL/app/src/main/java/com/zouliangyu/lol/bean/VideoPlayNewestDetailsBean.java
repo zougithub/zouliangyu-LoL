@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/14.
+ *
+ * 视频详情页的数据类
  */
 public class VideoPlayNewestDetailsBean {
 

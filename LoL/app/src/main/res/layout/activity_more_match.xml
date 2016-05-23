@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTitleBackground"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/match_results_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="right"
+            android:paddingBottom="@dimen/layout_marginLeft"
+            android:paddingRight="@dimen/left_menu_marginTop"
+            android:paddingTop="@dimen/layout_marginLeft"
+            android:text="@string/match_results"
+            android:background="@drawable/match_selector"/>
+
+        <RadioButton
+            android:id="@+id/important_news_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:paddingBottom="@dimen/layout_marginLeft"
+            android:paddingLeft="@dimen/left_menu_marginTop"
+            android:paddingTop="@dimen/layout_marginLeft"
+            android:text="@string/important_news"
+            android:background="@drawable/match_selector"/>
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/match_replace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

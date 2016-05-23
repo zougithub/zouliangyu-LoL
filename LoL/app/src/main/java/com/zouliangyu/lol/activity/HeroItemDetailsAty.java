@@ -3,7 +3,6 @@ package com.zouliangyu.lol.activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.fragment.hero.herodetails.HeroDetailsAroundFragment;
@@ -14,6 +13,8 @@ import com.zouliangyu.lol.fragment.hero.herodetails.HeroDetailsPlayFragment;
 
 /**
  * Created by zouliangyu on 16/5/16.
+ *
+ * 英雄详情界面
  */
 public class HeroItemDetailsAty extends BaseActivity implements View.OnClickListener {
     private int[] ids = {R.id.aty_hero_item_details_introduce, R.id.aty_hero_item_details_data,

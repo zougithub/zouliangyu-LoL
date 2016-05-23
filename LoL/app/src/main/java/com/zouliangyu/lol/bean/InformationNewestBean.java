@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/10.
+ * 资讯 轮播图下的数据类
  */
 public class InformationNewestBean {
 

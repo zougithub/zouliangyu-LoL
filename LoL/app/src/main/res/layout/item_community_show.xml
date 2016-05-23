@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/layout_marginLeft"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_community_show_nickname_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你跟谁俩呢" />
+
+        <ImageView
+            android:id="@+id/item_community_show_sex_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/item_community_show_nickname_tv"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_community_show_nickname_tv"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_community_show_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/item_community_show_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_community_show_nickname_tv"
+            android:text="召唤师" />
+
+        <TextView
+            android:id="@+id/left_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_show_name_tv"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_community_show_name_tv"
+            android:text="(" />
+
+        <TextView
+            android:id="@+id/item_community_show_area_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/left_tv"
+            android:layout_toRightOf="@id/left_tv"
+            android:text="影流" />
+
+        <TextView
+            android:id="@+id/right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_community_show_area_tv"
+            android:layout_toRightOf="@id/item_community_show_area_tv"
+            android:text=")" />
+
+        <TextView
+            android:id="@+id/item_community_show_summoner_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/right_tv"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/right_tv"
+            android:text="再瞅一眼试试" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/item_community_show_iv"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/layout_marginLeft"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/item_community_show_desc_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="11111111111111111111" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+</LinearLayout>

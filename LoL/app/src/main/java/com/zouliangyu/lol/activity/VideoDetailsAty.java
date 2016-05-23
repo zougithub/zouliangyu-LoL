@@ -30,6 +30,8 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/14.
+ * <p>
+ * 视频的Item详情页
  */
 public class VideoDetailsAty extends BaseActivity implements View.OnClickListener {
     private TextView titleTv;
@@ -57,8 +59,8 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
     protected void initView() {
         listView = (ListView) findViewById(R.id.video_details_lv);
 
-        titleTv = (TextView) findViewById(R.id.video_details_title);
-        exitIv = (ImageView) findViewById(R.id.video_details_exit);
+        titleTv = (TextView) findViewById(R.id.title_tv);
+        exitIv = (ImageView) findViewById(R.id.title_left_iv);
         exitIv.setOnClickListener(this);
 
 
@@ -68,13 +70,13 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
     protected void initData() {
 
 
-        View headerView = getLayoutInflater().inflate(R.layout.video_details_header, null);
-        imageView = (ImageView) headerView.findViewById(R.id.video_item_details_iv);
-        nameTv = (TextView) headerView.findViewById(R.id.video_item_details_name);
-        descTv = (TextView) headerView.findViewById(R.id.video_item_details_desc);
+//        View headerView = getLayoutInflater().inflate(R.layout.video_details_header, null);
+        imageView = (ImageView)findViewById(R.id.video_item_details_iv);
+        nameTv = (TextView)findViewById(R.id.video_item_details_name);
+        descTv = (TextView)findViewById(R.id.video_item_details_desc);
 
 
-        listView.addHeaderView(headerView);
+//        listView.addHeaderView(headerView);
 
         Intent intent = getIntent();
 
@@ -85,6 +87,7 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
         String desc = intent.getStringExtra("desc");
         String img = intent.getStringExtra("img");
 
+        exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText(name);
         titleTv.setTextColor(Color.WHITE);
 
@@ -124,8 +127,8 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(VideoDetailsAty.this, VideoDetailsItemDetailsAty.class);
-                Log.d("VideoDetailsAty", videoPlayNewestDetailsBean.getData().get(position - 1).getTitle());
-                String ids = videoPlayNewestDetailsBean.getData().get(position - 1).getItem_id();
+                Log.d("VideoDetailsAty", videoPlayNewestDetailsBean.getData().get(position).getTitle());
+                String ids = videoPlayNewestDetailsBean.getData().get(position).getItem_id();
                 intent.putExtra("ids", ids);
                 startActivity(intent);
                 Log.d("VideoDetailsAty", ids);
@@ -134,13 +137,14 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.video_details_exit:
+            case R.id.title_left_iv:
                 finish();
                 break;
         }
     }
+
+
 }

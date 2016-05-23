@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/layout_marginLeft"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
+
+        <TextView
+            android:id="@+id/item_friend_nickname_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/item_friend_sex_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/item_friend_nickname_tv"
+            android:layout_toRightOf="@id/item_friend_nickname_tv" />
+
+        <TextView
+            android:id="@+id/item_friend_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/item_friend_sex_iv"
+            android:text="17:07" />
+
+        <TextView
+            android:id="@+id/item_friend_summoner_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_friend_nickname_tv"
+            android:layout_below="@id/item_friend_nickname_tv"
+            android:text="@string/summoner" />
+
+        <TextView
+            android:id="@+id/item_friend_colon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_summoner_tv"
+            android:layout_toRightOf="@id/item_friend_summoner_tv"
+            android:text="@string/colon" />
+
+        <TextView
+            android:id="@+id/item_friend_leftbracket_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_colon_tv"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_friend_colon_tv"
+            android:text="@string/leftbracket" />
+
+        <TextView
+            android:id="@+id/item_friend_area_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_leftbracket_tv"
+            android:layout_toRightOf="@id/item_friend_leftbracket_tv" />
+
+        <TextView
+            android:id="@+id/item_friend_rightbracket_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_area_tv"
+            android:layout_toRightOf="@id/item_friend_area_tv"
+            android:text="@string/rightbracket" />
+
+        <TextView
+            android:id="@+id/item_friend_summoner_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_rightbracket_tv"
+            android:layout_toRightOf="@id/item_friend_rightbracket_tv" />
+
+        <TextView
+            android:id="@+id/item_friend_fighting_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_friend_summoner_tv"
+            android:layout_below="@id/item_friend_summoner_name_tv"
+            android:text="@string/fighting" />
+
+        <TextView
+            android:id="@+id/item_friend_fighting_colon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_fighting_tv"
+            android:layout_toRightOf="@id/item_friend_fighting_tv"
+            android:text="@string/colon" />
+
+        <TextView
+            android:id="@+id/item_friend_zdl_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_friend_fighting_colon_tv"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/item_friend_fighting_colon_tv" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/item_friend_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginRight="@dimen/layout_marginLeft"
+        android:layout_marginTop="@dimen/layout_marginLeft"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/voice" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon" />
+
+        <TextView
+            android:id="@+id/item_friend_voice_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginRight="@dimen/layout_marginLeft"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon" />
+
+        <TextView
+            android:id="@+id/item_friend_city_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_marginLeft"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginRight="@dimen/layout_marginLeft"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manifesto" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon" />
+
+        <TextView
+            android:id="@+id/item_friend_slogan_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+</LinearLayout>
