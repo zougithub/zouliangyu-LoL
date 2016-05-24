@@ -17,8 +17,10 @@ import com.zouliangyu.lol.bean.CommunityFriendBean;
 
 /**
  * Created by zouliangyu on 16/5/21.
+ *
+ * 社区 找战友
  */
-public class CommunityFriendDetailsAty extends BaseActivity implements View.OnClickListener {
+public class CommunityFriendDetailsAty extends BaseActivity {
     private RecyclerView recyclerView;
     private CommunityFriendDetailsAdapter communityFriendDetailsAdapter;
     private TextView titleTv;
@@ -37,7 +39,12 @@ public class CommunityFriendDetailsAty extends BaseActivity implements View.OnCl
 
         titleTv = (TextView) findViewById(R.id.title_tv);
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
-        leftIv.setOnClickListener(this);
+        leftIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -64,12 +71,4 @@ public class CommunityFriendDetailsAty extends BaseActivity implements View.OnCl
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.title_left_iv:
-                finish();
-                break;
-        }
-    }
 }

@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.main_replace, new InformationFragment());
+
         titleTv.setText(titles[0]);
         titleTv.setTextColor(Color.WHITE);
         rightIv.setImageResource(R.mipmap.information_search);
@@ -72,7 +73,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.main_information_rb:
                 transaction.replace(R.id.main_replace, new InformationFragment());
                 titleTv.setText(titles[0]);
-//                titleTv.setTextColor(Color.WHITE);
                 rightIv.setImageResource(R.mipmap.information_search);
                 rightIv.setVisibility(View.VISIBLE);
                 break;
@@ -104,7 +104,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     public void toggleMenu(View view) {
         mLeftMenu.toggle();
-
 
     }
 }

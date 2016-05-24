@@ -18,12 +18,12 @@ import java.lang.reflect.Method;
 
 /**
  * Created by zouliangyu on 16/5/19.
- * <p/>
  * 更多 壁纸 界面
  */
-public class MoreImageActivity extends BaseActivity implements View.OnClickListener {
+public class MoreImageActivity extends BaseActivity {
     private RecyclerView recyclerView;
     private MoreImageAdapter moreImageAdapter;
+
     private ImageView leftIv;
     private TextView titleTv;
 
@@ -38,7 +38,12 @@ public class MoreImageActivity extends BaseActivity implements View.OnClickListe
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
-        leftIv.setOnClickListener(this);
+        leftIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -66,12 +71,6 @@ public class MoreImageActivity extends BaseActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.title_left_iv:
-                finish();
-                break;
-        }
-    }
+
+
 }

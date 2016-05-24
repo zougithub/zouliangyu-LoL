@@ -18,7 +18,6 @@ import com.zouliangyu.lol.bean.CommunityPlayBean;
 
 /**
  * Created by zouliangyu on 16/5/16.
- * <p>
  * 社区 晒玩法 详情
  */
 public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClickListener {

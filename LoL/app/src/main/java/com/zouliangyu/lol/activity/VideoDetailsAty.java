@@ -19,6 +19,7 @@ import com.zouliangyu.lol.adapter.VideoPlayAdapter;
 import com.zouliangyu.lol.adapter.VideoPlayNewestDetailsAdapter;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.base.GsonRequest;
+import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.VideoBean;
 import com.zouliangyu.lol.bean.VideoPlayNewestDetailsBean;
 import com.zouliangyu.lol.fragment.video.VideoFragment;
@@ -30,10 +31,9 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/14.
- * <p>
  * 视频的Item详情页
  */
-public class VideoDetailsAty extends BaseActivity implements View.OnClickListener {
+public class VideoDetailsAty extends BaseActivity {
     private TextView titleTv;
     private ImageView exitIv;
 
@@ -61,7 +61,12 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
 
         titleTv = (TextView) findViewById(R.id.title_tv);
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
-        exitIv.setOnClickListener(this);
+        exitIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
@@ -99,28 +104,25 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
         String url = "http://lol.zhangyoubao.com/apis/rest/ItemsService/videos?catwordid=" + ids + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438760575&p_=4070&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol";
 
 
-        final RequestQueue requestQueue = Volley.newRequestQueue(this);
-        // 视频详情页, 获取listview数据
-        GsonRequest<VideoPlayNewestDetailsBean> gsonRequest = new GsonRequest<>(Request.Method.GET, url
-                , new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        videoPlayNewestDetailsAdapter = new VideoPlayNewestDetailsAdapter(this);
 
-            }
-        }, new Response.Listener<VideoPlayNewestDetailsBean>() {
+
+        // 视频详情页, 获取listview数据
+        VolleySingle.addRequest(url, new Response.Listener<VideoPlayNewestDetailsBean>() {
             @Override
             public void onResponse(VideoPlayNewestDetailsBean response) {
 
                 videoPlayNewestDetailsBean = response;
                 videoPlayNewestDetailsAdapter.setVideoPlayNewestDetailsBeans(response);
-
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
             }
-        }, VideoPlayNewestDetailsBean.class);
+        },VideoPlayNewestDetailsBean.class);
 
-        requestQueue.add(gsonRequest);
 
-        videoPlayNewestDetailsAdapter = new VideoPlayNewestDetailsAdapter(this);
         listView.setAdapter(videoPlayNewestDetailsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -137,14 +139,6 @@ public class VideoDetailsAty extends BaseActivity implements View.OnClickListene
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.title_left_iv:
-                finish();
-                break;
-        }
-    }
 
 
 }

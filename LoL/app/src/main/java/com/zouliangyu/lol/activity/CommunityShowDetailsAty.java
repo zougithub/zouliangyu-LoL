@@ -23,7 +23,6 @@ import com.zouliangyu.lol.bean.CommunityShowBean;
 
 /**
  * Created by zouliangyu on 16/5/19.
- *
  * 社区  真人秀 详情
  */
 public class CommunityShowDetailsAty extends BaseActivity implements View.OnClickListener {
@@ -116,7 +115,6 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
             case R.id.show_area_rb:
                 if (!popupWindow.isShowing()) {
                     popupWindow.showAsDropDown(areaRb);
-
 
                     popupWindowTwo.dismiss();
                     popupWindowThree.dismiss();

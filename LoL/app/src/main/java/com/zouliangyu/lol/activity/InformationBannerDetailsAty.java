@@ -9,7 +9,6 @@ import com.zouliangyu.lol.base.BaseActivity;
 
 /**
  * Created by zouliangyu on 16/5/17.
- *
  * 轮播图详情页
  */
 public class InformationBannerDetailsAty extends BaseActivity {

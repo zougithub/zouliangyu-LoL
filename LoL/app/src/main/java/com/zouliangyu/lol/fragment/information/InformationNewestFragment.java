@@ -34,7 +34,7 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/9.
- *
+ * <p>
  * 资讯  最新界面
  */
 public class InformationNewestFragment extends BaseFragment {
@@ -110,10 +110,10 @@ public class InformationNewestFragment extends BaseFragment {
                 }, new Response.Listener<InformationNewestBean>() {
             @Override
             public void onResponse(InformationNewestBean response) {
-
-                informationAdapter.setInformationNewestBeanList(response);
                 informationNewestBean = response;
-                Log.d("InformationNewestFragment", informationNewestBean.getData().get(0).getTitle());
+                informationAdapter.setInformationNewestBeanList(response);
+
+//                Log.d("InformationNewestFragment", informationNewestBean.getData().get(0).getTitle());
             }
         }, InformationNewestBean.class);
         requestQueue.add(gsonRequest);
@@ -160,7 +160,7 @@ public class InformationNewestFragment extends BaseFragment {
             @Override
             public void onLoad() {
                 BannerBean bean = new BannerBean();
-                for (int i = 0;i<bean.getData().size();i++){
+                for (int i = 0; i < bean.getData().size(); i++) {
                     bannerBean.getData().add(bean.getData().get(i));
                 }
 

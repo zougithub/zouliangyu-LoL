@@ -13,8 +13,9 @@
 
         <ImageView
             android:id="@+id/aty_hero_item_details_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
 
         <TextView

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/layout_marginLeft"
+    android:padding="@dimen/layout_marginLeft">
+
+    <ImageView
+        android:id="@+id/myhero_left_iv"
+        android:layout_width="@dimen/title_height"
+        android:layout_height="@dimen/title_height"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/myhero_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/left_menu_marginRight"
+        android:layout_toRightOf="@id/myhero_left_iv"
+        android:text="时间刺客" />
+
+    <TextView
+        android:id="@+id/myhero_cnname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/myhero_title_tv"
+        android:layout_marginLeft="@dimen/left_menu_marginRight"
+        android:layout_toRightOf="@id/myhero_title_tv"
+        android:text="艾克" />
+
+    <TextView
+        android:id="@+id/myhero_times_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/myhero_title_tv"
+        android:layout_below="@id/myhero_title_tv"
+        android:text="@string/times" />
+
+    <TextView
+        android:id="@+id/myhero_colon_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/myhero_times_tv"
+        android:layout_marginLeft="@dimen/left_menu_marginRight"
+        android:layout_toRightOf="@id/myhero_times_tv"
+        android:text="@string/colon" />
+
+    <TextView
+        android:id="@+id/myhero_num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/myhero_colon_tv"
+        android:layout_marginLeft="@dimen/left_menu_marginRight"
+        android:layout_toRightOf="@id/myhero_colon_tv"
+        android:text="9" />
+</RelativeLayout>

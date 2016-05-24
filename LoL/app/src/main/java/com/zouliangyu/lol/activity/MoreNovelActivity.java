@@ -1,6 +1,7 @@
 package com.zouliangyu.lol.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.zouliangyu.lol.bean.MoreNovelBean;
 
 /**
  * Created by zouliangyu on 16/5/20.
+ * 小说界面
  */
 public class MoreNovelActivity extends BaseActivity {
     private ListView listView;
@@ -50,6 +52,7 @@ public class MoreNovelActivity extends BaseActivity {
     protected void initData() {
         leftIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("小说列表");
+        titleTv.setTextColor(Color.WHITE);
 
 
         moreNovelAdapter = new MoreNovelAdapter(this);

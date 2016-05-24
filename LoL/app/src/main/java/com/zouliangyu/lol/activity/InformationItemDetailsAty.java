@@ -8,7 +8,6 @@ import com.zouliangyu.lol.base.BaseActivity;
 
 /**
  * Created by zouliangyu on 16/5/12.
- *
  * 资讯 最新界面 轮播图下 数据详情页面
  */
 public class InformationItemDetailsAty extends BaseActivity {

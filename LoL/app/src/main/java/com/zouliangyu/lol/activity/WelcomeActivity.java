@@ -9,6 +9,7 @@ import com.zouliangyu.lol.base.BaseActivity;
 
 /**
  * Created by zouliangyu on 16/5/10.
+ *
  */
 public class WelcomeActivity extends BaseActivity{
     private ImageView welcomeIv;

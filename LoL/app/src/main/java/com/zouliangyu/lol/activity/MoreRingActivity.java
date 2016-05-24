@@ -1,16 +1,13 @@
 package com.zouliangyu.lol.activity;
 
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.zouliangyu.lol.R;
@@ -21,6 +18,7 @@ import com.zouliangyu.lol.bean.MoreRingBean;
 
 /**
  * Created by zouliangyu on 16/5/20.
+ * 铃声
  */
 public class MoreRingActivity extends BaseActivity {
     private ListView listView;

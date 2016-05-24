@@ -53,7 +53,7 @@ public class MoreTopicDetailsAdapter extends BaseAdapter {
         }
         viewHolder.titleTv.setText(moreTopicDetailsBean.getData().get(position).getTitle());
         viewHolder.descTv.setText(moreTopicDetailsBean.getData().get(position).getDesc());
-
+        viewHolder.timeTv.setText(moreTopicDetailsBean.getData().get(position).getCreated().substring(0, 10));
 
         return convertView;
     }

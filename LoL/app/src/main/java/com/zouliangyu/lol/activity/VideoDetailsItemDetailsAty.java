@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.base.GsonRequest;
+import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.VideoDetailsItemDetailsBean;
 
 /**
@@ -75,14 +76,7 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
 
         mediaController = new MediaController(this);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(VideoDetailsItemDetailsAty.this);
-        GsonRequest<VideoDetailsItemDetailsBean> gsonRequest = new GsonRequest<>(Request.Method.GET, urls,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("jiji", "jiji");
-                    }
-                }, new Response.Listener<VideoDetailsItemDetailsBean>() {
+        VolleySingle.addRequest(urls, new Response.Listener<VideoDetailsItemDetailsBean>() {
             @Override
             public void onResponse(VideoDetailsItemDetailsBean response) {
                 videoDetailsItemDetailsBean = response;
@@ -106,9 +100,12 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
                 title.setText(videoDetailsItemDetailsBean.getData().getTitle());
 
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("jiji", "jiji");
+            }
         }, VideoDetailsItemDetailsBean.class);
-        requestQueue.add(gsonRequest);
-
 
     }
 

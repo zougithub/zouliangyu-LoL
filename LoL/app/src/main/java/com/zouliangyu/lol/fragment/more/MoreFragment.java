@@ -56,21 +56,16 @@ public class MoreFragment extends BaseFragment implements View.OnClickListener {
             case R.id.more_hero_tv:
                 break;
             case R.id.more_player_tv:
-
-
                 break;
             case R.id.more_topic_tv:
                 Intent intentTopic = new Intent(mContext, MoreTopicActivity.class);
                 startActivity(intentTopic);
-
-
                 break;
             case R.id.more_talent_tv:
                 break;
             case R.id.more_rune_tv:
                 break;
             case R.id.more_skills_tv:
-
                 break;
             case R.id.more_equipment_tv:
                 break;
