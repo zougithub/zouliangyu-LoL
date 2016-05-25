@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.zouliangyu.lol.R;
+import com.zouliangyu.lol.activity.HeroDetailsActivity;
 import com.zouliangyu.lol.activity.HeroItemDetailsAty;
 import com.zouliangyu.lol.adapter.AllHeroAdapter;
 import com.zouliangyu.lol.base.BaseFragment;
@@ -24,10 +25,13 @@ import com.zouliangyu.lol.bean.AllHeroBean;
  */
 public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.MyItemClickListener {
     private RecyclerView allHeroRv;
-    private Spinner spinner;
+    private Spinner spinnerOne;
+    private Spinner spinnerTwo;
+    private Spinner spinnerThree;
     private AllHeroAdapter allHeroAdapter;
+
     private AllHeroBean allHeroBean;
-    private String enName;
+
 
     @Override
     public int initLayout() {
@@ -36,7 +40,9 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
 
     @Override
     public void initView() {
-        spinner = (Spinner) getView().findViewById(R.id.spinner_one);
+        spinnerOne = (Spinner) getView().findViewById(R.id.spinner_one);
+        spinnerTwo = (Spinner) getView().findViewById(R.id.spinner_two);
+        spinnerThree = (Spinner) getView().findViewById(R.id.spinner_three);
         allHeroRv = (RecyclerView) getView().findViewById(R.id.all_hero_rv);
         allHeroRv.setLayoutManager(new GridLayoutManager(mContext, 4));
 
@@ -44,19 +50,8 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
 
     @Override
     public void initData() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        spinner();
 
 
         allHeroAdapter = new AllHeroAdapter(mContext);
@@ -66,10 +61,10 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
                 new Response.Listener<AllHeroBean>() {
                     @Override
                     public void onResponse(AllHeroBean response) {
-                        allHeroBean = response;
-                        allHeroAdapter.setAllHeroBean(allHeroBean);
 
-                        Log.d("654", "allHeroBean:" + allHeroBean.getAll().size());
+                        allHeroBean = response;
+                        allHeroAdapter.setAllHeroBean(response);
+
 
                     }
                 }, new Response.ErrorListener() {
@@ -79,6 +74,7 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
                     }
                 }, AllHeroBean.class);
 
+
         allHeroAdapter.setMyItemClickListener(this);
 
 
@@ -87,10 +83,61 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
     }
 
 
+    private void spinner() {
+        String[] mItemsOne = getResources().getStringArray(R.array.types);
+        ArrayAdapter<String> adapterOne = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, mItemsOne);
+        adapterOne.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOne.setAdapter(adapterOne);
+        spinnerOne.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String[] types = getResources().getStringArray(R.array.types);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        String[] mItemsTwo = getResources().getStringArray(R.array.price);
+        ArrayAdapter<String> adapterTwo = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mItemsTwo);
+        adapterTwo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTwo.setAdapter(adapterTwo);
+        spinnerTwo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        String[] mItemsThree = getResources().getStringArray(R.array.newest_publish);
+        ArrayAdapter<String> adapterThree = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mItemsThree);
+        adapterThree.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerThree.setAdapter(adapterThree);
+        spinnerThree.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+
     @Override
     public void onItemClickListener(View view, int position) {
-        Intent intent = new Intent(mContext, HeroItemDetailsAty.class);
-        enName = allHeroBean.getAll().get(position).getEnName();
+        Intent intent = new Intent(mContext, HeroDetailsActivity.class);
+        Log.d("HeroAllHero2545656Fragment", allHeroBean.getAll().get(position + 1).getEnName());
+        String enName = allHeroBean.getAll().get(position + 1).getEnName();
         intent.putExtra("enName", enName);
         startActivity(intent);
     }

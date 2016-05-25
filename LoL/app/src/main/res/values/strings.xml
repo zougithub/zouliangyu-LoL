@@ -64,6 +64,13 @@
     <string name="ten_team">S4总决赛</string>
     <string name="eleven_team">中韩对抗赛</string>
     <string name="times">场次</string>
+    <string name="login_num">手机号/用户名/邮箱</string>
+    <string name="login_password">密码</string>
+    <string name="login_btn">登录</string>
+    <string name="forget_password">忘记密码?</string>
+    <string name="other_way">其他方式</string>
+    <string name="search">搜索</string>
+    <string name="hor">-</string>
 
 
 </resources>

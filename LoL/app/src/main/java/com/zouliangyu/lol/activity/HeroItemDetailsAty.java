@@ -32,7 +32,7 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/16.
- * <p/>
+ *
  * 英雄详情界面
  */
 public class HeroItemDetailsAty extends BaseActivity implements View.OnClickListener {

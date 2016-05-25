@@ -35,6 +35,9 @@
         <activity android:name=".activity.CommunityFriendDetailsAty" />
         <activity android:name=".activity.MoreMatchActivity" />
         <activity android:name=".activity.MoreFightActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.InformationSearchActivity" />
+        <activity android:name=".activity.HeroDetailsActivity" />
     </application>
 
 </manifest>

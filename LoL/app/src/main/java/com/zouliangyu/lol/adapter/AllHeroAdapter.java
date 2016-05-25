@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
@@ -17,8 +18,10 @@ import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.AllHeroBean;
 import com.zouliangyu.lol.bean.AllHeroImgBean;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import it.sephiroth.android.library.picasso.MemoryPolicy;
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -54,42 +57,46 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        String name1 = allHeroBean.getAll().get(position).getEnName();
-        VolleySingle.addRequest("http://box.dwstatic.com/apiHeroSkin.php?hero=" + name1 + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
 
-                        Gson gson = new Gson();
-                        List<AllHeroImgBean> allHeroImgBeans = gson.fromJson(response, new TypeToken<ArrayList<AllHeroImgBean>>() {
-                        }.getType());
+        if (position + 1 < allHeroBean.getAll().size()) {
+            String name = allHeroBean.getAll().get(position + 1).getEnName();
 
 
-                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg())
-                                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
-                                .config(Bitmap.Config.RGB_565).placeholder(R.mipmap.ic_launcher).
-                                error(R.mipmap.ic_launcher).into(holder.topIv);
+            Log.d("AllHero122Adapter", allHeroBean.getAll().get(0).getEnName());
+            VolleySingle.addRequest("http://box.dwstatic.com/apiHeroSkin.php?hero=" + name + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            Gson gson = new Gson();
+                            List<AllHeroImgBean> allHeroImgBeans = gson.fromJson(response, new TypeToken<ArrayList<AllHeroImgBean>>() {
+                            }.getType());
 
 
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
+                            Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg())
+                                    .config(Bitmap.Config.RGB_565).placeholder(R.mipmap.ic_launcher).
+                                    error(R.mipmap.ic_launcher).into(holder.topIv);
 
 
-        holder.titleTv.setText(allHeroBean.getAll().get(position).getTitle());
-        holder.goldTv.setText(allHeroBean.getAll().get(position).getPrice().substring(0, 4));
-        holder.couponTv.setText(allHeroBean.getAll().get(position).getPrice().substring(5, 8));
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+        }
+
+
+        holder.titleTv.setText(allHeroBean.getAll().get(position + 1).getTitle());
+        holder.goldTv.setText(allHeroBean.getAll().get(position + 1).getPrice().substring(0, 4));
+        holder.couponTv.setText(allHeroBean.getAll().get(position + 1).getPrice().substring(5, 8));
     }
 
     @Override
     public int getItemCount() {
         return allHeroBean == null ? 0 : allHeroBean.getAll().size();
     }
-
 
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorHeroItemDetailsHeadBackground"
+        android:padding="@dimen/layout_marginLeft">
+
+
+        <ImageView
+            android:id="@+id/aty_hero_item_details_head"
+            android:layout_width="@dimen/title_height"
+            android:layout_height="@dimen/title_height"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_head"
+            android:layout_toRightOf="@id/aty_hero_item_details_head"
+            android:text="大发明家"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/aty_hero_item_details_code"
+            android:text="@string/hor"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/aty_hero_item_details_one"
+            android:text="黑默丁格"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/aty_hero_item_details_name"
+            android:background="@android:color/holo_blue_light"
+            android:text="法师"
+            android:textColor="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/aty_hero_item_details_code"
+            android:layout_below="@id/aty_hero_item_details_code"
+            android:text="金币" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_gold_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_gold"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_toRightOf="@id/aty_hero_item_details_gold"
+            android:text="3150" />
+
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_gold_money"
+            android:layout_toRightOf="@id/aty_hero_item_details_gold_money"
+            android:text="点券" />
+
+        <TextView
+            android:id="@+id/aty_hero_item_details_coupon_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/aty_hero_item_details_coupon"
+            android:layout_toRightOf="@id/aty_hero_item_details_coupon"
+            android:text="2500" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/aty_hero_item_details_coupon_money"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/aty_hero_item_details_coupon_money"
+            android:src="@mipmap/hero_defav" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最佳搭档"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/friend_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="蔚可以" />
+
+            <TextView
+                android:id="@+id/friend_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小纳尔" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最佳克制"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/hate_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剑姬" />
+
+            <TextView
+                android:id="@+id/hate_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="妖姬" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用技巧"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/use_way"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[R时空断裂]" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="应对技巧"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/answer_way"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="艾克在大招" />
+
+
+            <!-- 最下面-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="英雄背景"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3213145646543634536" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

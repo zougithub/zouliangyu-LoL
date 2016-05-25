@@ -15,6 +15,7 @@ import java.util.Date;
 
 /**
  * Created by zouliangyu on 16/5/10.
+ * 资讯界面 adapter
  */
 public class InformationAdapter extends BaseAdapter {
     private InformationNewestBean informationNewestBeanList;

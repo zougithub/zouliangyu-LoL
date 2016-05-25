@@ -1,9 +1,11 @@
 package com.zouliangyu.lol.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +27,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private String[] titles = {"新闻资讯", "视频", "英雄搜索", "社区", "更多"};
     private TextView titleTv;
     private ImageView rightIv;
+
+    private Button loginBtn;
 
     private int[] ids = {R.id.main_information_rb, R.id.main_video_rb,
             R.id.main_hero_rb, R.id.main_community_rb, R.id.main_more_rb};
@@ -48,6 +52,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rightIv = (ImageView) findViewById(R.id.title_right_iv);
         mLeftMenu = (SlidingMenu) findViewById(R.id.menu);
 
+        loginBtn = (Button) findViewById(R.id.slidingMenu_login_btn);
+        loginBtn.setOnClickListener(this);
+
 
     }
 
@@ -61,6 +68,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         titleTv.setText(titles[0]);
         titleTv.setTextColor(Color.WHITE);
         rightIv.setImageResource(R.mipmap.information_search);
+
+        rightIv.setOnClickListener(this);
         transaction.commit();
 
     }
@@ -96,6 +105,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 transaction.replace(R.id.main_replace, new MoreFragment());
                 titleTv.setText(titles[4]);
                 rightIv.setVisibility(View.GONE);
+                break;
+            case R.id.slidingMenu_login_btn:
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.title_right_iv:
+                Intent intentSearch = new Intent(MainActivity.this, InformationSearchActivity.class);
+                startActivity(intentSearch);
                 break;
         }
         transaction.commit();

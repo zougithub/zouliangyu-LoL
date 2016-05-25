@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types">
+        <item>位置</item>
+        <item>中单</item>
+        <item>ADC</item>
+        <item>上单</item>
+        <item>打野</item>
+        <item>辅助</item>
+        <item></item>
+    </string-array>
+    <string-array name="price">
+        <item>价格</item>
+        <item>点券</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3000</item>
+        <item>3500</item>
+        <item>4000</item>
+        <item>4500</item>
+        <item>金币</item>
+        <item>450</item>
+        <item>1350</item>
+        <item>3150</item>
+        <item>4800</item>
+        <item>6300</item>
+    </string-array>
+
+    <string-array name="newest_publish">
+        <item>最新发布</item>
+        <item>最新发布</item>
+        <item>名字排序</item>
+    </string-array>
+</resources>
