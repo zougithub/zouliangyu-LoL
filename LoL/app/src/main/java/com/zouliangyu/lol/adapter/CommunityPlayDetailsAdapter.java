@@ -15,6 +15,7 @@ import java.util.Date;
 
 /**
  * Created by zouliangyu on 16/5/21.
+ * 晒玩法 adapter
  */
 public class CommunityPlayDetailsAdapter extends BaseAdapter {
     private CommunityPlayBean communityPlayBean;

@@ -102,13 +102,10 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
         intent.putExtra("desc", desc);
         intent.putExtra("img", img);
 
-
         intent.putExtra("pos",pos);
         intent.putExtra("position", position);
 
-
         Log.d("VideoPlayFragment", "position:" + position);
-
         startActivity(intent);
 
     }

@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.zouliangyu.lol.R;
-import com.zouliangyu.lol.util.SlidingMenu;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.fragment.community.CommunityFragment;
 import com.zouliangyu.lol.fragment.hero.HeroFragment;
@@ -29,11 +29,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ImageView rightIv;
 
     private Button loginBtn;
+    private ImageView loginIv;
 
     private int[] ids = {R.id.main_information_rb, R.id.main_video_rb,
             R.id.main_hero_rb, R.id.main_community_rb, R.id.main_more_rb};
 
-    private SlidingMenu mLeftMenu;
+
+    private DrawerLayout drawerLayout;
+    private ImageView leftIv;
+
+    private TextView myCollectTv;
 
 
     @Override
@@ -50,10 +55,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         titleTv = (TextView) findViewById(R.id.title_tv);
         rightIv = (ImageView) findViewById(R.id.title_right_iv);
-        mLeftMenu = (SlidingMenu) findViewById(R.id.menu);
 
         loginBtn = (Button) findViewById(R.id.slidingMenu_login_btn);
         loginBtn.setOnClickListener(this);
+        loginIv = (ImageView) findViewById(R.id.slidingMenu_login_iv);
+        loginIv.setOnClickListener(this);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.main_drawerlayout);
+        leftIv = (ImageView) findViewById(R.id.title_left_iv);
+        leftIv.setOnClickListener(this);
+
+        myCollectTv = (TextView) findViewById(R.id.my_collect_tv);
+        myCollectTv.setOnClickListener(this);
 
 
     }
@@ -72,6 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rightIv.setOnClickListener(this);
         transaction.commit();
 
+
     }
 
     @Override
@@ -88,8 +102,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.main_video_rb:
                 transaction.replace(R.id.main_replace, new VideoFragment());
                 titleTv.setText(titles[1]);
-                rightIv.setImageResource(R.mipmap.video_download);
-                rightIv.setVisibility(View.VISIBLE);
+                rightIv.setVisibility(View.GONE);
                 break;
             case R.id.main_hero_rb:
                 transaction.replace(R.id.main_replace, new HeroFragment());
@@ -110,17 +123,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.title_right_iv:
+            case R.id.title_right_iv:// 搜索
                 Intent intentSearch = new Intent(MainActivity.this, InformationSearchActivity.class);
                 startActivity(intentSearch);
+                break;
+            case R.id.title_left_iv:
+                drawerLayout.openDrawer(Gravity.LEFT); // 从左打开
+                break;
+            case R.id.my_collect_tv:
+                Intent intentCollect = new Intent(this, MyCollectActivity.class);
+                startActivity(intentCollect);
+                break;
+            case R.id.slidingMenu_login_iv:
+                Intent intentLoginIv = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intentLoginIv);
                 break;
         }
         transaction.commit();
 
     }
 
-    public void toggleMenu(View view) {
-        mLeftMenu.toggle();
 
-    }
 }

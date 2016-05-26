@@ -61,16 +61,12 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
                 new Response.Listener<AllHeroBean>() {
                     @Override
                     public void onResponse(AllHeroBean response) {
-
                         allHeroBean = response;
                         allHeroAdapter.setAllHeroBean(response);
-
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }, AllHeroBean.class);
 
@@ -92,6 +88,7 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String[] types = getResources().getStringArray(R.array.types);
+
             }
 
             @Override
@@ -136,7 +133,6 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
     @Override
     public void onItemClickListener(View view, int position) {
         Intent intent = new Intent(mContext, HeroDetailsActivity.class);
-        Log.d("HeroAllHero2545656Fragment", allHeroBean.getAll().get(position + 1).getEnName());
         String enName = allHeroBean.getAll().get(position + 1).getEnName();
         intent.putExtra("enName", enName);
         startActivity(intent);

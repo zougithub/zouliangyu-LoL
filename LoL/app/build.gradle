@@ -29,4 +29,6 @@ dependencies {
     compile 'com.netflix.feign:feign-gson:8.16.2'
     compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
     compile files('libs/nineoldandroids-2.4.0.jar')
+    compile project(':library')
+    compile 'de.greenrobot:greendao:2.1.0'
 }

@@ -24,6 +24,8 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/24.
+ * <p/>
+ * 英雄  资料界面
  */
 public class HeroDetailsActivity extends BaseActivity implements View.OnClickListener {
     private TextView likeOne;
@@ -78,16 +80,22 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         String enName = intent.getStringExtra("enName");
-
         String dataUrls = "http://lolbox.duowan.com/phone/apiHeroDetail.php?OSType=iOS9.3.1&heroName=" + enName + "&v=180%20HTTP/1.1";
         VolleySingle.addRequest(dataUrls, new Response.Listener<AllHeroIntroduceBean>() {
             @Override
             public void onResponse(AllHeroIntroduceBean response) {
+                if (!response.getLike().isEmpty() && !response.getHate().isEmpty()) {
+                    likeOne.setText(response.getLike().get(0).getDes());
+                    likeTwo.setText(response.getLike().get(1).getDes());
+                    hateOne.setText(response.getHate().get(0).getDes());
+                    hateTwo.setText(response.getHate().get(1).getDes());
+                } else {
+                    likeOne.setText("");
+                    likeTwo.setText("");
+                    hateOne.setText("");
+                    hateTwo.setText("");
+                }
 
-                likeOne.setText(response.getLike().get(0).getDes());
-                likeTwo.setText(response.getLike().get(1).getDes());
-                hateOne.setText(response.getHate().get(0).getDes());
-                hateTwo.setText(response.getHate().get(1).getDes());
                 useWay.setText(response.getTips());
                 answerWay.setText(response.getOpponentTips());
                 descriptionTv.setText(response.getDescription());
@@ -122,8 +130,8 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
-
     }
+
 
     @Override
     public void onClick(View v) {

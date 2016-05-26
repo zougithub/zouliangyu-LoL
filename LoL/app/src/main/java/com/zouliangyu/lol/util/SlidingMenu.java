@@ -165,6 +165,8 @@ public class SlidingMenu extends HorizontalScrollView {
     }
 
 
+
+
     /**
      * 打开菜单
      */
@@ -229,6 +231,7 @@ public class SlidingMenu extends HorizontalScrollView {
         ViewHelper.setScaleY(mContent, rightScale);
 
     }
+
 
 //    @Override
 //    public boolean onInterceptTouchEvent(MotionEvent ev) {

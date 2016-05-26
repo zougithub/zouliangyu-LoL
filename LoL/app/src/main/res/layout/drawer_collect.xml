@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title" />
+
+    <RelativeLayout
+        android:id="@+id/article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginTop="@dimen/layout_marginLeft">
+
+        <ImageView
+            android:id="@+id/article_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/fav_icon_1" />
+
+        <TextView
+            android:id="@+id/article_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/layout_margin"
+            android:layout_toRightOf="@id/article_iv"
+            android:text="文章" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_layout_height"
+            android:layout_alignLeft="@id/article_tv"
+            android:layout_below="@id/article_tv"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:background="@color/colorCommunityView" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginTop="@dimen/layout_marginLeft">
+
+        <ImageView
+            android:id="@+id/hero_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/fav_icon_2" />
+
+        <TextView
+            android:id="@+id/hero_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/layout_margin"
+            android:layout_toRightOf="@id/hero_iv"
+            android:text="英雄" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_layout_height"
+            android:layout_alignLeft="@id/hero_tv"
+            android:layout_below="@id/hero_tv"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:background="@color/colorCommunityView" />
+    </RelativeLayout>
+</LinearLayout>

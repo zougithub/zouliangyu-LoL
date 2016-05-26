@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.adapter.CommunityPlayDetailsAdapter;
 import com.zouliangyu.lol.base.BaseActivity;
@@ -21,12 +23,14 @@ import com.zouliangyu.lol.bean.CommunityPlayBean;
  * 社区 晒玩法 详情
  */
 public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClickListener {
-    private ListView listView;
+    private PullToRefreshListView pullToRefreshListView;
     private CommunityPlayDetailsAdapter communityPlayDetailsAdapter;
     private LinearLayout publish;
 
     private TextView titleTv;
     private ImageView leftIv;
+    int i = 0;
+    private CommunityPlayBean communityPlayBean;
 
 
     @Override
@@ -36,7 +40,8 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
 
     @Override
     protected void initView() {
-        listView = (ListView) findViewById(R.id.community_play_details_lv);
+        pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.community_play_details_lv);
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         publish = (LinearLayout) findViewById(R.id.show_publish_play);
         publish.setOnClickListener(this);
 
@@ -58,6 +63,7 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
                 new Response.Listener<CommunityPlayBean>() {
                     @Override
                     public void onResponse(CommunityPlayBean response) {
+                        communityPlayBean = response;
                         communityPlayDetailsAdapter.setCommunityPlayBean(response);
                     }
                 }, new Response.ErrorListener() {
@@ -67,7 +73,45 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
                     }
                 }, CommunityPlayBean.class);
 
-        listView.setAdapter(communityPlayDetailsAdapter);
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/PlaysService/userPlayList?order_kind=0&role_id=0&season=8&page=1&i_=869765028748315&t_=1463625582052&p_=8501&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
+                        new Response.Listener<CommunityPlayBean>() {
+                            @Override
+                            public void onResponse(CommunityPlayBean response) {
+                                communityPlayDetailsAdapter.setCommunityPlayBean(response);
+                                pullToRefreshListView.onRefreshComplete();
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }, CommunityPlayBean.class);
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                i++;
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/PlaysService/userPlayList?order_kind=0&role_id=0&season=8&page=" + i + "&i_=869765028748315&t_=1463625582052&p_=8501&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
+                        new Response.Listener<CommunityPlayBean>() {
+                            @Override
+                            public void onResponse(CommunityPlayBean response) {
+                                communityPlayBean.getData().addAll(response.getData());
+                                communityPlayDetailsAdapter.setCommunityPlayBean(communityPlayBean);
+                                pullToRefreshListView.onRefreshComplete();
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }, CommunityPlayBean.class);
+            }
+        });
+
+        pullToRefreshListView.setAdapter(communityPlayDetailsAdapter);
 
     }
 

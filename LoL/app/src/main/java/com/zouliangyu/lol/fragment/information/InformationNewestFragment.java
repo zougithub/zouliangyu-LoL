@@ -16,6 +16,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.activity.InformationBannerDetailsAty;
 import com.zouliangyu.lol.activity.InformationItemDetailsAty;
@@ -24,11 +26,14 @@ import com.zouliangyu.lol.base.BaseFragment;
 import com.zouliangyu.lol.adapter.InformationBannerPagerAdapter;
 import com.zouliangyu.lol.base.GsonRequest;
 import com.zouliangyu.lol.base.VolleySingle;
+import com.zouliangyu.lol.bean.AllHeroBean;
 import com.zouliangyu.lol.bean.BannerBean;
 import com.zouliangyu.lol.bean.InformationNewestBean;
 import com.zouliangyu.lol.util.SwipeRefreshLoadingLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.sephiroth.android.library.picasso.Picasso;
@@ -38,57 +43,51 @@ import it.sephiroth.android.library.picasso.Picasso;
  * 资讯  最新界面
  */
 public class InformationNewestFragment extends BaseFragment {
-    private ViewPager mViewPager;
-    private List<ImageView> mList;
-    private LinearLayout mLinearLayout;
+    private ViewPager mViewPager; // 轮播图
+    private List<ImageView> mList;  // 图片集合
+    private LinearLayout mLinearLayout; // 轮播图下面圆圈
+    int i = 1;
 
     private ListView listView;
+    private PullToRefreshListView pullToRefreshListView;
 
-    // 轮播图的
-    private InformationBannerPagerAdapter informationBannerPagerAdapter;
+    private InformationBannerPagerAdapter informationBannerPagerAdapter; // 轮播图的
     private BannerListener bannerListener;
 
     // 圆圈标志位
     private int pointIndex = 0;
-
     // 线程标志
     private boolean isStop = false;
 
 
-    private InformationAdapter informationAdapter;
-
+    private InformationAdapter informationAdapter; // 轮播图下面数据适配器
     private InformationNewestBean informationNewestBean;
     private String[] urls;
 
-    // information里四个Fragment轮播图下面的数据网址
-    private String ids;
+    private String ids; // information里四个Fragment轮播图下面的数据网址
 
     public InformationNewestFragment(String ids) {
         this.ids = ids;
     }
 
-
-    private SwipeRefreshLoadingLayout swipeRefreshLoadingLayout;
-
     private BannerBean bannerBean;
-
 
     @Override
     public int initLayout() {
         return R.layout.fragment_information_newest;
     }
 
-
     @Override
     public void initView() {
-        listView = (ListView) getView().findViewById(R.id.information_newest_lv);
-        swipeRefreshLoadingLayout = (SwipeRefreshLoadingLayout) getView().findViewById(R.id.refresh);
+        pullToRefreshListView = bindView(R.id.information_newest_lv);
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH); // 设置上拉下拉事件
+        //pullToRefreshListView = (PullToRefreshListView) getView().findViewById(R.id.information_newest_lv);
 
     }
 
     @Override
     public void initData() {
-
+        listView = pullToRefreshListView.getRefreshableView();
         // 头布局,轮播图
         View headerView = getLayoutInflater(null).inflate(R.layout.banner, null);
         mViewPager = (ViewPager) headerView.findViewById(R.id.viewpager);
@@ -98,22 +97,43 @@ public class InformationNewestFragment extends BaseFragment {
 
 
         // 轮播图下面的数据
+        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+                new Response.Listener<InformationNewestBean>() {
+                    @Override
+                    public void onResponse(InformationNewestBean response) {
+                        informationNewestBean = response;
+                        informationAdapter.setInformationNewestBeanList(response);
+                        Log.d("Information1111111NewestFragme", response.getData().get(0).getId());
+                        // 轮播图下数据 每行的监听
+                        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                String ids = informationNewestBean.getData().get(position).getId();
+                                Log.d("987", ids);
+                                String title = informationNewestBean.getData().get(position).getTitle();
+                                String desc = informationNewestBean.getData().get(position).getDesc();
+                                int time = informationNewestBean.getData().get(position).getPublished();
+                                Intent intent = new Intent(getContext(), InformationItemDetailsAty.class);
+                                intent.putExtra("ids", ids);
+                                intent.putExtra("title", title);
+                                intent.putExtra("desc", desc);
+                                Date date = new Date(time);
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                                String times = simpleDateFormat.format(date);
+
+                                intent.putExtra("times", times);
+                                startActivity(intent);
+                            }
+                        });
 
 
-        String url = "http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=" + "1" + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol";
-        VolleySingle.addRequest(url, new Response.Listener<InformationNewestBean>() {
-            @Override
-            public void onResponse(InformationNewestBean response) {
-                informationNewestBean = response;
-                informationAdapter.setInformationNewestBeanList(response);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }, InformationNewestBean.class);
+                    }
+                }, InformationNewestBean.class);
 
 
         // 获取轮播图图片
@@ -132,27 +152,10 @@ public class InformationNewestFragment extends BaseFragment {
                 }, BannerBean.class);
 
 
-        listView.setAdapter(informationAdapter);
-
-        swipeRefreshLoadingLayout.setOnRefreshListener(new SwipeRefreshLoadingLayout.OnRefreshListener() {
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
-            public void onRefresh() {
-
-                listView.setAdapter(informationAdapter);
-                swipeRefreshLoadingLayout.setRefreshing(false);
-            }
-        });
-        swipeRefreshLoadingLayout.setOnLoadListener(new SwipeRefreshLoadingLayout.OnLoadListener() {
-            @Override
-            public void onLoad() {
-//                BannerBean bean = new BannerBean();
-//                for (int i = 0; i < bean.getData().size(); i++) {
-//                    bannerBean.getData().add(bean.getData().get(i));
-//                }
-
-//                int i = 1;
-//                i++;
-                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=" + "2" + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
                         new Response.Listener<InformationNewestBean>() {
                             @Override
                             public void onResponse(InformationNewestBean response) {
@@ -165,24 +168,34 @@ public class InformationNewestFragment extends BaseFragment {
                             }
                         }, InformationNewestBean.class);
 
-                listView.setAdapter(informationAdapter);
-                swipeRefreshLoadingLayout.setLoading(false);
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
             }
-        });
 
-
-        // 轮播图下数据 每行的监听
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                i++;
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=" + i + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+                        new Response.Listener<InformationNewestBean>() {
+                            @Override
+                            public void onResponse(InformationNewestBean response) {
+                                informationNewestBean.getData().addAll(response.getData());
+                                informationAdapter.setInformationNewestBeanList(informationNewestBean);
+                                pullToRefreshListView.onRefreshComplete();
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
 
-                Log.d("InformationNewestFragment", informationNewestBean.getData().get(position - 1).getId());
-                String ids = informationNewestBean.getData().get(position - 1).getId();
-                Intent intent = new Intent(getContext(), InformationItemDetailsAty.class);
-                intent.putExtra("ids", ids);
-                startActivity(intent);
+                            }
+                        }, InformationNewestBean.class);
             }
         });
+        pullToRefreshListView.setAdapter(informationAdapter);
 
 
         // 开启新线程, 5秒更新一次Banner
@@ -200,7 +213,6 @@ public class InformationNewestFragment extends BaseFragment {
                         }
                     });
                 }
-
             }
         }).start();
 
@@ -210,7 +222,6 @@ public class InformationNewestFragment extends BaseFragment {
     private void addBanner(final BannerBean bannerBean) {
 
         mList = new ArrayList<>();
-
         LinearLayout.LayoutParams params;
 
 
@@ -225,17 +236,9 @@ public class InformationNewestFragment extends BaseFragment {
             final ImageView imageView = new ImageView(mContext);
             imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT));
-
-
             Picasso.with(getContext()).load(urls[i]).
                     placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(imageView);
-
-
-//            imageView.setBackgroundResource(bannerImages[i]);
-
-
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-
             mList.add(imageView);
 
             // 轮播图的监听
@@ -256,7 +259,6 @@ public class InformationNewestFragment extends BaseFragment {
 
             // 设置圆圈点
             View view = new View(getContext());
-
             params = new LinearLayout.LayoutParams(10, 10);
             params.leftMargin = 10;
             view.setBackgroundResource(R.drawable.point_selector);
@@ -273,7 +275,6 @@ public class InformationNewestFragment extends BaseFragment {
         // 用来触发监听器
         mViewPager.setCurrentItem(index);
         mLinearLayout.getChildAt(pointIndex).setEnabled(true);
-
 
         informationBannerPagerAdapter = new InformationBannerPagerAdapter(mList);
         mViewPager.setAdapter(informationBannerPagerAdapter);
@@ -299,11 +300,12 @@ public class InformationNewestFragment extends BaseFragment {
         }
     }
 
-
     @Override
     public void onDestroy() {
         // 关闭定时器
         isStop = true;
         super.onDestroy();
     }
+
+
 }
