@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.BaseActivity;
@@ -26,12 +27,20 @@ import java.util.List;
  */
 public class InformationItemDetailsAty extends BaseActivity implements View.OnClickListener {
     private WebView webView;
+
+    // 标题栏
     private ImageView exitIv;
     private TextView titleTv;
     private ImageView rightTv;
+
     private PopupWindow popupWindow;
-    private LinearLayout collect;
+
+
     private TextView cancelTv;
+
+    // 加入数据库的
+    private String ids;
+    private long idd;
     private String title;
     private String desc;
     private String times;
@@ -39,8 +48,13 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
     private String url;
 
 
+    private ImageView collectIv;
+    private boolean isCollect = false;
+
+
     @Override
     protected int getLayout() {
+
         return R.layout.aty_information_newest_details;
     }
 
@@ -59,9 +73,6 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
     @Override
     protected void initData() {
         articleDao = GreendaoSingle.getInstance().getArticleDao();
-//        articleDao.deleteAll();
-
-
 
         exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("掌游宝");
@@ -70,8 +81,8 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
 
 
         Intent intent = getIntent();
-        String ids = intent.getStringExtra("ids");
-
+        ids = intent.getStringExtra("ids");
+        idd = Long.parseLong(ids);
         title = intent.getStringExtra("title");
         desc = intent.getStringExtra("desc");
         times = intent.getStringExtra("times");
@@ -81,18 +92,32 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
         webView.loadUrl(url);
 
         webView.getSettings().setJavaScriptEnabled(true);
-
         // 不阻塞图片
         webView.getSettings().setBlockNetworkImage(false);
 
 
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         View view = LayoutInflater.from(this).inflate(R.layout.article_popup, null);
-        collect = (LinearLayout) view.findViewById(R.id.collect);
+        collectIv = (ImageView) view.findViewById(R.id.collect_iv);
+        collectIv.setOnClickListener(this);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
         cancelTv.setOnClickListener(this);
 
-        collect.setOnClickListener(this);
+
+        // 遍历数据库, 是否已收藏
+        List<Article> articles = articleDao.queryBuilder().list();
+        Log.d("InformationItemDetailsA", "articles.size():" + articles.size());
+        if (articles.size() > 0) {
+            for (Article article1 : articles) {
+                Log.d("InformationItemDetailsA", "article1.getId():" + article1.getId());
+                Log.d("InformationItemDetailsA", ids);
+                if (article1.getId().toString().equals(ids.toString())) {
+                    collectIv.setImageResource(R.mipmap.global_fav_p);
+                    isCollect = true;
+                }
+            }
+
+        }
 
         popupWindow.setContentView(view);
 
@@ -113,19 +138,28 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
                     popupWindow.dismiss();
                 }
                 break;
-            case R.id.collect:
-//                boolean collect = false;
-//
-//                if (collect = true){
-//
-//                }
-
+            case R.id.collect_iv:
                 Article article = new Article();
-                article.setTitle(title);
-                article.setDesc(desc);
-                article.setTime(times);
-                article.setUrl(url);
-                articleDao.insert(article);
+                if (isCollect == false) {
+                    collectIv.setImageResource(R.mipmap.global_fav_p);
+                    article.setId(idd);
+                    article.setTitle(title);
+                    article.setDesc(desc);
+                    article.setTime(times);
+                    article.setUrl(url);
+                    articleDao.insert(article);
+                    Toast.makeText(this, "1111", Toast.LENGTH_SHORT).show();
+                    isCollect = true;
+
+
+                } else {
+                    collectIv.setImageResource(R.mipmap.global_fav_d);
+                    Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
+                    articleDao.deleteByKey(idd);
+                    isCollect = false;
+
+
+                }
 
                 break;
             case R.id.cancel_tv:

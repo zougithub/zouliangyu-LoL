@@ -10,14 +10,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.activity.HeroDetailsActivity;
-import com.zouliangyu.lol.activity.HeroItemDetailsAty;
 import com.zouliangyu.lol.adapter.HeroFreeAdapter;
 import com.zouliangyu.lol.base.BaseFragment;
 import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.AllHeroBean;
-import com.zouliangyu.lol.bean.HeroFreeFalseData;
-
-import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/16.

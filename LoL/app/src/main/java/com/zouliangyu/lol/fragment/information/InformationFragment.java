@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/9.
- * <p/>
+ * <p>
  * 资讯界面
  */
 public class InformationFragment extends BaseFragment {

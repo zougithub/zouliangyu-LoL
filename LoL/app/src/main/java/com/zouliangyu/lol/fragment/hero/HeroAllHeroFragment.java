@@ -13,7 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.activity.HeroDetailsActivity;
-import com.zouliangyu.lol.activity.HeroItemDetailsAty;
 import com.zouliangyu.lol.adapter.AllHeroAdapter;
 import com.zouliangyu.lol.base.BaseFragment;
 import com.zouliangyu.lol.base.VolleySingle;
@@ -51,8 +50,6 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
     @Override
     public void initData() {
 
-        spinner();
-
 
         allHeroAdapter = new AllHeroAdapter(mContext);
 
@@ -63,6 +60,7 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
                     public void onResponse(AllHeroBean response) {
                         allHeroBean = response;
                         allHeroAdapter.setAllHeroBean(response);
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -70,24 +68,30 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
                     }
                 }, AllHeroBean.class);
 
+        spinner();
 
         allHeroAdapter.setMyItemClickListener(this);
 
 
         allHeroRv.setAdapter(allHeroAdapter);
 
+
     }
 
 
     private void spinner() {
-        String[] mItemsOne = getResources().getStringArray(R.array.types);
+
+        final String[] mItemsOne = getResources().getStringArray(R.array.types);
         ArrayAdapter<String> adapterOne = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, mItemsOne);
         adapterOne.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOne.setAdapter(adapterOne);
         spinnerOne.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String[] types = getResources().getStringArray(R.array.types);
+
+                String name = mItemsOne[position];
+                allHeroAdapter.setType(name);
+
 
             }
 
@@ -133,8 +137,10 @@ public class HeroAllHeroFragment extends BaseFragment implements AllHeroAdapter.
     @Override
     public void onItemClickListener(View view, int position) {
         Intent intent = new Intent(mContext, HeroDetailsActivity.class);
-        String enName = allHeroBean.getAll().get(position + 1).getEnName();
-        intent.putExtra("enName", enName);
-        startActivity(intent);
+//        if (position + 1 < allHeroBean.getAll().size()) {
+            String enName = allHeroBean.getAll().get(position).getEnName();
+            intent.putExtra("enName", enName);
+            startActivity(intent);
+//        }
     }
 }

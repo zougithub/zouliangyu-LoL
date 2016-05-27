@@ -131,7 +131,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 drawerLayout.openDrawer(Gravity.LEFT); // 从左打开
                 break;
             case R.id.my_collect_tv:
-                Intent intentCollect = new Intent(this, MyCollectActivity.class);
+                Intent intentCollect = new Intent(this, MyCollectDetailsActivity.class);
                 startActivity(intentCollect);
                 break;
             case R.id.slidingMenu_login_iv:

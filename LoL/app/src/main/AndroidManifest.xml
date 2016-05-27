@@ -22,7 +22,6 @@
         <activity android:name=".activity.InformationItemDetailsAty" />
         <activity android:name=".activity.VideoDetailsAty" />
         <activity android:name=".activity.CommunityPlayDetailsAty" />
-        <activity android:name=".activity.HeroItemDetailsAty" />
         <activity android:name=".activity.InformationBannerDetailsAty" />
         <activity android:name=".activity.VideoDetailsItemDetailsAty" />
         <activity android:name=".activity.CommunityShowDetailsAty" />

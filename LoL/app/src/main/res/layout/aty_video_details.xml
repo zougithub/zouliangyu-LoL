@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/video_item_details_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_width"
             android:src="@mipmap/ic_launcher" />
 
         <TextView

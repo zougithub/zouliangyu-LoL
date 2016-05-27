@@ -29,6 +29,9 @@ import com.zouliangyu.lol.fragment.video.VideoPlayFragment;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import it.sephiroth.android.library.picasso.Picasso;
 
 /**
@@ -168,9 +171,20 @@ public class VideoDetailsAty extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(VideoDetailsAty.this, VideoDetailsItemDetailsAty.class);
-                Log.d("VideoDetailsAty", videoPlayNewestDetailsBean.getData().get(position).getTitle());
-                String ids = videoPlayNewestDetailsBean.getData().get(position).getItem_id();
+                Log.d("VideoDetailsAty", videoPlayNewestDetailsBean.getData().get(position - 1).getTitle());
+                String ids = videoPlayNewestDetailsBean.getData().get(position - 1).getItem_id();
+                String titles = videoPlayNewestDetailsBean.getData().get(position - 1).getTitle();
+                String desc = videoPlayNewestDetailsBean.getData().get(position- 1).getDesc();
+                int time = videoPlayNewestDetailsBean.getData().get(position - 1).getPublished();
+                Date date = new Date(time);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                String times = simpleDateFormat.format(date);
+
+
                 intent.putExtra("ids", ids);
+                intent.putExtra("titles", titles);
+                intent.putExtra("desc", desc);
+                intent.putExtra("times", times);
                 startActivity(intent);
                 Log.d("VideoDetailsAty", ids);
             }

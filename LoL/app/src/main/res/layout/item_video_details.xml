@@ -16,13 +16,13 @@
             android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
 
-        <ImageView
-            android:id="@+id/item_video_details_top_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/left_menu_marginTop"
-            android:layout_marginTop="@dimen/layout_marginRight"
-            android:src="@mipmap/video_play" />
+        <!--<ImageView-->
+            <!--android:id="@+id/item_video_details_top_iv"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/left_menu_marginTop"-->
+            <!--android:layout_marginTop="@dimen/layout_marginRight"-->
+            <!--android:src="@mipmap/video_play" />-->
 
         <TextView
             android:id="@+id/item_video_details_title_tv"

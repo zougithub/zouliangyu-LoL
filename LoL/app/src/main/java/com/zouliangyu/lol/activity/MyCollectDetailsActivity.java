@@ -1,5 +1,6 @@
 package com.zouliangyu.lol.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ public class MyCollectDetailsActivity extends BaseActivity {
     private MyCollectDetailsAdapter myCollectDetailsAdapter;
     private ImageView exitIv;
     private TextView titleTv;
+    private List<Article> articles;
 
     @Override
     protected int getLayout() {
@@ -50,12 +52,12 @@ public class MyCollectDetailsActivity extends BaseActivity {
     @Override
     protected void initData() {
         exitIv.setImageResource(R.mipmap.global_back_d);
-        titleTv.setText("我收藏的文章");
+        titleTv.setText("我的收藏");
         titleTv.setTextColor(Color.WHITE);
 
         myCollectDetailsAdapter = new MyCollectDetailsAdapter(this);
         articleDao = GreendaoSingle.getInstance().getArticleDao();
-        List<Article> articles = articleDao.queryBuilder().list();
+        articles = articleDao.queryBuilder().list();
         myCollectDetailsAdapter.setArticles(articles);
 
 
@@ -63,7 +65,10 @@ public class MyCollectDetailsActivity extends BaseActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                String ids = String.valueOf(articles.get(position).getId());
+                Intent intent = new Intent(MyCollectDetailsActivity.this, InformationItemDetailsAty.class);
+                intent.putExtra("ids", ids);
+                startActivity(intent);
             }
         });
 

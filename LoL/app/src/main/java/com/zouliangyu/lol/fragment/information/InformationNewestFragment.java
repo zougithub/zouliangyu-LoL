@@ -64,10 +64,10 @@ public class InformationNewestFragment extends BaseFragment {
     private InformationNewestBean informationNewestBean;
     private String[] urls;
 
-    private String ids; // information里四个Fragment轮播图下面的数据网址
+    private String id; // information里四个Fragment轮播图下面的数据网址
 
-    public InformationNewestFragment(String ids) {
-        this.ids = ids;
+    public InformationNewestFragment(String id) {
+        this.id = id;
     }
 
     private BannerBean bannerBean;
@@ -97,22 +97,21 @@ public class InformationNewestFragment extends BaseFragment {
 
 
         // 轮播图下面的数据
-        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + id + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
                 new Response.Listener<InformationNewestBean>() {
                     @Override
                     public void onResponse(InformationNewestBean response) {
                         informationNewestBean = response;
                         informationAdapter.setInformationNewestBeanList(response);
-                        Log.d("Information1111111NewestFragme", response.getData().get(0).getId());
                         // 轮播图下数据 每行的监听
                         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                String ids = informationNewestBean.getData().get(position).getId();
-                                Log.d("987", ids);
-                                String title = informationNewestBean.getData().get(position).getTitle();
-                                String desc = informationNewestBean.getData().get(position).getDesc();
-                                int time = informationNewestBean.getData().get(position).getPublished();
+                                String ids = informationNewestBean.getData().get(position - 2).getId();
+                                String title = informationNewestBean.getData().get(position - 2).getTitle();
+                                String desc = informationNewestBean.getData().get(position - 2).getDesc();
+                                int time = informationNewestBean.getData().get(position - 2).getPublished();
+
                                 Intent intent = new Intent(getContext(), InformationItemDetailsAty.class);
                                 intent.putExtra("ids", ids);
                                 intent.putExtra("title", title);
@@ -122,6 +121,8 @@ public class InformationNewestFragment extends BaseFragment {
                                 String times = simpleDateFormat.format(date);
 
                                 intent.putExtra("times", times);
+
+
                                 startActivity(intent);
                             }
                         });
@@ -155,7 +156,7 @@ public class InformationNewestFragment extends BaseFragment {
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + id + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
                         new Response.Listener<InformationNewestBean>() {
                             @Override
                             public void onResponse(InformationNewestBean response) {
@@ -179,7 +180,7 @@ public class InformationNewestFragment extends BaseFragment {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 i++;
-                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + ids + "&page=" + i + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + id + "&page=" + i + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
                         new Response.Listener<InformationNewestBean>() {
                             @Override
                             public void onResponse(InformationNewestBean response) {

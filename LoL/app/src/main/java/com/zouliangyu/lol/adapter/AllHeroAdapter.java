@@ -34,6 +34,13 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
     private Context context;
     private MyItemClickListener myItemClickListener;
 
+    private String type;
+
+    public void setType(String type) {
+        this.type = type;
+        notifyDataSetChanged();
+    }
+
     public void setMyItemClickListener(MyItemClickListener listener) {
         this.myItemClickListener = listener;
     }
@@ -58,10 +65,18 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        if (position + 1 < allHeroBean.getAll().size()) {
-            String name = allHeroBean.getAll().get(position + 1).getEnName();
 
+//        if (position + 1 < allHeroBean.getAll().size()) {
+            String name = allHeroBean.getAll().get(position).getEnName();
+//
+//            if (type.equals("位置")) {
+//                holder.itemView.setVisibility(View.VISIBLE);
+//            } else if (type != allHeroBean.getAll().get(position + 1).getLocation()) {
+//                holder.itemView.setVisibility(View.GONE);
+//                holder.itemView.clearFocus();
+//            }
 
+            // 获取英雄的图片的集合的第一张
             Log.d("AllHero122Adapter", allHeroBean.getAll().get(0).getEnName());
             VolleySingle.addRequest("http://box.dwstatic.com/apiHeroSkin.php?hero=" + name + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1",
                     new Response.Listener<String>() {
@@ -85,13 +100,15 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
 
                         }
                     });
+
+
+        holder.titleTv.setText(allHeroBean.getAll().get(position).getTitle());
+//        holder.goldTv.setText(allHeroBean.getAll().get(position + 1).getPrice().substring(0, 4));
+//        holder.couponTv.setText(allHeroBean.getAll().get(position + 1).getPrice().substring(5, 8));
+        holder.typeTv.setText(allHeroBean.getAll().get(position).getLocation());
         }
 
-
-        holder.titleTv.setText(allHeroBean.getAll().get(position + 1).getTitle());
-        holder.goldTv.setText(allHeroBean.getAll().get(position + 1).getPrice().substring(0, 4));
-        holder.couponTv.setText(allHeroBean.getAll().get(position + 1).getPrice().substring(5, 8));
-    }
+//    }
 
     @Override
     public int getItemCount() {
@@ -102,16 +119,18 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView topIv;
         TextView titleTv;
-        TextView goldTv;
-        TextView couponTv;
+        //        TextView goldTv;
+//        TextView couponTv;
+        TextView typeTv;
         private MyItemClickListener mListener;
 
         public ViewHolder(View itemView, MyItemClickListener listener) {
             super(itemView);
             topIv = (ImageView) itemView.findViewById(R.id.item_hero_free_topIv);
             titleTv = (TextView) itemView.findViewById(R.id.item_hero_free_name);
-            goldTv = (TextView) itemView.findViewById(R.id.item_hero_free_gold);
-            couponTv = (TextView) itemView.findViewById(R.id.item_hero_free_coupon);
+//            goldTv = (TextView) itemView.findViewById(R.id.item_hero_free_gold);
+//            couponTv = (TextView) itemView.findViewById(R.id.item_hero_free_coupon);
+            typeTv = (TextView) itemView.findViewById(R.id.item_hero_free_type);
             this.mListener = listener;
             itemView.setOnClickListener(this);
         }

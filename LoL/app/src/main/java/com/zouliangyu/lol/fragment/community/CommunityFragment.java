@@ -8,10 +8,7 @@ import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.activity.CommunityFriendDetailsAty;
 import com.zouliangyu.lol.activity.CommunityPlayDetailsAty;
 import com.zouliangyu.lol.activity.CommunityShowDetailsAty;
-import com.zouliangyu.lol.activity.HeroItemDetailsAty;
-import com.zouliangyu.lol.activity.WelcomeActivity;
 import com.zouliangyu.lol.base.BaseFragment;
-import com.zouliangyu.lol.fragment.information.InformationFragment;
 
 /**
  * Created by zouliangyu on 16/5/9.

@@ -17,11 +17,12 @@ import com.zouliangyu.lol.activity.VideoDetailsAty;
 import com.zouliangyu.lol.adapter.VideoPlayAdapter;
 import com.zouliangyu.lol.base.BaseFragment;
 import com.zouliangyu.lol.base.GsonRequest;
+import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.VideoBean;
 
 /**
  * Created by zouliangyu on 16/5/10.
- *
+ * <p/>
  * 视频的tab
  */
 public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.MyItemClickListener {
@@ -56,29 +57,47 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
         videoPlayAdapter = new VideoPlayAdapter(getContext(), pos);
 
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//
+//        GsonRequest<VideoBean> gsonRequest = new GsonRequest<>(Request.Method.GET, "http://lol.zhangyoubao.com/apis/rest/CatalogsService/all?cattype=video&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755336&p_=18353&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }, new Response.Listener<VideoBean>() {
+//            @Override
+//            public void onResponse(VideoBean response) {
+//                videoBean = response;
+//                videoPlayAdapter.setVideoBean(response);
+//                Log.d("VideoPlayFragment", response.getData().get(pos).getCatword_id().get(0).getName());
+////                videoDetailsAty.setVideoBean(response);
+//            }
+//        }, VideoBean.class);
+//        requestQueue.add(gsonRequest);
+
+
         // 获取视频三个页面的数据
-        GsonRequest<VideoBean> gsonRequest = new GsonRequest<>(Request.Method.GET, "http://lol.zhangyoubao.com/apis/rest/CatalogsService/all?cattype=video&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755336&p_=18353&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
-                new Response.ErrorListener() {
+        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/CatalogsService/all?cattype=video&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755336&p_=18353&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
+                new Response.Listener<VideoBean>() {
+                    @Override
+                    public void onResponse(VideoBean response) {
+                        videoBean = response;
+                        videoPlayAdapter.setVideoBean(response);
+                        Log.d("VideoPlayFragment", response.getData().get(pos).getCatword_id().get(0).getName());
+//                videoDetailsAty.setVideoBean(response);
+                    }
+                }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
                     }
-                }, new Response.Listener<VideoBean>() {
-            @Override
-            public void onResponse(VideoBean response) {
-                videoBean = response;
-                videoPlayAdapter.setVideoBean(response);
-                Log.d("VideoPlayFragment", response.getData().get(pos).getCatword_id().get(0).getName());
-//                videoDetailsAty.setVideoBean(response);
-            }
-        }, VideoBean.class);
-        requestQueue.add(gsonRequest);
+                }, VideoBean.class);
+
 
         recyclerView.setAdapter(videoPlayAdapter);
 
         videoPlayAdapter.setOnItemClickListener(this);
-
 
 
     }
@@ -102,7 +121,7 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
         intent.putExtra("desc", desc);
         intent.putExtra("img", img);
 
-        intent.putExtra("pos",pos);
+        intent.putExtra("pos", pos);
         intent.putExtra("position", position);
 
         Log.d("VideoPlayFragment", "position:" + position);

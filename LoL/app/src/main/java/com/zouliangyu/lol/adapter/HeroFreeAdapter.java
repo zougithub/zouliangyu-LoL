@@ -83,8 +83,9 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
 
 
         holder.name.setText(allHeroBean.getFree().get(position).getTitle());
-        holder.gold.setText(allHeroBean.getFree().get(position).getPrice().substring(0, 4));
-        holder.coupon.setText(allHeroBean.getFree().get(position).getPrice().substring(4, 7));
+//        holder.gold.setText(allHeroBean.getFree().get(position).getPrice().substring(0, 4));
+//        holder.coupon.setText(allHeroBean.getFree().get(position).getPrice().substring(4, 7));
+        holder.typeTv.setText(allHeroBean.getFree().get(position).getLocation());
     }
 
     @Override
@@ -95,16 +96,18 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView topIv;
         TextView name;
-        TextView gold;
-        TextView coupon;
+        //  TextView gold;
+//        TextView coupon;
+        TextView typeTv;
         private MyItemClickListener mListener;
 
         public MyViewHolder(View itemView, MyItemClickListener listener) {
             super(itemView);
             topIv = (ImageView) itemView.findViewById(R.id.item_hero_free_topIv);
             name = (TextView) itemView.findViewById(R.id.item_hero_free_name);
-            gold = (TextView) itemView.findViewById(R.id.item_hero_free_gold);
-            coupon = (TextView) itemView.findViewById(R.id.item_hero_free_coupon);
+//            gold = (TextView) itemView.findViewById(R.id.item_hero_free_gold);
+//            coupon = (TextView) itemView.findViewById(R.id.item_hero_free_coupon);
+            typeTv = (TextView) itemView.findViewById(R.id.item_hero_free_type);
 
 
             this.mListener = listener;
