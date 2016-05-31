@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/10.
+ *
  */
 public class HeroPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments;

@@ -7,9 +7,11 @@ import android.widget.ImageView;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.BaseActivity;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by zouliangyu on 16/5/10.
- *
+ * 欢迎页
  */
 public class WelcomeActivity extends BaseActivity{
     private ImageView welcomeIv;
@@ -26,6 +28,7 @@ public class WelcomeActivity extends BaseActivity{
 
     @Override
     protected void initData() {
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -34,5 +37,17 @@ public class WelcomeActivity extends BaseActivity{
                 finish();
             }
         },1000);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
     }
 }

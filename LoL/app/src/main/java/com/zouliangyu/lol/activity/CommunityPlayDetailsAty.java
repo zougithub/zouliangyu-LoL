@@ -22,10 +22,9 @@ import com.zouliangyu.lol.bean.CommunityPlayBean;
  * Created by zouliangyu on 16/5/16.
  * 社区 晒玩法 详情
  */
-public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClickListener {
+public class CommunityPlayDetailsAty extends BaseActivity {
     private PullToRefreshListView pullToRefreshListView;
     private CommunityPlayDetailsAdapter communityPlayDetailsAdapter;
-    private LinearLayout publish;
 
     private TextView titleTv;
     private ImageView leftIv;
@@ -41,13 +40,17 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
     @Override
     protected void initView() {
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.community_play_details_lv);
+        // 设置上拉下拉事件
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
-        publish = (LinearLayout) findViewById(R.id.show_publish_play);
-        publish.setOnClickListener(this);
 
         titleTv = (TextView) findViewById(R.id.title_tv);
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
-        leftIv.setOnClickListener(this);
+        leftIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -59,6 +62,7 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
 
 
         communityPlayDetailsAdapter = new CommunityPlayDetailsAdapter(this);
+        // 获取数据
         VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/PlaysService/userPlayList?order_kind=0&role_id=0&season=8&page=1&i_=869765028748315&t_=1463625582052&p_=8501&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
                 new Response.Listener<CommunityPlayBean>() {
                     @Override
@@ -73,8 +77,10 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
                     }
                 }, CommunityPlayBean.class);
 
+        // 上拉加载, 下拉刷新
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
+            // 下拉
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/PlaysService/userPlayList?order_kind=0&role_id=0&season=8&page=1&i_=869765028748315&t_=1463625582052&p_=8501&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
                         new Response.Listener<CommunityPlayBean>() {
@@ -92,6 +98,7 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
             }
 
             @Override
+            // 上拉
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 i++;
                 VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/PlaysService/userPlayList?order_kind=0&role_id=0&season=8&page=" + i + "&i_=869765028748315&t_=1463625582052&p_=8501&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
@@ -115,16 +122,4 @@ public class CommunityPlayDetailsAty extends BaseActivity implements View.OnClic
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.show_publish_play:
-                Intent intent = new Intent(CommunityPlayDetailsAty.this, WelcomeActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.title_left_iv:
-                finish();
-                break;
-        }
-    }
 }

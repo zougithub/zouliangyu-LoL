@@ -32,8 +32,13 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
     private AllHeroBean allHeroBean;
     private Context context;
 
-    private MyItemClickListener mItemClickListener;
+    // 接口对象
+    private MyItemClickListener myItemClickListener;
 
+    // 设置接口对象
+    public void setMyItemClickListener(MyItemClickListener myItemClickListener) {
+        this.myItemClickListener = myItemClickListener;
+    }
 
     public HeroFreeAdapter(Context context) {
         this.context = context;
@@ -47,13 +52,9 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_hero_free, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(view, mItemClickListener);
+        MyViewHolder myViewHolder = new MyViewHolder(view);
 
         return myViewHolder;
-    }
-
-    public void setmItemClickListener(MyItemClickListener listener) {
-        this.mItemClickListener = listener;
     }
 
     @Override
@@ -68,10 +69,10 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
                         List<AllHeroImgBean> allHeroImgBeans = gson.fromJson(response, new TypeToken<List<AllHeroImgBean>>() {
                         }.getType());
 
-                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg()).placeholder(R.mipmap.ic_launcher)
+                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg()).placeholder(R.mipmap.photo_default)
                                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                                 .config(Bitmap.Config.RGB_565)
-                                .error(R.mipmap.ic_launcher).into(holder.topIv);
+                                .error(R.mipmap.photo_default).into(holder.topIv);
 
                     }
                 }, new Response.ErrorListener() {
@@ -83,9 +84,21 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
 
 
         holder.name.setText(allHeroBean.getFree().get(position).getTitle());
-//        holder.gold.setText(allHeroBean.getFree().get(position).getPrice().substring(0, 4));
-//        holder.coupon.setText(allHeroBean.getFree().get(position).getPrice().substring(4, 7));
         holder.typeTv.setText(allHeroBean.getFree().get(position).getLocation());
+
+        // 如果接口对象不为空, 则开始对itemView设置监听
+        if (myItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 当itemView被点击的时候 就会执行里面的代码
+                    // getLayoutPosition 是获得当前是第几条数据
+                    int pos = holder.getLayoutPosition();
+                    // 调用接口对象的方法
+                    myItemClickListener.onItemClickListener(pos);
+                }
+            });
+        }
     }
 
     @Override
@@ -93,37 +106,23 @@ public class HeroFreeAdapter extends RecyclerView.Adapter<HeroFreeAdapter.MyView
         return allHeroBean == null ? 0 : allHeroBean.getFree().size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView topIv;
         TextView name;
-        //  TextView gold;
-//        TextView coupon;
         TextView typeTv;
-        private MyItemClickListener mListener;
 
-        public MyViewHolder(View itemView, MyItemClickListener listener) {
+
+        public MyViewHolder(View itemView) {
             super(itemView);
             topIv = (ImageView) itemView.findViewById(R.id.item_hero_free_topIv);
             name = (TextView) itemView.findViewById(R.id.item_hero_free_name);
-//            gold = (TextView) itemView.findViewById(R.id.item_hero_free_gold);
-//            coupon = (TextView) itemView.findViewById(R.id.item_hero_free_coupon);
             typeTv = (TextView) itemView.findViewById(R.id.item_hero_free_type);
 
-
-            this.mListener = listener;
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (mListener != null) {
-                mListener.onItemClickListener(v, getPosition());
-            }
         }
     }
 
-
+    // 内部接口
     public interface MyItemClickListener {
-        void onItemClickListener(View view, int position);
+        void onItemClickListener(int position);
     }
 }

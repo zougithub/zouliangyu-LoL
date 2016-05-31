@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:clickable="true"
-            android:onClick="toggleMenu"
             android:src="@mipmap/touxiang" />
 
         <ImageView

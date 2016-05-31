@@ -70,7 +70,7 @@ public class InformationNewestFragment extends BaseFragment {
         this.id = id;
     }
 
-    private BannerBean bannerBean;
+    private BannerBean bannerBean; //
 
     @Override
     public int initLayout() {
@@ -93,9 +93,8 @@ public class InformationNewestFragment extends BaseFragment {
         mViewPager = (ViewPager) headerView.findViewById(R.id.viewpager);
         mLinearLayout = (LinearLayout) headerView.findViewById(R.id.points);
         listView.addHeaderView(headerView);
+
         informationAdapter = new InformationAdapter(getContext());
-
-
         // 轮播图下面的数据
         VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + id + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
                 new Response.Listener<InformationNewestBean>() {
@@ -111,28 +110,22 @@ public class InformationNewestFragment extends BaseFragment {
                                 String title = informationNewestBean.getData().get(position - 2).getTitle();
                                 String desc = informationNewestBean.getData().get(position - 2).getDesc();
                                 int time = informationNewestBean.getData().get(position - 2).getPublished();
+                                Date date = new Date(time);
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                                String times = simpleDateFormat.format(date);
 
                                 Intent intent = new Intent(getContext(), InformationItemDetailsAty.class);
                                 intent.putExtra("ids", ids);
                                 intent.putExtra("title", title);
                                 intent.putExtra("desc", desc);
-                                Date date = new Date(time);
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-                                String times = simpleDateFormat.format(date);
-
                                 intent.putExtra("times", times);
-
-
                                 startActivity(intent);
                             }
                         });
-
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }, InformationNewestBean.class);
 
@@ -153,8 +146,10 @@ public class InformationNewestFragment extends BaseFragment {
                 }, BannerBean.class);
 
 
+        // 上拉刷新, 上拉加载
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
+            // 下拉
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + id + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
                         new Response.Listener<InformationNewestBean>() {
@@ -165,10 +160,8 @@ public class InformationNewestFragment extends BaseFragment {
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-
                             }
                         }, InformationNewestBean.class);
-
                 pullToRefreshListView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -178,6 +171,7 @@ public class InformationNewestFragment extends BaseFragment {
             }
 
             @Override
+            // 上拉
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 i++;
                 VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/lists?cattype=news&catid=" + id + "&page=" + i + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745347&p_=18386&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol",
@@ -191,7 +185,6 @@ public class InformationNewestFragment extends BaseFragment {
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-
                             }
                         }, InformationNewestBean.class);
             }
@@ -220,25 +213,24 @@ public class InformationNewestFragment extends BaseFragment {
 
     }
 
+    // 设置轮播图和标点
     private void addBanner(final BannerBean bannerBean) {
-
-        mList = new ArrayList<>();
+        mList = new ArrayList<>(); // 图片集合
         LinearLayout.LayoutParams params;
-
-
         // 图片的网址
         urls = new String[]{bannerBean.getData().get(0).getPic_ad_url(),
                 bannerBean.getData().get(1).getPic_ad_url(),
                 bannerBean.getData().get(2).getPic_ad_url()};
 
-
         for (int i = 0; i < urls.length; i++) {
             // 设置轮播图
             final ImageView imageView = new ImageView(mContext);
+            // 设置图片参数
             imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT));
+
             Picasso.with(getContext()).load(urls[i]).
-                    placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(imageView);
+                    placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             mList.add(imageView);
 
@@ -246,20 +238,21 @@ public class InformationNewestFragment extends BaseFragment {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent1 = new Intent(getContext(), InformationBannerDetailsAty.class);
+                    Intent intentBanner = new Intent(getContext(), InformationBannerDetailsAty.class);
                     // 轮播图的id传到 详情页
                     String[] ids = {bannerBean.getData().get(0).getGoto_param().getItemid(),
                             bannerBean.getData().get(1).getGoto_param().getItemid(),
                             bannerBean.getData().get(2).getGoto_param().getItemid()};
 
-                    intent1.putExtra("ids", ids[pointIndex]);
-                    startActivity(intent1);
+                    intentBanner.putExtra("ids", ids[pointIndex]);
+                    startActivity(intentBanner);
                 }
             });
 
 
             // 设置圆圈点
             View view = new View(getContext());
+            // 设置标点参数
             params = new LinearLayout.LayoutParams(10, 10);
             params.leftMargin = 10;
             view.setBackgroundResource(R.drawable.point_selector);

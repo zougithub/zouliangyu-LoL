@@ -1,6 +1,9 @@
 package com.zouliangyu.lol.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,6 +20,9 @@ import com.zouliangyu.lol.fragment.hero.HeroFragment;
 import com.zouliangyu.lol.fragment.information.InformationFragment;
 import com.zouliangyu.lol.fragment.more.MoreFragment;
 import com.zouliangyu.lol.fragment.video.VideoFragment;
+import com.zouliangyu.lol.util.ExampleUtil;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * 邹良禹
@@ -30,6 +36,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Button loginBtn;
     private ImageView loginIv;
+
+
+    public static boolean isForeground = false;
 
     private int[] ids = {R.id.main_information_rb, R.id.main_video_rb,
             R.id.main_hero_rb, R.id.main_community_rb, R.id.main_more_rb};
@@ -86,6 +95,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         transaction.commit();
 
 
+
+        registerMessageReceiver();  // used for receive msg
     }
 
     @Override
@@ -119,7 +130,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 titleTv.setText(titles[4]);
                 rightIv.setVisibility(View.GONE);
                 break;
-            case R.id.slidingMenu_login_btn:
+            case R.id.slidingMenu_login_btn: // 登录按钮
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
@@ -130,17 +141,77 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.title_left_iv:
                 drawerLayout.openDrawer(Gravity.LEFT); // 从左打开
                 break;
-            case R.id.my_collect_tv:
-                Intent intentCollect = new Intent(this, MyCollectDetailsActivity.class);
+            case R.id.my_collect_tv: // 我的收藏
+                Intent intentCollect = new Intent(this, MyCollectActivity.class);
                 startActivity(intentCollect);
                 break;
-            case R.id.slidingMenu_login_iv:
+            case R.id.slidingMenu_login_iv: // 登录脑袋
                 Intent intentLoginIv = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intentLoginIv);
                 break;
         }
         transaction.commit();
 
+    }
+
+
+    // 初始化 JPush。如果已经初始化，但没有登录成功，则执行重新登录。
+    private void init(){
+        JPushInterface.init(getApplicationContext());
+    }
+
+
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mMessageReceiver);
+        super.onDestroy();
+    }
+
+
+    //for receive customer msg from jpush server
+    private MessageReceiver mMessageReceiver;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+
+    public void registerMessageReceiver() {
+        mMessageReceiver = new MessageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(MESSAGE_RECEIVED_ACTION);
+        registerReceiver(mMessageReceiver, filter);
+    }
+
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+                String messge = intent.getStringExtra(KEY_MESSAGE);
+                String extras = intent.getStringExtra(KEY_EXTRAS);
+                StringBuilder showMsg = new StringBuilder();
+                showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+                if (!ExampleUtil.isEmpty(extras)) {
+                    showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+                }
+
+            }
+        }
     }
 
 

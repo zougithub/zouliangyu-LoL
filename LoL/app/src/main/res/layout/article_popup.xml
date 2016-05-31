@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_marginLeft"
-                android:text="收藏" />
+                android:text="@string/collect" />
 
         </LinearLayout>
 
@@ -51,11 +51,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_marginLeft"
                 android:gravity="center"
-                android:text="分享" />
+                android:text="@string/share" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/refresh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -72,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_marginLeft"
                 android:gravity="center"
-                android:text="刷新" />
+                android:text="@string/refresh" />
 
         </LinearLayout>
 

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- 不要了-->
     <include layout="@layout/title" />
 
     <RadioGroup

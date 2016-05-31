@@ -11,25 +11,26 @@
         android:layout_height="wrap_content"
         android:background="@color/colorTitleBackground">
 
+        <!--<Button-->
+            <!--android:id="@+id/find"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="@string/find" />-->
+
         <Button
             android:id="@+id/find"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="@string/find" />
-
-        <Button
-            android:id="@+id/matching"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/find"
+            android:layout_marginRight="@dimen/layout_margin"
             android:text="@string/matching" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/matching"
+            android:layout_alignBottom="@id/find"
             android:text="@string/name" />
 
 

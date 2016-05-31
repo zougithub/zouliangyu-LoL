@@ -3,7 +3,6 @@ package com.zouliangyu.lol.fragment.community;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.activity.CommunityFriendDetailsAty;
 import com.zouliangyu.lol.activity.CommunityPlayDetailsAty;
@@ -12,7 +11,7 @@ import com.zouliangyu.lol.base.BaseFragment;
 
 /**
  * Created by zouliangyu on 16/5/9.
- * <p>
+ *
  * 社区界面
  */
 public class CommunityFragment extends BaseFragment implements View.OnClickListener {

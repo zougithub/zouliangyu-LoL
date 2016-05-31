@@ -19,21 +19,22 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/26.
- * 收藏的详情
+ * 收藏文章的详情
  */
-public class MyCollectDetailsActivity extends BaseActivity {
+public class CollectArticleActivity extends BaseActivity {
     private ListView listView;
     private ArticleDao articleDao;
     private MyCollectDetailsAdapter myCollectDetailsAdapter;
+    // 标题
     private ImageView exitIv;
     private TextView titleTv;
+    // 数据库中的集合
     private List<Article> articles;
 
     @Override
     protected int getLayout() {
         return R.layout.activity_my_collect_details;
     }
-
     @Override
     protected void initView() {
         listView = (ListView) findViewById(R.id.my_collect_lv);
@@ -45,18 +46,18 @@ public class MyCollectDetailsActivity extends BaseActivity {
                 finish();
             }
         });
-
-
     }
-
     @Override
     protected void initData() {
+
         exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("我的收藏");
         titleTv.setTextColor(Color.WHITE);
 
         myCollectDetailsAdapter = new MyCollectDetailsAdapter(this);
+        // 单例articleDao
         articleDao = GreendaoSingle.getInstance().getArticleDao();
+        // 查询数据库
         articles = articleDao.queryBuilder().list();
         myCollectDetailsAdapter.setArticles(articles);
 
@@ -66,7 +67,7 @@ public class MyCollectDetailsActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String ids = String.valueOf(articles.get(position).getId());
-                Intent intent = new Intent(MyCollectDetailsActivity.this, InformationItemDetailsAty.class);
+                Intent intent = new Intent(CollectArticleActivity.this, InformationItemDetailsAty.class);
                 intent.putExtra("ids", ids);
                 startActivity(intent);
             }

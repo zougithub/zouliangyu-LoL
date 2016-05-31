@@ -21,7 +21,7 @@
             android:button="@null"
             android:checked="true"
             android:gravity="center"
-            android:text="周免" />
+            android:text="@string/free_one" />
 
         <RadioButton
             android:id="@+id/hero_discount_rb"
@@ -33,7 +33,7 @@
             android:background="@drawable/discount_selector"
             android:button="@null"
             android:gravity="center"
-            android:text="折扣" />
+            android:text="@string/discount" />
     </RadioGroup>
 
     <FrameLayout

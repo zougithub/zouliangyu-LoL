@@ -15,23 +15,21 @@
             android:id="@+id/video_item_details_iv"
             android:layout_width="@dimen/layout_width"
             android:layout_height="@dimen/layout_width"
-            android:src="@mipmap/ic_launcher" />
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/video_item_details_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/video_item_details_iv"
-            android:layout_toRightOf="@id/video_item_details_iv"
-            android:text="1111111" />
+            android:layout_toRightOf="@id/video_item_details_iv" />
 
         <TextView
             android:id="@+id/video_item_details_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/video_item_details_name"
-            android:layout_below="@id/video_item_details_name"
-            android:text="2222222" />
+            android:layout_below="@id/video_item_details_name" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -50,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_marginLeft"
-        android:text="专辑列表" />
+        android:text="@string/list" />
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/video_details_lv"

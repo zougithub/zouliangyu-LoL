@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.bean.InformationNewestBean;
@@ -63,6 +65,7 @@ public class MyCollectDetailsAdapter extends BaseAdapter {
         myViewHolder.desc.setText(articles.get(position).getDesc());
         myViewHolder.time.setText(articles.get(position).getTime());
 
+
         return convertView;
     }
 
@@ -75,6 +78,13 @@ public class MyCollectDetailsAdapter extends BaseAdapter {
             title = (TextView) itemView.findViewById(R.id.item_title_tv);
             desc = (TextView) itemView.findViewById(R.id.item_desc_tv);
             time = (TextView) itemView.findViewById(R.id.item_time_tv);
+
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Toast.makeText(context, "点击了", Toast.LENGTH_SHORT).show();
+//                }
+//            });
         }
     }
 }

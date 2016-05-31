@@ -19,42 +19,42 @@
                 android:id="@+id/free_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="本期周免" />
+                android:text="@string/free" />
 
             <TextView
                 android:id="@+id/free_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_one"
-                android:text="(" />
+                android:text="@string/leftbracket" />
 
             <TextView
                 android:id="@+id/free_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_two"
-                android:text="5/13" />
+                android:text="5/27" />
 
             <TextView
                 android:id="@+id/free_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_three"
-                android:text="-" />
+                android:text="@string/hor" />
 
             <TextView
                 android:id="@+id/free_five"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_four"
-                android:text="5/20" />
+                android:text="6/3" />
 
             <TextView
                 android:id="@+id/free_six"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_five"
-                android:text=")" />
+                android:text="@string/rightbracket" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/free_seven"
-                android:text=":" />
+                android:text="@string/colon" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.zouliangyu.lol.activity;
 
+import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -52,6 +53,7 @@ public class MoreImageActivity extends BaseActivity {
 
         leftIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("壁纸");
+        titleTv.setTextColor(Color.WHITE);
 
         moreImageAdapter = new MoreImageAdapter(this);
         VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/AroundService/paper?size=1440&page=1&i_=869765028748315&t_=1463627358361&p_=27428&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",

@@ -77,10 +77,10 @@ public class MyHeroAdapter extends BaseAdapter {
                         List<AllHeroImgBean> allHeroImgBeans = gson.fromJson(response, new TypeToken<List<AllHeroImgBean>>() {
                         }.getType());
 
-                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg()).placeholder(R.mipmap.ic_launcher)
+                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg()).placeholder(R.mipmap.photo_default)
                                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                                 .config(Bitmap.Config.RGB_565)
-                                .error(R.mipmap.ic_launcher).into(finalViewHolder.leftIv);
+                                .error(R.mipmap.photo_default).into(finalViewHolder.leftIv);
 
                     }
                 }, new Response.ErrorListener() {

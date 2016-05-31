@@ -27,17 +27,10 @@ import java.util.List;
  */
 public class InformationItemDetailsAty extends BaseActivity implements View.OnClickListener {
     private WebView webView;
-
     // 标题栏
     private ImageView exitIv;
     private TextView titleTv;
     private ImageView rightTv;
-
-    private PopupWindow popupWindow;
-
-
-    private TextView cancelTv;
-
     // 加入数据库的
     private String ids;
     private long idd;
@@ -47,23 +40,26 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
     private ArticleDao articleDao;
     private String url;
 
-
-    private ImageView collectIv;
+    private PopupWindow popupWindow;
+    private ImageView collectIv; // 收藏
     private boolean isCollect = false;
+    private TextView cancelTv; // 取消
+    private LinearLayout refresh; // 刷新
 
 
     @Override
     protected int getLayout() {
-
         return R.layout.aty_information_newest_details;
     }
 
     @Override
     protected void initView() {
         webView = (WebView) findViewById(R.id.webview);
+
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         rightTv = (ImageView) findViewById(R.id.title_right_iv);
+
         exitIv.setOnClickListener(this);
         rightTv.setOnClickListener(this);
 
@@ -74,11 +70,11 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
     protected void initData() {
         articleDao = GreendaoSingle.getInstance().getArticleDao();
 
+        // 设置标题栏
         exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("掌游宝");
         titleTv.setTextColor(Color.WHITE);
         rightTv.setImageResource(R.mipmap.global_btn_more_d);
-
 
         Intent intent = getIntent();
         ids = intent.getStringExtra("ids");
@@ -86,11 +82,9 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
         title = intent.getStringExtra("title");
         desc = intent.getStringExtra("desc");
         times = intent.getStringExtra("times");
-
         url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755282&p_=18191&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
         // 用于加载URL对应的网页
         webView.loadUrl(url);
-
         webView.getSettings().setJavaScriptEnabled(true);
         // 不阻塞图片
         webView.getSettings().setBlockNetworkImage(false);
@@ -99,9 +93,11 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         View view = LayoutInflater.from(this).inflate(R.layout.article_popup, null);
         collectIv = (ImageView) view.findViewById(R.id.collect_iv);
-        collectIv.setOnClickListener(this);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
+        refresh = (LinearLayout) view.findViewById(R.id.refresh);
+        collectIv.setOnClickListener(this);
         cancelTv.setOnClickListener(this);
+        refresh.setOnClickListener(this);
 
 
         // 遍历数据库, 是否已收藏
@@ -151,20 +147,27 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
                     Toast.makeText(this, "1111", Toast.LENGTH_SHORT).show();
                     isCollect = true;
 
-
                 } else {
                     collectIv.setImageResource(R.mipmap.global_fav_d);
                     Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
                     articleDao.deleteByKey(idd);
                     isCollect = false;
-
-
                 }
 
                 break;
             case R.id.cancel_tv:
                 popupWindow.dismiss();
                 break;
+            case R.id.refresh:
+                url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755282&p_=18191&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
+                // 用于加载URL对应的网页
+                webView.loadUrl(url);
+                webView.getSettings().setJavaScriptEnabled(true);
+                // 不阻塞图片
+                webView.getSettings().setBlockNetworkImage(false);
+                popupWindow.dismiss();
+                break;
+
         }
     }
 

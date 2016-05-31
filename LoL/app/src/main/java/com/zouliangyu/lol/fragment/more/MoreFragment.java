@@ -15,14 +15,12 @@ import com.zouliangyu.lol.base.BaseFragment;
 
 /**
  * Created by zouliangyu on 16/5/9.
- *
+ * <p>
  * 更多
  */
 public class MoreFragment extends BaseFragment implements View.OnClickListener {
-    private int[] ids = {R.id.more_check_tv, R.id.more_match_tv, R.id.more_hero_tv, R.id.more_player_tv,
-            R.id.more_topic_tv, R.id.more_talent_tv, R.id.more_rune_tv, R.id.more_skills_tv,
-            R.id.more_equipment_tv, R.id.more_novel_tv, R.id.more_ring_tv, R.id.more_img_tv,
-            R.id.more_game_tv, R.id.more_store_tv};
+    private int[] ids = {R.id.more_check_tv, R.id.more_novel_tv, R.id.more_ring_tv,
+            R.id.more_img_tv, R.id.more_topic_tv};
 
     @Override
     public int initLayout() {
@@ -49,41 +47,25 @@ public class MoreFragment extends BaseFragment implements View.OnClickListener {
                 Intent intent = new Intent(getContext(), MoreFightActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.more_match_tv:
-                Intent intent1 = new Intent(getContext(), MoreMatchActivity.class);
-                startActivity(intent1);
-                break;
-            case R.id.more_hero_tv:
-                break;
-            case R.id.more_player_tv:
-                break;
             case R.id.more_topic_tv:
+                // 跳转精彩专栏详情
                 Intent intentTopic = new Intent(mContext, MoreTopicActivity.class);
                 startActivity(intentTopic);
                 break;
-            case R.id.more_talent_tv:
-                break;
-            case R.id.more_rune_tv:
-                break;
-            case R.id.more_skills_tv:
-                break;
-            case R.id.more_equipment_tv:
-                break;
             case R.id.more_novel_tv:
+                // 跳转到小说详情
                 Intent intentNovel = new Intent(mContext, MoreNovelActivity.class);
                 startActivity(intentNovel);
                 break;
             case R.id.more_ring_tv:
+                // 跳到铃声详情
                 Intent intentRing = new Intent(mContext, MoreRingActivity.class);
                 startActivity(intentRing);
                 break;
             case R.id.more_img_tv:
-                Intent intent2 = new Intent(mContext, MoreImageActivity.class);
-                startActivity(intent2);
-                break;
-            case R.id.more_game_tv:
-                break;
-            case R.id.more_store_tv:
+                // 跳转到壁纸详情
+                Intent intentImage = new Intent(mContext, MoreImageActivity.class);
+                startActivity(intentImage);
                 break;
 
         }

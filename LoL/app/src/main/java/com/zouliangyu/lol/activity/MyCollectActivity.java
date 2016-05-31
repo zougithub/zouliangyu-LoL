@@ -14,12 +14,10 @@ import com.zouliangyu.lol.base.BaseActivity;
  * Created by zouliangyu on 16/5/26.
  * 收藏界面
  *
- *
- *
- * 不要了
  */
 public class MyCollectActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout article;
+    private RelativeLayout hero;
     private ImageView exitIv;
     private TextView titleTv;
 
@@ -33,6 +31,8 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     protected void initView() {
         article = (RelativeLayout) findViewById(R.id.article);
         article.setOnClickListener(this);
+        hero = (RelativeLayout) findViewById(R.id.hero);
+        hero.setOnClickListener(this);
 
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
@@ -52,10 +52,13 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.article:
-                Intent intentCollect = new Intent(this, MyCollectDetailsActivity.class);
-                startActivity(intentCollect);
+                Intent intentArticle = new Intent(this, CollectArticleActivity.class);
+                startActivity(intentArticle);
                 break;
-
+            case R.id.hero:
+                Intent intentHero = new Intent(this,CollectHeroActivity.class);
+                startActivity(intentHero);
+                break;
             case R.id.title_left_iv:
                 finish();
                 break;

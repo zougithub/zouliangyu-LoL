@@ -30,21 +30,18 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyViewHolder> {
     private VideoBean videoBean;
     private Context context;
-    private MyItemClickListener mItemClickListener;
-
+    // 接口对象
+    private MyItemClickListener myItemClickListener;
+    // 设置接口对象
+    public void setMyItemClickListener(MyItemClickListener myItemClickListener) {
+        this.myItemClickListener = myItemClickListener;
+    }
 
     private int pos;
     public VideoPlayAdapter(Context context, int pos) {
         this.context = context;
         this.pos = pos;
     }
-
-
-
-
-//    public VideoPlayAdapter(Context context) {
-//        this.context = context;
-//    }
 
     public void setVideoBean(VideoBean videoBean) {
         this.videoBean = videoBean;
@@ -55,23 +52,27 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
-        MyViewHolder viewHolder = new MyViewHolder(itemView, mItemClickListener);
+        MyViewHolder viewHolder = new MyViewHolder(itemView);
         return viewHolder;
-    }
-
-    public void setOnItemClickListener(MyItemClickListener listener) {
-        this.mItemClickListener = listener;
-
     }
 
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 
 
         Picasso.with(context).load(videoBean.getData().get(pos).getCatword_id().get(position).getPic_url()).
-                placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.topIv);
+                placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(holder.topIv);
         holder.bottomTv.setText(videoBean.getData().get(pos).getCatword_id().get(position).getName());
+        if (myItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = holder.getLayoutPosition();
+                    myItemClickListener.onItemClickListener(pos);
+                }
+            });
+        }
     }
 
     @Override
@@ -79,32 +80,26 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
         return videoBean == null ? 0 : videoBean.getData().get(pos).getCatword_id().size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView topIv;
         TextView bottomTv;
         private MyItemClickListener mListener;
 
 
-        public MyViewHolder(View itemView, MyItemClickListener listener) {
+        public MyViewHolder(View itemView) {
             super(itemView);
             topIv = (ImageView) itemView.findViewById(R.id.item_video_iv);
             bottomTv = (TextView) itemView.findViewById(R.id.item_video_tv);
 
-            this.mListener = listener;
-            itemView.setOnClickListener(this);
         }
 
 
-        @Override
-        public void onClick(View v) {
-            if (mListener != null) {
-                mListener.onItemClickListener(v, getPosition());
-            }
-        }
+
     }
 
 
+    // 内部接口
     public interface MyItemClickListener {
-        void onItemClickListener(View view, int position);
+        void onItemClickListener(int position);
     }
 }

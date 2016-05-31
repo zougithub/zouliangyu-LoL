@@ -35,7 +35,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/layout_marginRight"
                 android:layout_toRightOf="@id/community_one_left"
-                android:text="真人秀" />
+                android:text="@string/show" />
 
             <ImageView
                 android:id="@+id/community_one_right"
@@ -51,7 +51,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/layout_marginRight"
                 android:layout_toLeftOf="@id/community_one_right"
-                android:text="进入" />
+                android:text="@string/enter" />
         </RelativeLayout>
 
         <View
@@ -97,7 +97,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_toRightOf="@id/community_two_left"
-                android:text="晒玩法" />
+                android:text="@string/play" />
 
             <ImageView
                 android:id="@+id/community_two_right"
@@ -113,7 +113,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/layout_marginRight"
                 android:layout_toLeftOf="@id/community_two_right"
-                android:text="进入" />
+                android:text="@string/enter" />
         </RelativeLayout>
 
         <View
@@ -159,7 +159,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_toRightOf="@id/community_three_left"
-                android:text="找战友" />
+                android:text="@string/find_friend" />
 
             <ImageView
                 android:id="@+id/community_three_right"
@@ -175,7 +175,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/layout_marginRight"
                 android:layout_toLeftOf="@id/community_three_right"
-                android:text="进入" />
+                android:text="@string/enter" />
         </RelativeLayout>
 
         <View

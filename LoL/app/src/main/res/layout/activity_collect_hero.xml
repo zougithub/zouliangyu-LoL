@@ -3,8 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
+
+    <include layout="@layout/title" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/collect_hero_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="嘎多舒服噶啥噶是的股份大嘎达法国帅哥"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorCommunityBackground"/>
 </LinearLayout>

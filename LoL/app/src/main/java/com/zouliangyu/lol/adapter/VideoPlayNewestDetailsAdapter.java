@@ -63,7 +63,7 @@ public class VideoPlayNewestDetailsAdapter extends BaseAdapter {
 
 
         Picasso.with(context).load(videoPlayNewestDetailsBeans.getData().get(position).getPic_url()).
-                placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.bottomIv);
+                placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(holder.bottomIv);
         holder.titleTv.setText(videoPlayNewestDetailsBeans.getData().get(position).getTitle());
         holder.descTv.setText(videoPlayNewestDetailsBeans.getData().get(position).getDesc());
 

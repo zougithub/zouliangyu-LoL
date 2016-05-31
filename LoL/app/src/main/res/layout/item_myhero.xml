@@ -9,16 +9,14 @@
         android:id="@+id/myhero_left_iv"
         android:layout_width="@dimen/title_height"
         android:layout_height="@dimen/title_height"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/myhero_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/left_menu_marginRight"
-        android:layout_toRightOf="@id/myhero_left_iv"
-        android:text="时间刺客" />
+        android:layout_toRightOf="@id/myhero_left_iv" />
 
     <TextView
         android:id="@+id/myhero_cnname_tv"
@@ -26,8 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/myhero_title_tv"
         android:layout_marginLeft="@dimen/left_menu_marginRight"
-        android:layout_toRightOf="@id/myhero_title_tv"
-        android:text="艾克" />
+        android:layout_toRightOf="@id/myhero_title_tv" />
 
     <TextView
         android:id="@+id/myhero_times_tv"
@@ -52,6 +49,5 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/myhero_colon_tv"
         android:layout_marginLeft="@dimen/left_menu_marginRight"
-        android:layout_toRightOf="@id/myhero_colon_tv"
-        android:text="9" />
+        android:layout_toRightOf="@id/myhero_colon_tv" />
 </RelativeLayout>

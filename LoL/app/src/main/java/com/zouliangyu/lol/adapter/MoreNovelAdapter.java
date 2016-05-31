@@ -57,7 +57,7 @@ public class MoreNovelAdapter extends BaseAdapter {
 
 
         Picasso.with(context).load(moreNovelBean.getData().get(0).getCatword_id().get(position).getPic_url()).
-                placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(viewHolder.imageView);
+                placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(viewHolder.imageView);
         viewHolder.nameTv.setText(moreNovelBean.getData().get(0).getCatword_id().get(position).getName());
         viewHolder.descTv.setText(moreNovelBean.getData().get(0).getCatword_id().get(position).getDesc());
 

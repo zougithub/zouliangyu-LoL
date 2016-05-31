@@ -8,6 +8,7 @@ import com.zouliangyu.lol.base.BaseActivity;
 
 /**
  * Created by zouliangyu on 16/5/24.
+ * 搜索栏
  */
 public class InformationSearchActivity extends BaseActivity implements View.OnClickListener {
     private ImageView exitIv;

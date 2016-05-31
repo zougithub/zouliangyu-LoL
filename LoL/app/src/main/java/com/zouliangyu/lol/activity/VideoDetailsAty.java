@@ -39,6 +39,7 @@ import it.sephiroth.android.library.picasso.Picasso;
  * 视频的Item详情页
  */
 public class VideoDetailsAty extends BaseActivity {
+
     private TextView titleTv;
     private ImageView exitIv;
 
@@ -101,14 +102,12 @@ public class VideoDetailsAty extends BaseActivity {
         titleTv.setText(name);
         titleTv.setTextColor(Color.WHITE);
 
-        Picasso.with(this).load(img).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(imageView);
+        Picasso.with(this).load(img).error(R.mipmap.photo_default).placeholder(R.mipmap.photo_default).into(imageView);
         nameTv.setText(name);
         descTv.setText(desc);
 
 
         url = "http://lol.zhangyoubao.com/apis/rest/ItemsService/videos?catwordid=" + ids + "&page=1&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438760575&p_=4070&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol";
-
-
         videoPlayNewestDetailsAdapter = new VideoPlayNewestDetailsAdapter(this);
 
 
@@ -128,6 +127,7 @@ public class VideoDetailsAty extends BaseActivity {
         }, VideoPlayNewestDetailsBean.class);
 
 
+        // 上拉加载, 下拉刷新
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -171,7 +171,6 @@ public class VideoDetailsAty extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(VideoDetailsAty.this, VideoDetailsItemDetailsAty.class);
-                Log.d("VideoDetailsAty", videoPlayNewestDetailsBean.getData().get(position - 1).getTitle());
                 String ids = videoPlayNewestDetailsBean.getData().get(position - 1).getItem_id();
                 String titles = videoPlayNewestDetailsBean.getData().get(position - 1).getTitle();
                 String desc = videoPlayNewestDetailsBean.getData().get(position- 1).getDesc();
@@ -180,13 +179,12 @@ public class VideoDetailsAty extends BaseActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 String times = simpleDateFormat.format(date);
 
-
                 intent.putExtra("ids", ids);
                 intent.putExtra("titles", titles);
                 intent.putExtra("desc", desc);
                 intent.putExtra("times", times);
                 startActivity(intent);
-                Log.d("VideoDetailsAty", ids);
+
             }
         });
 

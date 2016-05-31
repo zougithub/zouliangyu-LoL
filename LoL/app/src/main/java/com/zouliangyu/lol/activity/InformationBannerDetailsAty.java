@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -20,11 +21,16 @@ import com.zouliangyu.lol.base.BaseActivity;
  */
 public class InformationBannerDetailsAty extends BaseActivity implements View.OnClickListener {
     private WebView webView;
+    // 标题栏
     private ImageView exitIv;
     private TextView titleTv;
     private ImageView rightIv;
+
     private PopupWindow popupWindow;
     private TextView cancelTv;
+    private LinearLayout refresh;
+    private String ids;
+    private String url;
 
     @Override
     protected int getLayout() {
@@ -34,6 +40,7 @@ public class InformationBannerDetailsAty extends BaseActivity implements View.On
     @Override
     protected void initView() {
         webView = (WebView) findViewById(R.id.information_banner_details_webview);
+
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         rightIv = (ImageView) findViewById(R.id.title_right_iv);
@@ -41,29 +48,30 @@ public class InformationBannerDetailsAty extends BaseActivity implements View.On
         rightIv.setOnClickListener(this);
 
 
-
     }
 
     @Override
     protected void initData() {
+        // 设置标题栏
         exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("掌游宝");
         titleTv.setTextColor(Color.WHITE);
         rightIv.setImageResource(R.mipmap.global_btn_more_d);
 
         Intent intent = getIntent();
-        String ids = intent.getStringExtra("ids");
-        String url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745222&p_=18011&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
-        Log.d("InformationBannerDetail", url);
+        ids = intent.getStringExtra("ids");
+        url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438745222&p_=18011&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
         webView.loadUrl(url);
-
+        // 允许JS执行
         webView.getSettings().setJavaScriptEnabled(true);
-        // 不阻塞图片
+        // 不阻塞图片  true 是把图片加载放在最后来加载渲染
         webView.getSettings().setBlockNetworkImage(false);
 
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        View view = LayoutInflater.from(this).inflate(R.layout.article_popup, null);
+        View view = LayoutInflater.from(this).inflate(R.layout.banner_popup, null);
+        refresh = (LinearLayout) view.findViewById(R.id.refresh);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
+        refresh.setOnClickListener(this);
         cancelTv.setOnClickListener(this);
         popupWindow.setContentView(view);
 
@@ -84,6 +92,13 @@ public class InformationBannerDetailsAty extends BaseActivity implements View.On
                 }
                 break;
             case R.id.cancel_tv:
+                popupWindow.dismiss();
+                break;
+            case R.id.refresh:
+                webView.loadUrl(url);
+                webView.getSettings().setJavaScriptEnabled(true);
+                // 不阻塞图片
+                webView.getSettings().setBlockNetworkImage(false);
                 popupWindow.dismiss();
                 break;
         }

@@ -16,6 +16,9 @@ import com.zouliangyu.lol.base.MyApplication;
 import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.AllHeroImgBean;
 import com.zouliangyu.lol.bean.AllHeroIntroduceBean;
+import com.zouliangyu.lol.greendao.GreendaoSingle;
+import com.zouliangyu.lol.greendao.Hero;
+import com.zouliangyu.lol.greendao.HeroDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +27,10 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/24.
- * <p/>
  * 英雄  资料界面
  */
 public class HeroDetailsActivity extends BaseActivity implements View.OnClickListener {
+    // 英雄介绍
     private TextView likeOne;
     private TextView likeTwo;
     private TextView hateOne;
@@ -36,13 +39,24 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
     private TextView answerWay;
     private TextView descriptionTv;
 
-    private ImageView imageView;
-    private TextView codeTv;
-    private TextView nameTv;
-    private TextView typeTv;
+    private ImageView imageView; // 头像
+    private TextView codeTv; // 代号
+    private TextView nameTv; // 名字
+    private TextView typeTv; // 英雄类型
 
     private ImageView leftIv;
     private TextView titleTv;
+    private ImageView collectIv;// 收藏
+    private boolean isCollect; // 是否收藏
+    private String enName; // 名字
+    private String dataUrls; // 根据名字拼接的网址
+    private String imgUrls; // 图片集合的网址
+
+    private AllHeroIntroduceBean allHeroIntroduceBean;
+    private String code; // 代号 例如:深渊巨口
+
+    private HeroDao heroDao;
+    private String id; // 每个英雄资料界面的id
 
     @Override
     protected int getLayout() {
@@ -65,54 +79,82 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
         nameTv = (TextView) findViewById(R.id.aty_hero_item_details_name);
         typeTv = (TextView) findViewById(R.id.aty_hero_item_details_type);
 
+        // 标题
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         leftIv.setOnClickListener(this);
+
+        // 收藏
+        collectIv = (ImageView) findViewById(R.id.collect_hero_iv);
+        collectIv.setOnClickListener(this);
 
     }
 
     @Override
     protected void initData() {
+        heroDao = GreendaoSingle.getInstance().getHeroDao();
+
 
         leftIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("英雄介绍");
         titleTv.setTextColor(Color.WHITE);
 
         Intent intent = getIntent();
-        String enName = intent.getStringExtra("enName");
-        String dataUrls = "http://lolbox.duowan.com/phone/apiHeroDetail.php?OSType=iOS9.3.1&heroName=" + enName + "&v=180%20HTTP/1.1";
+        // 得到名字, 例如:Ekko, 根据名字拼接网址
+        enName = intent.getStringExtra("enName");
+        // 获取英雄资料界面的数据
+        dataUrls = "http://lolbox.duowan.com/phone/apiHeroDetail.php?OSType=iOS9.3.1&heroName=" + enName + "&v=180%20HTTP/1.1";
         VolleySingle.addRequest(dataUrls, new Response.Listener<AllHeroIntroduceBean>() {
             @Override
             public void onResponse(AllHeroIntroduceBean response) {
-                if (!response.getLike().isEmpty() && !response.getHate().isEmpty()) {
-                    likeOne.setText(response.getLike().get(0).getDes());
-                    likeTwo.setText(response.getLike().get(1).getDes());
-                    hateOne.setText(response.getHate().get(0).getDes());
-                    hateTwo.setText(response.getHate().get(1).getDes());
+                allHeroIntroduceBean = response;
+                if (!allHeroIntroduceBean.getLike().isEmpty() && !allHeroIntroduceBean.getHate().isEmpty()) {
+                    likeOne.setText(allHeroIntroduceBean.getLike().get(0).getDes());
+                    likeTwo.setText(allHeroIntroduceBean.getLike().get(1).getDes());
+                    hateOne.setText(allHeroIntroduceBean.getHate().get(0).getDes());
+                    hateTwo.setText(allHeroIntroduceBean.getHate().get(1).getDes());
                 } else {
                     likeOne.setText("");
                     likeTwo.setText("");
                     hateOne.setText("");
                     hateTwo.setText("");
                 }
+                useWay.setText(allHeroIntroduceBean.getTips());
+                answerWay.setText(allHeroIntroduceBean.getOpponentTips());
+                descriptionTv.setText(allHeroIntroduceBean.getDescription());
 
-                useWay.setText(response.getTips());
-                answerWay.setText(response.getOpponentTips());
-                descriptionTv.setText(response.getDescription());
 
-                codeTv.setText(response.getDisplayName());
-                nameTv.setText(response.getTitle());
-                typeTv.setText(response.getTags());
+                codeTv.setText(allHeroIntroduceBean.getDisplayName());
+                nameTv.setText(allHeroIntroduceBean.getTitle());
+                typeTv.setText(allHeroIntroduceBean.getTags());
+
+
+                code = allHeroIntroduceBean.getDisplayName();
+                id = allHeroIntroduceBean.getId();
+
+
+                // 查询数据库
+                List<Hero> heros = heroDao.queryBuilder().list();
+                if (heros.size() > 0) {
+                    // 遍历数据
+                    for (Hero hero : heros) {
+                        // 如果数据库中有
+                        if (hero.getId().toString().equals(id)) {
+                            collectIv.setImageResource(R.mipmap.hero_fav);
+                            isCollect = true;
+                        }
+                    }
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         }, AllHeroIntroduceBean.class);
 
 
-        String imgUrls = "http://box.dwstatic.com/apiHeroSkin.php?hero=" + enName + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1";
+        // 获取图片
+        imgUrls = "http://box.dwstatic.com/apiHeroSkin.php?hero=" + enName + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1";
         VolleySingle.addRequest(imgUrls, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -130,6 +172,7 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
+
     }
 
 
@@ -138,6 +181,22 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.title_left_iv:
                 finish();
+                break;
+            case R.id.collect_hero_iv:
+                Hero hero = new Hero();
+                if (isCollect == false) {
+                    collectIv.setImageResource(R.mipmap.hero_fav);
+                    hero.setId(Long.valueOf(id));
+                    hero.setImageUrl(imgUrls);
+                    hero.setCode(code);
+                    hero.setEnName(enName);
+                    heroDao.insert(hero);
+                    isCollect = true;
+                } else {
+                    collectIv.setImageResource(R.mipmap.hero_defav);
+                    heroDao.deleteByKey(Long.valueOf(id));
+                    isCollect = false;
+                }
                 break;
         }
     }

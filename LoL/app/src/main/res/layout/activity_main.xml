@@ -100,7 +100,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="240dp"
+            android:layout_width="@dimen/drawerLayout_width"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:choiceMode="singleChoice"
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/left_menu_marginRight"
                         android:layout_marginTop="@dimen/left_menu_marginTop"
-                        android:text="点击头像登录" />
+                        android:text="@string/login_img" />
                 </LinearLayout>
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_marginTop="@dimen/layout_margin"
                     android:drawableTop="@mipmap/left_menu_collect"
                     android:gravity="center_horizontal"
-                    android:text="我的收藏"
+                    android:text="@string/my_collect"
                     android:textColor="@color/colorBackground" />
 
                 <!--<TextView-->

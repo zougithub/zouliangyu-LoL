@@ -11,4 +11,7 @@
     <color name="colorCommunityView">#D6D6D6</color>
     <color name="colorHeroItemDetailsHeadBackground">#2b2c32</color>
     <color name="colorMatch">#666DAA</color>
+    <color name="textOne">#286CA6</color>
+    <color name="textTwo">#6FA45E</color>
+    <color name="textThree">#A4C638</color>
 </resources>

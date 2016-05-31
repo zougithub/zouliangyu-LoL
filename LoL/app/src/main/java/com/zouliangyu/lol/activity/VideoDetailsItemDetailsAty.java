@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -45,14 +46,17 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
     private MediaController mediaController;
 
 
+    // 标题
     private ImageView titleLeft;
     private TextView titleTv;
     private ImageView titleRight;
-    private TextView title;
-    private PopupWindow popupWindow;
+    private TextView title; // 视频上面的文字
 
+    private PopupWindow popupWindow;
     private ImageView collectIv;
+    private LinearLayout refresh;
     private TextView cancelTv;
+
     private String ids;
     private String titles;
     private String desc;
@@ -66,16 +70,16 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
     @Override
     protected int getLayout() {
         return R.layout.aty_video_details_item_details;
-
-//        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override
     protected void initView() {
         videoView = (VideoView) findViewById(R.id.videoview);
+
         titleLeft = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         titleRight = (ImageView) findViewById(R.id.title_right_iv);
+
         title = (TextView) findViewById(R.id.details_title_tv);
 
         titleLeft.setOnClickListener(this);
@@ -97,11 +101,7 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
         desc = intent.getStringExtra("desc");
         times = intent.getStringExtra("times");
 
-
-        // http://lol.zhangyoubao.com/apis/rest/ItemsService/videoInfo?itemid=65821&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438761089&p_=5612&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol
         urls = "http://lol.zhangyoubao.com/apis/rest/ItemsService/videoInfo?itemid=" + ids + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438761089&p_=5612&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol";
-        Log.d("11111111111", urls);
-
 
         mediaController = new MediaController(this);
 
@@ -109,19 +109,13 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
             @Override
             public void onResponse(VideoDetailsItemDetailsBean response) {
                 videoDetailsItemDetailsBean = response;
-                Log.d("123456", response.getData().getId());
 
-
-                Log.d("VideoDetailsItemDetails", videoDetailsItemDetailsBean.getData().getId() + "");
-                Log.d("VideoDetailsItemDetails", videoDetailsItemDetailsBean.getData().getFrom_url());
                 Uri uri = Uri.parse(videoDetailsItemDetailsBean.getData().getSd_url());
 
                 videoView.setMediaController(mediaController);
 
                 videoView.setVideoURI(uri);
                 videoView.requestFocus();
-                Log.d("123", videoDetailsItemDetailsBean.getData().getTitle());
-
 
                 titleLeft.setImageResource(R.mipmap.global_back_d);
                 titleTv.setText("掌游宝");
@@ -132,7 +126,7 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("jiji", "jiji");
+
             }
         }, VideoDetailsItemDetailsBean.class);
 
@@ -140,9 +134,12 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         View view = LayoutInflater.from(this).inflate(R.layout.article_popup, null);
         collectIv = (ImageView) view.findViewById(R.id.collect_iv);
+        refresh = (LinearLayout) view.findViewById(R.id.refresh);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
         collectIv.setOnClickListener(this);
+        refresh.setOnClickListener(this);
         cancelTv.setOnClickListener(this);
+
 
         List<Article> articles = articleDao.queryBuilder().list();
         if (articles.size() > 0) {
@@ -190,7 +187,33 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
                     isCollect = false;
                 }
 
+                break;
+            case R.id.refresh:
+                VolleySingle.addRequest(urls, new Response.Listener<VideoDetailsItemDetailsBean>() {
+                    @Override
+                    public void onResponse(VideoDetailsItemDetailsBean response) {
+                        videoDetailsItemDetailsBean = response;
 
+                        Uri uri = Uri.parse(videoDetailsItemDetailsBean.getData().getSd_url());
+
+                        videoView.setMediaController(mediaController);
+
+                        videoView.setVideoURI(uri);
+                        videoView.requestFocus();
+
+                        titleLeft.setImageResource(R.mipmap.global_back_d);
+                        titleTv.setText("掌游宝");
+                        titleRight.setImageResource(R.mipmap.global_btn_more_d);
+                        title.setText(videoDetailsItemDetailsBean.getData().getTitle());
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, VideoDetailsItemDetailsBean.class);
+                popupWindow.dismiss();
                 break;
             case R.id.cancel_tv:
                 finish();

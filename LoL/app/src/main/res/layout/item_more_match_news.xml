@@ -7,22 +7,19 @@
     <TextView
         android:id="@+id/item_more_match_news_title_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="S5总决赛" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/item_more_match_news_desc_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/item_more_match_news_title_tv"
-        android:layout_below="@id/item_more_match_news_title_tv"
-        android:text="RIOT官方评选" />
+        android:layout_below="@id/item_more_match_news_title_tv" />
 
     <TextView
         android:id="@+id/item_more_match_news_time_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/item_more_match_news_desc_tv"
-        android:text="10-01" />
+        android:layout_below="@id/item_more_match_news_desc_tv" />
 </RelativeLayout>

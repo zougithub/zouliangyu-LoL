@@ -4,7 +4,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
+    <include layout="@layout/title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
+
+        <ImageView
+            android:id="@+id/novel_item_iv"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_width"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/novel_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/novel_item_iv"
+            android:layout_toRightOf="@id/novel_item_iv" />
+
+        <TextView
+            android:id="@+id/novel_item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/novel_item_title"
+            android:layout_below="@id/novel_item_title" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/community_in" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_layout_height"
+        android:background="@color/colorCommunityView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft"
+        android:text="@string/list" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/novel_details_item_details_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

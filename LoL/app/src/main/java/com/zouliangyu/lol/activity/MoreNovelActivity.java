@@ -23,6 +23,7 @@ import com.zouliangyu.lol.bean.MoreNovelBean;
 public class MoreNovelActivity extends BaseActivity {
     private ListView listView;
     private MoreNovelAdapter moreNovelAdapter;
+
     private ImageView leftIv;
     private TextView titleTv;
 
@@ -56,6 +57,7 @@ public class MoreNovelActivity extends BaseActivity {
 
 
         moreNovelAdapter = new MoreNovelAdapter(this);
+        // 获取数据
         VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/CatalogsService/all?cattype=novel&i_=869765028748315&t_=1463627391195&p_=5930&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
                 new Response.Listener<MoreNovelBean>() {
                     @Override
@@ -76,7 +78,13 @@ public class MoreNovelActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MoreNovelActivity.this, MoreNovelDetailsItemDetailsAty.class);
                 String ids = moreNovelBean.getData().get(0).getCatword_id().get(position).getId();
+                String name = moreNovelBean.getData().get(0).getCatword_id().get(position).getName();
+                String desc = moreNovelBean.getData().get(0).getCatword_id().get(position).getDesc();
+                String imageUrl = moreNovelBean.getData().get(0).getCatword_id().get(position).getPic_url();
                 intent.putExtra("ids", ids);
+                intent.putExtra("name", name);
+                intent.putExtra("desc", desc);
+                intent.putExtra("imageUrl", imageUrl);
                 startActivity(intent);
             }
         });

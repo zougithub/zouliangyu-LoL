@@ -17,6 +17,7 @@ import com.zouliangyu.lol.fragment.more.morematch.MatchResultsFragment;
 
 /**
  * Created by zouliangyu on 16/5/22.
+ *
  */
 public class MoreMatchActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton matchRb;

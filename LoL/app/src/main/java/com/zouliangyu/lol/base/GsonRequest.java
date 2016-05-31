@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * Created by zouliangyu on 16/5/11.
+ *
  */
 public class GsonRequest<T> extends Request<T> {
     private Response.Listener<T> mListener;

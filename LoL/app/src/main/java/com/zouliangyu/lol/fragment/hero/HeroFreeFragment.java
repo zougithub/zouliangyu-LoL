@@ -57,13 +57,15 @@ public class HeroFreeFragment extends BaseFragment implements HeroFreeAdapter.My
 
 
         recyclerView.setAdapter(heroFreeAdapter);
-        heroFreeAdapter.setmItemClickListener(this);
+        heroFreeAdapter.setMyItemClickListener(this);
 
 
     }
 
+
+
     @Override
-    public void onItemClickListener(View view, int position) {
+    public void onItemClickListener(int position) {
         String enName = allHeroBean.getFree().get(position).getEnName();
 
         Intent intent = new Intent(getContext(), HeroDetailsActivity.class);

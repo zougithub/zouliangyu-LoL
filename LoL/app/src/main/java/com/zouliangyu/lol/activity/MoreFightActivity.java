@@ -7,7 +7,7 @@ import com.zouliangyu.lol.base.BaseActivity;
 
 /**
  * Created by zouliangyu on 16/5/23.
- * 更多  战绩查询
+ * 更多 战绩查询
  */
 public class MoreFightActivity extends BaseActivity {
     private WebView webView;
