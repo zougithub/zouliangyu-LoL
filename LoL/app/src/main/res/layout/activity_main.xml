@@ -48,7 +48,7 @@
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/title_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -58,8 +58,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/information_selector"
                     android:button="@null"
-                    android:checked="true"
-                    android:gravity="center" />
+                    android:checked="true" />
 
                 <RadioButton
                     android:id="@+id/main_video_rb"
@@ -67,8 +66,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/video_selector"
-                    android:button="@null"
-                    android:gravity="center" />
+                    android:button="@null" />
 
                 <RadioButton
                     android:id="@+id/main_hero_rb"
@@ -76,8 +74,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/hero_selector"
-                    android:button="@null"
-                    android:gravity="center" />
+                    android:button="@null" />
 
                 <RadioButton
                     android:id="@+id/main_community_rb"
@@ -85,8 +82,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/community_selector"
-                    android:button="@null"
-                    android:gravity="center" />
+                    android:button="@null" />
 
                 <RadioButton
                     android:id="@+id/main_more_rb"
@@ -94,13 +90,15 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/more_selector"
-                    android:button="@null"
-                    android:gravity="center" />
+                    android:button="@null" />
             </RadioGroup>
         </LinearLayout>
 
+        <!-- 相对父容器  左
+             单选模式
+             分割线透明-->
         <RelativeLayout
-            android:layout_width="240dp"
+            android:layout_width="@dimen/drawerLayout_width"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:choiceMode="singleChoice"
@@ -122,19 +120,21 @@
 
                     <ImageView
                         android:id="@+id/slidingMenu_login_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/title_height_two"
+                        android:layout_height="@dimen/title_height_two"
                         android:layout_marginLeft="@dimen/layout_margin"
                         android:layout_marginTop="@dimen/layout_margin"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/left_menu_head" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/slidingMenu_login_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/left_menu_marginRight"
                         android:layout_marginTop="@dimen/left_menu_marginTop"
-                        android:text="点击头像登录" />
+                        android:text="@string/login_img" />
+
                 </LinearLayout>
 
                 <TextView
@@ -142,23 +142,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/layout_margin"
-                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginTop="@dimen/left_menu_marginTop"
                     android:drawableTop="@mipmap/left_menu_collect"
                     android:gravity="center_horizontal"
-                    android:text="我的收藏"
-                    android:textColor="@color/colorBackground" />
+                    android:text="@string/my_collect" />
 
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="bottom"-->
-                <!--android:layout_marginLeft="@dimen/layout_margin"-->
-                <!--android:layout_marginTop="@dimen/layout_margin"-->
-                <!--android:drawableLeft="@mipmap/left_menu_setting"-->
-                <!--android:text="设置"-->
-                <!--android:textColor="@color/colorBackground" />-->
+                <TextView
+                    android:id="@+id/exiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/layout_margin"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:drawableLeft="@mipmap/menu_icon_exit"
+                    android:text="@string/exit"
+                    android:textColor="@color/colorBackground"
+                    android:visibility="invisible" />
             </LinearLayout>
-
 
         </RelativeLayout>
     </android.support.v4.widget.DrawerLayout>

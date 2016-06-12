@@ -1,14 +1,21 @@
 package com.zouliangyu.lol.adapter;
 
 import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.bean.MoreRingBean;
+
+import java.io.IOException;
 
 /**
  * Created by zouliangyu on 16/5/20.
@@ -16,6 +23,7 @@ import com.zouliangyu.lol.bean.MoreRingBean;
 public class MoreRingAdapter extends BaseAdapter {
     private MoreRingBean moreRingBean;
     private Context context;
+    private ViewHolder viewHolder;
 
     public MoreRingAdapter(Context context) {
         this.context = context;
@@ -42,8 +50,8 @@ public class MoreRingAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        viewHolder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_more_ring, parent, false);
             viewHolder = new ViewHolder(convertView);

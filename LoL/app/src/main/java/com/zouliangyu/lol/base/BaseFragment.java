@@ -15,7 +15,6 @@ public abstract class BaseFragment extends Fragment {
     // 创建的Context对象
     protected Context mContext;
 
-
     /**
      * context 从依附的Activity 上获取 context 对象
      */

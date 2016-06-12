@@ -7,12 +7,16 @@ import com.zouliangyu.lol.base.MyApplication;
 
 /**
  * Created by zouliangyu on 16/5/26.
+ * 单例
  */
 public class GreendaoSingle {
     private SQLiteDatabase db; //数据库
     private DaoMaster daoMaster; // 管理者
     private DaoSession daoSession; // 会话者
     private ArticleDao articleDao;  // 数据库内相应表的操作对象
+
+    private HeroDao heroDao;
+
     private Context context;
     private DaoMaster.DevOpenHelper helper;
 
@@ -48,6 +52,7 @@ public class GreendaoSingle {
         return daoMaster;
     }
 
+
     public DaoSession getDaoSession() {
         if (daoSession == null) {
             daoSession = getDaoMaster().newSession();
@@ -62,5 +67,12 @@ public class GreendaoSingle {
         return articleDao;
     }
 
+
+    public HeroDao getHeroDao() {
+        if (heroDao == null) {
+            heroDao = getDaoSession().getHeroDao();
+        }
+        return heroDao;
+    }
 
 }

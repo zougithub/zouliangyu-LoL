@@ -43,7 +43,7 @@ public class MoreImageAdapter extends RecyclerView.Adapter<MoreImageAdapter.MyVi
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         Picasso.with(context).load(moreImageBeans.getData().get(position).getPic_thumb_url()).
-                placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.imageView);
+                placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(holder.imageView);
 
 
     }

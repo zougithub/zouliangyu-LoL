@@ -4,6 +4,27 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    // 推送加的
+    /** *******************/
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    /** *******************/
+
+    // 签名加的
+    /** ****************/
+    lintOptions {
+        abortOnError true
+        checkReleaseBuilds true
+        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+        disable 'MissingTranslation'
+    }
+    /** ***************/
+
+
+
     defaultConfig {
         applicationId "com.zouliangyu.lol"
         minSdkVersion 16
@@ -23,12 +44,23 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:24.0.0-alpha1'
-    compile 'com.android.support:recyclerview-v7:24.0.0-alpha1'
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.netflix.feign:feign-gson:8.16.2'
     compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile project(':library')
     compile 'de.greenrobot:greendao:2.1.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0-alpha1'
+    compile 'com.android.support:design:24.0.0-alpha1'
+    compile files('libs/ShareSDK-QZone-2.7.2.jar')
+    compile files('libs/MobCommons-2016.0426.1819.jar')
+    compile files('libs/ShareSDK-QQ-2.7.2.jar')
+    compile files('libs/MobTools-2016.0426.1819.jar')
+    compile files('libs/ShareSDK-Core-2.7.2.jar')
+    compile files('libs/ShareSDK-TencentWeibo-2.7.2.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-2.7.2.jar')
 }

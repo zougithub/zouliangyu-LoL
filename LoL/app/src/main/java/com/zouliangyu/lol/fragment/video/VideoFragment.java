@@ -41,6 +41,7 @@ public class VideoFragment extends BaseFragment {
         videoPagerAdapter = new VideoPagerAdapter(manager);
 
         List<Fragment> fragments = new ArrayList<>();
+        // 接口数据是
         fragments.add(new VideoPlayFragment(0));
         fragments.add(new VideoPlayFragment(1));
         fragments.add(new VideoPlayFragment(2));

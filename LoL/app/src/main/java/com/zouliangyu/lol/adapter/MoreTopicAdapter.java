@@ -58,7 +58,7 @@ public class MoreTopicAdapter extends BaseAdapter {
 
         viewHolder.nameTv.setText(moreTopicBean.getData().get(position).getName());
         Picasso.with(context).load(moreTopicBean.getData().get(position).getPic_url()).
-                placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(viewHolder.imageView);
+                placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(viewHolder.imageView);
         return convertView;
     }
 

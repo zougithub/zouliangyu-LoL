@@ -59,7 +59,7 @@ public class CommunityPlayDetailsAdapter extends BaseAdapter {
         viewHolder.personTv.setText(communityPlayBean.getData().get(position).getNickname());
 
         Date date = new Date(communityPlayBean.getData().get(position).getCreated());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
         String time = simpleDateFormat.format(date);
         viewHolder.timeTv.setText(time);
 

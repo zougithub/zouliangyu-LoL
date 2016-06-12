@@ -11,18 +11,16 @@
 
         <ImageView
             android:id="@+id/item_video_iv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="@dimen/LinearLayout_marginRight"
+            android:layout_height="@dimen/LinearLayout_marginRight"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/item_video_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_video_iv"
-            android:layout_centerHorizontal="true"
-            android:text="最新" />
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </LinearLayout>

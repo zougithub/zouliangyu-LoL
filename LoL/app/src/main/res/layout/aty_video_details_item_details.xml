@@ -10,8 +10,7 @@
         android:id="@+id/details_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_marginLeft"
-        android:text="无情大嘴 吐翻对手" />
+        android:layout_margin="@dimen/layout_marginLeft" />
 
     <VideoView
         android:id="@+id/videoview"

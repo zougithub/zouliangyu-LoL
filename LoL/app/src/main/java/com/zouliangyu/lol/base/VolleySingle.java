@@ -29,7 +29,6 @@ public class VolleySingle {
 
         mContext = MyApplication.getContext();
 
-
         requestQueue = getRequestQueue(); // 初始化我的请求队列
     }
 

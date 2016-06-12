@@ -11,6 +11,7 @@ public class Article {
     private String desc;
     private String time;
     private String url;
+    private String imageUrl;
 
     public Article() {
     }
@@ -19,12 +20,13 @@ public class Article {
         this.id = id;
     }
 
-    public Article(Long id, String title, String desc, String time, String url) {
+    public Article(Long id, String title, String desc, String time, String url, String imageUrl) {
         this.id = id;
         this.title = title;
         this.desc = desc;
         this.time = time;
         this.url = url;
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
@@ -65,6 +67,14 @@ public class Article {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

@@ -2,7 +2,6 @@ package com.zouliangyu.lol.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.renderscript.Type;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,6 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 public class MyHeroAdapter extends BaseAdapter {
     private MyHeroBean myHeroBean;
-
     private Context context;
 
     public MyHeroAdapter(Context context) {
@@ -77,10 +75,10 @@ public class MyHeroAdapter extends BaseAdapter {
                         List<AllHeroImgBean> allHeroImgBeans = gson.fromJson(response, new TypeToken<List<AllHeroImgBean>>() {
                         }.getType());
 
-                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg()).placeholder(R.mipmap.ic_launcher)
+                        Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg()).placeholder(R.mipmap.photo_default)
                                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                                 .config(Bitmap.Config.RGB_565)
-                                .error(R.mipmap.ic_launcher).into(finalViewHolder.leftIv);
+                                .error(R.mipmap.photo_default).into(finalViewHolder.leftIv);
 
                     }
                 }, new Response.ErrorListener() {
@@ -92,7 +90,11 @@ public class MyHeroAdapter extends BaseAdapter {
 
         viewHolder.titleTv.setText(myHeroBean.getMyHeroes().get(position).getTitle());
         viewHolder.cnNameTv.setText(myHeroBean.getMyHeroes().get(position).getCnName());
-        viewHolder.numTv.setText(myHeroBean.getMyHeroes().get(position).getPresentTimes());
+        if (!myHeroBean.getMyHeroes().get(position).getPresentTimes().equals("")) {
+            viewHolder.numTv.setText(myHeroBean.getMyHeroes().get(position).getPresentTimes());
+        } else {
+            viewHolder.numTv.setText("无");
+        }
 
         return convertView;
     }

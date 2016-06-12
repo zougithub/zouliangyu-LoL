@@ -3,17 +3,23 @@ package com.zouliangyu.lol.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.adapter.MoreTopicDetailsAdapter;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.MoreTopicDetailsBean;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -22,11 +28,17 @@ import it.sephiroth.android.library.picasso.Picasso;
  * 精彩专栏  详情
  */
 public class MoreTopicDetailsActivity extends BaseActivity {
-    private ListView listView;
+    private PullToRefreshListView pullToRefreshListView;
     private MoreTopicDetailsAdapter moreTopicDetailsAdapter;
+    // 最上面图片
     private ImageView topImage;
+    // 标题
     private ImageView leftTv;
     private TextView titleTv;
+
+    private MoreTopicDetailsBean moreTopicDetailsBean;
+    private String urls;
+    private String ids;
 
     @Override
     protected int getLayout() {
@@ -35,8 +47,9 @@ public class MoreTopicDetailsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        listView = (ListView) findViewById(R.id.topic_details_listview);
+        pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.topic_details_listview);
         topImage = (ImageView) findViewById(R.id.topic_details_image);
+        // 初始化
         leftTv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         leftTv.setOnClickListener(new View.OnClickListener() {
@@ -50,19 +63,27 @@ public class MoreTopicDetailsActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        // 设置上拉下拉事件
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+        // 设置标题栏
         titleTv.setText("精彩专栏");
         titleTv.setTextColor(Color.WHITE);
         leftTv.setImageResource(R.mipmap.global_back_d);
 
         moreTopicDetailsAdapter = new MoreTopicDetailsAdapter(this);
         Intent intent = getIntent();
-        String ids = intent.getStringExtra("ids");
+        ids = intent.getStringExtra("ids");
+        // 设置最上面图片
         String imageUrl = intent.getStringExtra("imageUrl");
-        String urls = "http://lol.zhangyoubao.com/apis/rest/TopicsService/items?topicid=" + ids + "&page=1&i_=600BEB19-A58C-436C-9E3C-12E0581B0BEA&t_=1463646958&p_=23219&v_=40080001&d_=ios&osv_=9.3.1&version=0&a_=lol%20HTTP/1.1";
+        Picasso.with(this).load(imageUrl).placeholder(R.mipmap.photo_default)
+                .error(R.mipmap.photo_default).into(topImage);
+        urls = "http://lol.zhangyoubao.com/apis/rest/TopicsService/items?topicid=" + ids + "&page=1&i_=600BEB19-A58C-436C-9E3C-12E0581B0BEA&t_=1463646958&p_=23219&v_=40080001&d_=ios&osv_=9.3.1&version=0&a_=lol%20HTTP/1.1";
+        // 获取数据
         VolleySingle.addRequest(urls, new Response.Listener<MoreTopicDetailsBean>() {
             @Override
             public void onResponse(MoreTopicDetailsBean response) {
-                moreTopicDetailsAdapter.setMoreTopicDetailsBean(response);
+                moreTopicDetailsBean = response;
+                moreTopicDetailsAdapter.setMoreTopicDetailsBean(moreTopicDetailsBean);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -71,8 +92,67 @@ public class MoreTopicDetailsActivity extends BaseActivity {
             }
         }, MoreTopicDetailsBean.class);
 
-        Picasso.with(this).load(imageUrl).into(topImage);
-        listView.setAdapter(moreTopicDetailsAdapter);
 
+        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String ids = moreTopicDetailsBean.getData().get(position - 1).getId();
+                String title = moreTopicDetailsBean.getData().get(position - 1).getTitle();
+                String desc = moreTopicDetailsBean.getData().get(position - 1).getDesc();
+                int time = moreTopicDetailsBean.getData().get(position - 1).getPublished();
+                Date date = new Date(time);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                String times = simpleDateFormat.format(date);
+
+                Intent intent = new Intent(MoreTopicDetailsActivity.this, InformationItemDetailsAty.class);
+                intent.putExtra("ids", ids);
+                intent.putExtra("title", title);
+                intent.putExtra("desc", desc);
+                intent.putExtra("times", times);
+                startActivity(intent);
+            }
+        });
+
+        // 上拉加载, 下拉刷新
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                VolleySingle.addRequest(urls, new Response.Listener<MoreTopicDetailsBean>() {
+                    @Override
+                    public void onResponse(MoreTopicDetailsBean response) {
+                        moreTopicDetailsBean = response;
+                        moreTopicDetailsAdapter.setMoreTopicDetailsBean(moreTopicDetailsBean);
+                        // 刷新成功后停止
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, MoreTopicDetailsBean.class);
+            }
+
+            // 上拉
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                VolleySingle.addRequest(urls, new Response.Listener<MoreTopicDetailsBean>() {
+                    @Override
+                    public void onResponse(MoreTopicDetailsBean response) {
+                        moreTopicDetailsBean.getData().addAll(response.getData());
+                        moreTopicDetailsAdapter.setMoreTopicDetailsBean(moreTopicDetailsBean);
+                        pullToRefreshListView.onRefreshComplete();
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, MoreTopicDetailsBean.class);
+            }
+        });
+
+        pullToRefreshListView.setAdapter(moreTopicDetailsAdapter);
     }
 }

@@ -10,11 +10,10 @@
     <ImageView
         android:id="@+id/topic_details_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_height="@dimen/layout_width"
+        android:scaleType="fitXY" />
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/topic_details_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"

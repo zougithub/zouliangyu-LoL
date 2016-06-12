@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.bean.CommunityFriendBean;
 

@@ -5,11 +5,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.adapter.HeroPagerAdapter;
 import com.zouliangyu.lol.base.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,8 +46,9 @@ public class HeroFragment extends BaseFragment {
         heroVp.setAdapter(heroPagerAdapter);
 
         heroTab.setupWithViewPager(heroVp);
-
+        // 文字的颜色
         heroTab.setTabTextColors(Color.rgb(198, 204, 225), Color.rgb(98, 118, 184));
+        // 引导线
         heroTab.setSelectedTabIndicatorColor(Color.rgb(98, 118, 184));
 
     }

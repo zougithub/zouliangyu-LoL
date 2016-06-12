@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -65,6 +67,16 @@ public class InformationAdapter extends BaseAdapter {
         String time = simpleDateFormat.format(date);
         viewHolder.timeTv.setText(time);
 
+        // 平移
+        TranslateAnimation translateAnimation = new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF, 1,
+                Animation.RELATIVE_TO_PARENT, 0f,
+                Animation.RELATIVE_TO_SELF, 1,
+                Animation.RELATIVE_TO_PARENT, 0f);
+        // 设置动画每次的持续时间
+        translateAnimation.setDuration(1000);
+        convertView.setAnimation(translateAnimation);
+        convertView.startAnimation(translateAnimation);
         return convertView;
     }
 

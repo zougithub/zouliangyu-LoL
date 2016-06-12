@@ -44,6 +44,7 @@
             android:src="@mipmap/login_pw_icon" />
 
         <EditText
+            android:id="@+id/password_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="9"
@@ -51,6 +52,7 @@
             android:hint="@string/login_password" />
 
         <ImageView
+            android:id="@+id/eye_iv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/layout_marginLeft"
@@ -108,6 +110,7 @@
             android:src="@mipmap/login_sina_wechat" />
 
         <ImageView
+            android:id="@+id/weibo_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/qq_iv"

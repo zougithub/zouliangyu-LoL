@@ -7,16 +7,14 @@
         android:id="@+id/item_more_topic_details_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_marginLeft"
-        android:text="123456789" />
+        android:layout_margin="@dimen/layout_marginLeft" />
 
     <TextView
         android:id="@+id/item_more_topic_details_desc_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/item_more_topic_details_title_tv"
-        android:layout_below="@id/item_more_topic_details_title_tv"
-        android:text="987654321" />
+        android:layout_below="@id/item_more_topic_details_title_tv" />
 
     <TextView
         android:id="@+id/item_more_topic_details_time_tv"
@@ -24,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/item_more_topic_details_desc_tv"
-        android:layout_marginRight="@dimen/layout_marginLeft"
-        android:text="10:56" />
+        android:layout_marginRight="@dimen/layout_marginLeft" />
 
 </RelativeLayout>

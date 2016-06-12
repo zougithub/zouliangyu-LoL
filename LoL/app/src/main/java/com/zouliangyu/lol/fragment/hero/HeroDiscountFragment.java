@@ -24,9 +24,11 @@ public class HeroDiscountFragment extends BaseFragment {
 
     @Override
     public void initData() {
-
-        webView.loadUrl("http://lol.zhangyoubao.com/mobiles/nolayout/65685");
+        // http://lol.zhangyoubao.com/mobiles/nolayout/66618?dw=320%20HTTP/1.1
+        webView.loadUrl("http://lol.zhangyoubao.com/mobiles/nolayout/66618?dw=320%20");
+        // 支持JS
         webView.getSettings().setJavaScriptEnabled(true);
+        // 不阻塞图片
         webView.getSettings().setBlockNetworkImage(false);
 
     }

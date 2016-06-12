@@ -7,13 +7,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_marginLeft">
 
         <TextView
             android:id="@+id/item_community_show_nickname_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="你跟谁俩呢" />
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/item_community_show_sex_iv"
@@ -21,8 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/item_community_show_nickname_tv"
             android:layout_marginLeft="@dimen/layout_marginLeft"
-            android:layout_toRightOf="@id/item_community_show_nickname_tv"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_toRightOf="@id/item_community_show_nickname_tv" />
 
         <TextView
             android:id="@+id/item_community_show_time_tv"
@@ -34,8 +33,9 @@
             android:id="@+id/item_community_show_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_community_show_nickname_tv"
             android:layout_below="@id/item_community_show_nickname_tv"
-            android:text="召唤师" />
+            android:text="@string/summoner" />
 
         <TextView
             android:id="@+id/left_tv"
@@ -44,15 +44,14 @@
             android:layout_alignTop="@id/item_community_show_name_tv"
             android:layout_marginLeft="@dimen/layout_marginLeft"
             android:layout_toRightOf="@id/item_community_show_name_tv"
-            android:text="(" />
+            android:text="@string/leftbracket" />
 
         <TextView
             android:id="@+id/item_community_show_area_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/left_tv"
-            android:layout_toRightOf="@id/left_tv"
-            android:text="影流" />
+            android:layout_toRightOf="@id/left_tv" />
 
         <TextView
             android:id="@+id/right_tv"
@@ -60,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/item_community_show_area_tv"
             android:layout_toRightOf="@id/item_community_show_area_tv"
-            android:text=")" />
+            android:text="@string/rightbracket" />
 
         <TextView
             android:id="@+id/item_community_show_summoner_tv"
@@ -68,24 +67,24 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/right_tv"
             android:layout_marginLeft="@dimen/layout_marginLeft"
-            android:layout_toRightOf="@id/right_tv"
-            android:text="再瞅一眼试试" />
+            android:layout_toRightOf="@id/right_tv" />
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/item_community_show_iv"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="@dimen/big_image"
+        android:layout_height="@dimen/big_image"
         android:layout_gravity="center"
         android:layout_margin="@dimen/layout_marginLeft"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/item_community_show_desc_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="11111111111111111111" />
+        android:layout_marginBottom="@dimen/layout_marginLeft"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginRight="@dimen/layout_marginLeft" />
 
     <View
         android:layout_width="match_parent"

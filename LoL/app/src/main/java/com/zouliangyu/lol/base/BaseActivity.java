@@ -18,8 +18,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
-
     /**
      * 这是加载布局的抽象方法
      */

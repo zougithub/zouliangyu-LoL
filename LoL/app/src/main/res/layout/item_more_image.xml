@@ -9,9 +9,10 @@
     <ImageView
         android:id="@+id/item_more_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/layout_width"
         android:layout_marginBottom="@dimen/layout_marginLeft"
         android:layout_marginLeft="@dimen/layout_marginLeft"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"/>
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by zouliangyu on 16/5/9.
+ * FragmentPagerAdapter  装载Fragment的适配器
  */
 public class InformationPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments;
@@ -32,8 +33,6 @@ public class InformationPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return fragments == null ? 0 : fragments.size();
     }
-
-
 
     @Override
     public CharSequence getPageTitle(int position) {

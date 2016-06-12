@@ -7,7 +7,7 @@ import com.zouliangyu.lol.base.BaseActivity;
 
 /**
  * Created by zouliangyu on 16/5/23.
- * 更多  战绩查询
+ * 更多 战绩查询
  */
 public class MoreFightActivity extends BaseActivity {
     private WebView webView;
@@ -25,9 +25,12 @@ public class MoreFightActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        webView.loadUrl("http://lol.duowan.com/zdl/");
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setBlockNetworkImage(false);
+        // http://lol.duowan.com/zdl/
+        webView.loadUrl("http://www.lolhelper.cn/rank.php");
 
+        // webview设置支持Javascript
+        webView.getSettings().setJavaScriptEnabled(true);
+        // 不阻塞图片
+        webView.getSettings().setBlockNetworkImage(false);
     }
 }

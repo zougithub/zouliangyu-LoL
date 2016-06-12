@@ -6,12 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import com.zouliangyu.lol.R;
-import com.zouliangyu.lol.bean.InformationNewestBean;
 import com.zouliangyu.lol.greendao.Article;
-import com.zouliangyu.lol.greendao.ArticleDao;
-
 import java.util.List;
 
 /**
@@ -63,6 +59,7 @@ public class MyCollectDetailsAdapter extends BaseAdapter {
         myViewHolder.desc.setText(articles.get(position).getDesc());
         myViewHolder.time.setText(articles.get(position).getTime());
 
+
         return convertView;
     }
 
@@ -75,6 +72,7 @@ public class MyCollectDetailsAdapter extends BaseAdapter {
             title = (TextView) itemView.findViewById(R.id.item_title_tv);
             desc = (TextView) itemView.findViewById(R.id.item_desc_tv);
             time = (TextView) itemView.findViewById(R.id.item_time_tv);
+
         }
     }
 }

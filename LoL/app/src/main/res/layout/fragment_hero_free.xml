@@ -18,43 +18,27 @@
             <TextView
                 android:id="@+id/free_one"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="本期周免" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/free_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_one"
-                android:text="(" />
+                android:text="@string/leftbracket" />
 
             <TextView
-                android:id="@+id/free_three"
+                android:id="@+id/free_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/free_two"
-                android:text="5/13" />
-
-            <TextView
-                android:id="@+id/free_four"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/free_three"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/free_five"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/free_four"
-                android:text="5/20" />
+                android:layout_toRightOf="@id/free_two" />
 
             <TextView
                 android:id="@+id/free_six"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/free_five"
-                android:text=")" />
+                android:layout_toRightOf="@id/free_time"
+                android:text="@string/rightbracket" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -68,20 +52,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="周三下午" />
+                android:text="@string/publish_time" />
 
             <TextView
                 android:id="@+id/free_eight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/free_seven"
-                android:text=":" />
+                android:text="@string/colon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/free_eight"
-                android:text="周免发布" />
+                android:text="@string/free_publish" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -90,6 +74,7 @@
         android:id="@+id/free_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/layout_marginLeft"
         android:layout_weight="1"
         android:background="@color/colorBackground"
         android:paddingLeft="@dimen/layout_margin"

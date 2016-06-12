@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000">
+    <!-- 透明度-->
+    <alpha
+        android:fromAlpha="0.3"
+        android:toAlpha="1" />
+    <!--缩放-->
+    <!-- pivot 缩放的轴点的坐标
+            0.5  中心-->
+    <scale
+        android:fromXScale="0.8"
+        android:fromYScale="0.8"
+        android:pivotX="0.5"
+        android:pivotY="0.5"
+        android:toXScale="1"
+        android:toYScale="1" />
+
+
+</set>

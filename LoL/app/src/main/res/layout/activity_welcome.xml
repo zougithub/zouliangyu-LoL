@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/welcome_iv"
@@ -10,4 +9,15 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:src="@mipmap/flash" />
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/welcome_time_tv"
+        android:layout_width="@dimen/title_height_two"
+        android:layout_height="@dimen/layout_margin"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/layout_marginLeft"
+        android:background="@color/colorCommunityBackground"
+        android:gravity="center"
+        android:textColor="@color/colorBackground"
+        android:textSize="@dimen/textOne" />
+</RelativeLayout>

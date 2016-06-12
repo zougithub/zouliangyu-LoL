@@ -44,17 +44,19 @@ public class CommunityFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            // 跳到真人秀
             case R.id.community_content_one:
-                Intent intent = new Intent(getContext(), CommunityShowDetailsAty.class);
+                Intent intent = new Intent(mContext, CommunityShowDetailsAty.class);
                 startActivity(intent);
                 break;
+            // 跳到晒玩法
             case R.id.community_content_two:
-                Intent intent1 = new Intent(getContext(), CommunityPlayDetailsAty.class);
+                Intent intent1 = new Intent(mContext, CommunityPlayDetailsAty.class);
                 startActivity(intent1);
                 break;
             case R.id.community_content_three:
                 // 跳到找战友界面
-                Intent intentFriend = new Intent(getContext(), CommunityFriendDetailsAty.class);
+                Intent intentFriend = new Intent(mContext, CommunityFriendDetailsAty.class);
                 startActivity(intentFriend);
                 break;
 

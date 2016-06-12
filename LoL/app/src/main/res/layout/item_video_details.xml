@@ -13,8 +13,7 @@
             android:id="@+id/item_video_details_bottom_iv"
             android:layout_width="@dimen/layout_width"
             android:layout_height="@dimen/title_height"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher" />
+            android:scaleType="fitXY" />
 
         <!--<ImageView-->
             <!--android:id="@+id/item_video_details_top_iv"-->
@@ -30,23 +29,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_marginLeft"
             android:layout_alignTop="@id/item_video_details_bottom_iv"
-            android:layout_toRightOf="@id/item_video_details_bottom_iv"
-            android:text="111111111" />
+            android:layout_toRightOf="@id/item_video_details_bottom_iv" />
 
         <TextView
             android:id="@+id/item_video_details_desc_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/item_video_details_title_tv"
-            android:layout_below="@id/item_video_details_title_tv"
-            android:text="2222222222" />
+            android:layout_below="@id/item_video_details_title_tv" />
 
         <TextView
             android:id="@+id/item_video_details_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/item_video_details_desc_tv"
-            android:text="15:00" />
+            android:layout_below="@id/item_video_details_desc_tv" />
     </RelativeLayout>
 </LinearLayout>
