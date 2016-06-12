@@ -60,7 +60,12 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
                     @Override
                     public void onResponse(VideoBean response) {
                         videoBean = response;
+<<<<<<< HEAD
                         videoPlayAdapter.setVideoBean(videoBean);
+=======
+                        videoPlayAdapter.setVideoBean(response);
+                        Log.d("VideoPlayFragment", response.getData().get(pos).getCatword_id().get(0).getName());
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -70,6 +75,10 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
                 }, VideoBean.class);
 
         recyclerView.setAdapter(videoPlayAdapter);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         videoPlayAdapter.setMyItemClickListener(this);
 
 
@@ -78,6 +87,12 @@ public class VideoPlayFragment extends BaseFragment implements VideoPlayAdapter.
 
     @Override
     public void onItemClickListener(int position) {
+<<<<<<< HEAD
+=======
+        Toast.makeText(mContext, "videoBean.getData().get(position):" + videoBean.getData().get(0).getCatword_id().get(position).getName(), Toast.LENGTH_SHORT).show();
+        Log.d("VideoPlayFragment", "videoBean.getData().get(0).getCatword_id():" + videoBean.getData().get(0).getId());
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
         String ids = videoBean.getData().get(pos).getCatword_id().get(position).getId();
         String name = videoBean.getData().get(pos).getCatword_id().get(position).getName();

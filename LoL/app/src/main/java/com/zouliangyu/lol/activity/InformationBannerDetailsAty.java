@@ -30,10 +30,17 @@ public class InformationBannerDetailsAty extends BaseActivity implements View.On
     private ImageView exitIv;
     private TextView titleTv;
     private ImageView rightIv;
+<<<<<<< HEAD
     // 菜单
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private PopupWindow popupWindow;
     private LinearLayout refresh;
     private TextView cancelTv;
+    private LinearLayout refresh;
+    private String ids;
+    private String url;
 
     private String ids;
     private String url;
@@ -73,10 +80,15 @@ public class InformationBannerDetailsAty extends BaseActivity implements View.On
         // 不阻塞图片  true 是把图片加载放在最后来加载渲染
         webView.getSettings().setBlockNetworkImage(false);
 
+<<<<<<< HEAD
 
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(this).inflate(R.layout.banner_popup, null);
         view.findViewById(R.id.share).setOnClickListener(this);
+=======
+        popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        View view = LayoutInflater.from(this).inflate(R.layout.banner_popup, null);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         refresh = (LinearLayout) view.findViewById(R.id.refresh);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
         refresh.setOnClickListener(this);
@@ -119,20 +131,28 @@ public class InformationBannerDetailsAty extends BaseActivity implements View.On
             case R.id.cancel_tv:
                 popupWindow.dismiss();
                 break;
+<<<<<<< HEAD
             // 刷新
             case R.id.refresh:
                 webView.loadUrl(url);
                 // 支持JS
+=======
+            case R.id.refresh:
+                webView.loadUrl(url);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 webView.getSettings().setJavaScriptEnabled(true);
                 // 不阻塞图片
                 webView.getSettings().setBlockNetworkImage(false);
                 popupWindow.dismiss();
                 break;
+<<<<<<< HEAD
             // 分享
             case R.id.share:
                 showShare();
                 popupWindow.dismiss();
                 break;
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         }
     }
 

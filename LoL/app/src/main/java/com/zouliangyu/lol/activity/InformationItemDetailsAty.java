@@ -39,13 +39,21 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
     private String times;
     private ArticleDao articleDao;
     private String url;
+<<<<<<< HEAD
     // 菜单
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private PopupWindow popupWindow;
     private ImageView collectIv; // 收藏
     private boolean isCollect = false;
     private TextView cancelTv; // 取消
     private LinearLayout refresh; // 刷新
+<<<<<<< HEAD
     private LinearLayout share; // 分享
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
     @Override
     protected int getLayout() {
@@ -55,10 +63,15 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
     @Override
     protected void initView() {
         webView = (WebView) findViewById(R.id.webview);
+<<<<<<< HEAD
         // 标题栏
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         rightTv = (ImageView) findViewById(R.id.title_right_iv);
+
         exitIv.setOnClickListener(this);
         rightTv.setOnClickListener(this);
     }
@@ -82,10 +95,13 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
         url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755282&p_=18191&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
         // 用于加载URL对应的网页
         webView.loadUrl(url);
+<<<<<<< HEAD
         // webview设置支持Javascript
         // JavaScript一种直译式脚本语言
         // 广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，
         // 用来给HTML网页增加动态功能。
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         webView.getSettings().setJavaScriptEnabled(true);
         // 不阻塞图片
         webView.getSettings().setBlockNetworkImage(false);
@@ -96,6 +112,7 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
         collectIv = (ImageView) view.findViewById(R.id.collect_iv);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
         refresh = (LinearLayout) view.findViewById(R.id.refresh);
+<<<<<<< HEAD
         share = (LinearLayout) view.findViewById(R.id.share);
         share.setOnClickListener(this);
         collectIv.setOnClickListener(this);
@@ -103,6 +120,11 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
         refresh.setOnClickListener(this);
 
 
+=======
+        collectIv.setOnClickListener(this);
+        cancelTv.setOnClickListener(this);
+        refresh.setOnClickListener(this);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
 
         // 遍历数据库, 是否已收藏
@@ -179,7 +201,11 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
                 popupWindow.dismiss();
                 break;
             case R.id.refresh:
+<<<<<<< HEAD
 
+=======
+                url = "http://lol.zhangyoubao.com/mobiles/item/" + ids + "?user_id=&token=&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438755282&p_=18191&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol&size=middle";
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 // 用于加载URL对应的网页
                 webView.loadUrl(url);
                 webView.getSettings().setJavaScriptEnabled(true);
@@ -187,10 +213,13 @@ public class InformationItemDetailsAty extends BaseActivity implements View.OnCl
                 webView.getSettings().setBlockNetworkImage(false);
                 popupWindow.dismiss();
                 break;
+<<<<<<< HEAD
             case R.id.share:
                 showShare();
                 popupWindow.dismiss();
                 break;
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
         }
     }

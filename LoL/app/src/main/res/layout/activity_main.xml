@@ -134,7 +134,10 @@
                         android:layout_marginLeft="@dimen/left_menu_marginRight"
                         android:layout_marginTop="@dimen/left_menu_marginTop"
                         android:text="@string/login_img" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 </LinearLayout>
 
                 <TextView
@@ -145,7 +148,23 @@
                     android:layout_marginTop="@dimen/left_menu_marginTop"
                     android:drawableTop="@mipmap/left_menu_collect"
                     android:gravity="center_horizontal"
+<<<<<<< HEAD
                     android:text="@string/my_collect" />
+=======
+                    android:text="@string/my_collect"
+                    android:textColor="@color/colorBackground" />
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:layout_marginLeft="@dimen/layout_margin"-->
+                <!--android:layout_marginTop="@dimen/layout_margin"-->
+                <!--android:drawableLeft="@mipmap/left_menu_setting"-->
+                <!--android:text="设置"-->
+                <!--android:textColor="@color/colorBackground" />-->
+            </LinearLayout>
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
                 <TextView
                     android:id="@+id/exiting"

@@ -18,7 +18,12 @@
             <TextView
                 android:id="@+id/free_one"
                 android:layout_width="wrap_content"
+<<<<<<< HEAD
                 android:layout_height="wrap_content" />
+=======
+                android:layout_height="wrap_content"
+                android:text="@string/free" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
             <TextView
                 android:id="@+id/free_two"
@@ -26,18 +31,44 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/free_one"
                 android:text="@string/leftbracket" />
+<<<<<<< HEAD
+=======
+
+            <TextView
+                android:id="@+id/free_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/free_two"
+                android:text="5/27" />
+
+            <TextView
+                android:id="@+id/free_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/free_three"
+                android:text="@string/hor" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
             <TextView
                 android:id="@+id/free_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_toRightOf="@id/free_two" />
+=======
+                android:layout_toRightOf="@id/free_four"
+                android:text="6/3" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
             <TextView
                 android:id="@+id/free_six"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_toRightOf="@id/free_time"
+=======
+                android:layout_toRightOf="@id/free_five"
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 android:text="@string/rightbracket" />
         </RelativeLayout>
 

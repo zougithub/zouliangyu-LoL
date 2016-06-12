@@ -81,10 +81,14 @@
     <TextView
         android:id="@+id/item_community_show_desc_tv"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/layout_marginLeft"
         android:layout_marginLeft="@dimen/layout_marginLeft"
         android:layout_marginRight="@dimen/layout_marginLeft" />
+=======
+        android:layout_height="wrap_content" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
     <View
         android:layout_width="match_parent"

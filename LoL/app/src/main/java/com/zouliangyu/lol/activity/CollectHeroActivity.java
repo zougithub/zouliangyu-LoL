@@ -7,12 +7,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.adapter.CollectHeroAdapter;
 import com.zouliangyu.lol.base.BaseActivity;
 import com.zouliangyu.lol.greendao.GreendaoSingle;
 import com.zouliangyu.lol.greendao.Hero;
 import com.zouliangyu.lol.greendao.HeroDao;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 import java.util.List;
 
 /**
@@ -22,11 +30,17 @@ import java.util.List;
 public class CollectHeroActivity extends BaseActivity implements CollectHeroAdapter.MyItemClickListener {
     private RecyclerView recyclerView;
     private CollectHeroAdapter collectHeroAdapter;
+<<<<<<< HEAD
     // 英雄表的操作对象
     private HeroDao heroDao;
     // 数据库内英雄的集合
     private List<Hero> heros;
     // 标题
+=======
+    private HeroDao heroDao;
+    private List<Hero> heros;
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private ImageView exitIv;
     private TextView titleTv;
 
@@ -34,13 +48,21 @@ public class CollectHeroActivity extends BaseActivity implements CollectHeroAdap
     protected int getLayout() {
         return R.layout.activity_collect_hero;
     }
+<<<<<<< HEAD
 
     // 初始化
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     @Override
     protected void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.collect_hero_rv);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+<<<<<<< HEAD
         // 设置标题栏
+=======
+
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         exitIv.setOnClickListener(new View.OnClickListener() {
@@ -49,15 +71,23 @@ public class CollectHeroActivity extends BaseActivity implements CollectHeroAdap
                 finish();
             }
         });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     }
 
     @Override
     protected void initData() {
+<<<<<<< HEAD
         // 设置标题栏
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         titleTv.setText("我收藏的英雄");
         titleTv.setTextColor(Color.WHITE);
         exitIv.setImageResource(R.mipmap.global_back_d);
 
+<<<<<<< HEAD
         collectHeroAdapter = new CollectHeroAdapter(this);
         // 单例
         heroDao = GreendaoSingle.getInstance().getHeroDao();
@@ -66,10 +96,25 @@ public class CollectHeroActivity extends BaseActivity implements CollectHeroAdap
 
         collectHeroAdapter.setHeros(heros);
         recyclerView.setAdapter(collectHeroAdapter);
+=======
+
+        collectHeroAdapter = new CollectHeroAdapter(this);
+        // 单例 用到一个
+        heroDao = GreendaoSingle.getInstance().getHeroDao();
+        // 查询数据库
+        heros = heroDao.queryBuilder().list();
+        collectHeroAdapter.setHeros(heros);
+        recyclerView.setAdapter(collectHeroAdapter);
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         collectHeroAdapter.setMyItemClickListener(this);
 
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     @Override
     public void onItemClickListener(int position) {
         String enName = heros.get(position).getEnName();

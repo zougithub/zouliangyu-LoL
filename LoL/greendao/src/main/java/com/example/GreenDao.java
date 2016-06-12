@@ -24,7 +24,10 @@ public class GreenDao {
 
     /**
      * 为数据库里添加我所需要的内容
+<<<<<<< HEAD
      *
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
      * @param schema
      */
     public static void addNote(Schema schema) {
@@ -33,20 +36,30 @@ public class GreenDao {
         // 加入id   id自增
         entity.addIdProperty().autoincrement().primaryKey();
         // 添加类属性  根据属性生成相应表中的字段
+<<<<<<< HEAD
         // 收藏文章
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         entity.addStringProperty("title");
         entity.addStringProperty("desc");
         entity.addStringProperty("time");
         entity.addStringProperty("url");
         entity.addStringProperty("imageUrl");
 
+<<<<<<< HEAD
 
         // 收藏英雄
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         Entity entityHero = schema.addEntity("Hero");
         entityHero.addIdProperty().autoincrement().primaryKey();
         entityHero.addStringProperty("imageUrl");
         entityHero.addStringProperty("code"); // 代号
         entityHero.addStringProperty("enName");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
 
     }

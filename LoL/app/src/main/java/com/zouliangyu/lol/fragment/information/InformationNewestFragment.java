@@ -62,9 +62,13 @@ public class InformationNewestFragment extends BaseFragment {
         this.id = id;
     }
 
+<<<<<<< HEAD
     private BannerBean bannerBean; // 轮播图数据类
 
 
+=======
+    private BannerBean bannerBean; //
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
     @Override
     public int initLayout() {
@@ -225,9 +229,15 @@ public class InformationNewestFragment extends BaseFragment {
             imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT));
 
+<<<<<<< HEAD
             Picasso.with(mContext).load(urls[i]).
                     placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY); // 充满
+=======
+            Picasso.with(getContext()).load(urls[i]).
+                    placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(imageView);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             mList.add(imageView);
 
             // 轮播图的监听
@@ -247,8 +257,13 @@ public class InformationNewestFragment extends BaseFragment {
 
 
             // 设置圆圈点
+<<<<<<< HEAD
             View view = new View(mContext);
             // 设置标点参数, 宽高
+=======
+            View view = new View(getContext());
+            // 设置标点参数
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             params = new LinearLayout.LayoutParams(10, 10);
             params.leftMargin = 10;
             view.setBackgroundResource(R.drawable.point_selector);

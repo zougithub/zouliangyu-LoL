@@ -25,6 +25,7 @@ import com.zouliangyu.lol.fragment.more.MoreFragment;
 import com.zouliangyu.lol.fragment.video.VideoFragment;
 import com.zouliangyu.lol.util.ExampleUtil;
 
+<<<<<<< HEAD
 import org.w3c.dom.Text;
 
 import cn.jpush.android.api.CustomPushNotificationBuilder;
@@ -35,6 +36,9 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import it.sephiroth.android.library.picasso.Picasso;
+=======
+import cn.jpush.android.api.JPushInterface;
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
 /**
  * 邹良禹
@@ -49,8 +53,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     // 抽屉登录
     private TextView loginBtn;
     private ImageView loginIv;
+<<<<<<< HEAD
     public static boolean isForeground = false; // 推送的
     // RadioButton
+=======
+
+
+    public static boolean isForeground = false;
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private int[] ids = {R.id.main_information_rb, R.id.main_video_rb,
             R.id.main_hero_rb, R.id.main_community_rb, R.id.main_more_rb};
     // 抽屉
@@ -140,6 +151,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         transaction.commit();
 
 
+<<<<<<< HEAD
         registerMessageReceiver();  // used for receive msg
 
         // 设置通知栏
@@ -156,6 +168,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         // 指定下拉状态栏时显示的通知图标
         JPushInterface.setPushNotificationBuilder(2, builder);
 
+=======
+
+        registerMessageReceiver();  // used for receive msg
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     }
 
     @Override
@@ -231,7 +247,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     // 初始化 JPush。如果已经初始化，但没有登录成功，则执行重新登录。
+<<<<<<< HEAD
     private void init() {
+=======
+    private void init(){
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         JPushInterface.init(getApplicationContext());
     }
 

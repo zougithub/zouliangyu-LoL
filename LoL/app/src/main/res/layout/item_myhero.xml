@@ -49,6 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/myhero_colon_tv"
         android:layout_marginLeft="@dimen/left_menu_marginRight"
+<<<<<<< HEAD
         android:layout_toRightOf="@id/myhero_colon_tv"
         android:text="0"/>
+=======
+        android:layout_toRightOf="@id/myhero_colon_tv" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 </RelativeLayout>

@@ -8,6 +8,10 @@
         android:id="@+id/novel_iv"
         android:layout_width="@dimen/title_height"
         android:layout_height="@dimen/title_height"
+<<<<<<< HEAD
+=======
+        android:src="@mipmap/ic_launcher"
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         android:scaleType="fitXY"/>
 
     <TextView

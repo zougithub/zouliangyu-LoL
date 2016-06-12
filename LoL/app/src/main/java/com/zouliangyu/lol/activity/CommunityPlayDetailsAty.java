@@ -23,7 +23,11 @@ import com.zouliangyu.lol.bean.CommunityPlayBean;
 public class CommunityPlayDetailsAty extends BaseActivity {
     private PullToRefreshListView pullToRefreshListView;
     private CommunityPlayDetailsAdapter communityPlayDetailsAdapter;
+<<<<<<< HEAD
     // 标题
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private TextView titleTv;
     private ImageView leftIv;
     // 拼接网址, 加载
@@ -40,7 +44,11 @@ public class CommunityPlayDetailsAty extends BaseActivity {
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.community_play_details_lv);
         // 设置上拉下拉事件
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+<<<<<<< HEAD
         // 初始化标题
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         titleTv = (TextView) findViewById(R.id.title_tv);
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
         leftIv.setOnClickListener(new View.OnClickListener() {

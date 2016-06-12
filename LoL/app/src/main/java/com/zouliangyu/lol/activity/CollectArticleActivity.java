@@ -24,8 +24,11 @@ import java.util.List;
 public class CollectArticleActivity extends BaseActivity {
     private ListView listView;
     private MyCollectDetailsAdapter myCollectDetailsAdapter;
+<<<<<<< HEAD:LoL/app/src/main/java/com/zouliangyu/lol/activity/CollectArticleActivity.java
     // Article表的操作对象
     private ArticleDao articleDao;
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068:LoL/app/src/main/java/com/zouliangyu/lol/activity/CollectArticleActivity.java
     // 标题
     private ImageView exitIv;
     private TextView titleTv;
@@ -35,8 +38,11 @@ public class CollectArticleActivity extends BaseActivity {
     protected int getLayout() {
         return R.layout.activity_my_collect_details;
     }
+<<<<<<< HEAD:LoL/app/src/main/java/com/zouliangyu/lol/activity/CollectArticleActivity.java
 
     // 初始化
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068:LoL/app/src/main/java/com/zouliangyu/lol/activity/CollectArticleActivity.java
     @Override
     protected void initView() {
         listView = (ListView) findViewById(R.id.my_collect_lv);
@@ -49,10 +55,13 @@ public class CollectArticleActivity extends BaseActivity {
             }
         });
     }
-
     @Override
     protected void initData() {
+<<<<<<< HEAD:LoL/app/src/main/java/com/zouliangyu/lol/activity/CollectArticleActivity.java
         // 设置标题栏
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068:LoL/app/src/main/java/com/zouliangyu/lol/activity/CollectArticleActivity.java
         exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("我的收藏");
         titleTv.setTextColor(Color.WHITE);

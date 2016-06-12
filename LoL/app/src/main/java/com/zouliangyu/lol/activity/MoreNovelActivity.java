@@ -23,7 +23,11 @@ import com.zouliangyu.lol.bean.MoreNovelBean;
 public class MoreNovelActivity extends BaseActivity {
     private ListView listView;
     private MoreNovelAdapter moreNovelAdapter;
+<<<<<<< HEAD
     // 标题
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private ImageView leftIv;
     private TextView titleTv;
     private MoreNovelBean moreNovelBean;

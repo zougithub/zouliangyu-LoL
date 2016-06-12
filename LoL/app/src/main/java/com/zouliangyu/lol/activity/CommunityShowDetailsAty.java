@@ -72,11 +72,20 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
 
     @Override
     protected void initData() {
+<<<<<<< HEAD
         // 设置标题栏
         titleTv.setText("真人秀");
         titleTv.setTextColor(Color.WHITE);
         leftIv.setImageResource(R.mipmap.global_back_d);
         // 筛选大区
+=======
+
+
+        titleTv.setText("真人秀");
+        titleTv.setTextColor(Color.WHITE);
+        leftIv.setImageResource(R.mipmap.global_back_d);
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         areaRb.setTextColor(Color.WHITE);
 
         communityShowDetailsAdapter = new CommunityShowDetailsAdapter(this);
@@ -122,10 +131,17 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
         areaFive.setOnClickListener(this);
         areaSix.setOnClickListener(this);
 
+<<<<<<< HEAD
         // 上拉加载, 下拉刷新
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             // 下拉
+=======
+
+        // 上拉加载, 下拉刷新
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/UgcsService/getUserShows?area=&order_kind=0&sex=&page=1&i_=869765028748315&t_=1463625469422&p_=30611&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
                         new Response.Listener<CommunityShowBean>() {
@@ -134,6 +150,7 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
                                 communityShowBean = response;
                                 dataBeans = new ArrayList<>();
                                 for (CommunityShowBean.DataBean dataBean : communityShowBean.getData()) {
+<<<<<<< HEAD
                                     if (areaRb.getText().equals("全部大区")) {
                                         dataBeans.add(dataBean);
                                     }
@@ -148,6 +165,11 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
                                 }
                                 communityShowDetailsAdapter.setDataBeans(dataBeans);
                                 // 刷新成功后 ,停止刷新
+=======
+                                    dataBeans.add(dataBean);
+                                }
+                                communityShowDetailsAdapter.setDataBeans(dataBeans);
+                                // 刷新成功后 ,停止刷新
                                 pullToRefreshListView.onRefreshComplete();
                             }
                         }, new Response.ErrorListener() {
@@ -157,6 +179,32 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
                             }
                         }, CommunityShowBean.class);
             }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                i++;
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/UgcsService/getUserShows?area=&order_kind=0&sex=&page=" + i + "&i_=869765028748315&t_=1463625469422&p_=30611&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
+                        new Response.Listener<CommunityShowBean>() {
+                            @Override
+                            public void onResponse(CommunityShowBean response) {
+//                                communityShowBean = response;
+                                communityShowBean.getData().addAll(response.getData());
+                                dataBeans = new ArrayList<>();
+                                for (CommunityShowBean.DataBean dataBean : communityShowBean.getData()) {
+                                    dataBeans.add(dataBean);
+                                }
+                                communityShowDetailsAdapter.setDataBeans(dataBeans);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
+                                pullToRefreshListView.onRefreshComplete();
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }, CommunityShowBean.class);
+            }
+<<<<<<< HEAD
 
             @Override
             // 上拉
@@ -195,6 +243,13 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
         popupWindow.setContentView(view);
 
         pullToRefreshListView.setAdapter(communityShowDetailsAdapter);
+=======
+        });
+        popupWindow.setContentView(view);
+        pullToRefreshListView.setAdapter(communityShowDetailsAdapter);
+
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     }
 
     @Override
@@ -284,6 +339,7 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
                             }
                         }, CommunityShowBean.class);
 
+<<<<<<< HEAD
                 break;
             case R.id.area_three:
                 areaRb.setText(areaThree.getText());
@@ -356,6 +412,65 @@ public class CommunityShowDetailsAty extends BaseActivity implements View.OnClic
 
                             }
                         }, CommunityShowBean.class);
+=======
+
+                // 上拉加载, 下拉刷新
+                pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+                    @Override
+                    public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/UgcsService/getUserShows?area=&order_kind=0&sex=&page=1&i_=869765028748315&t_=1463625469422&p_=30611&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
+                                new Response.Listener<CommunityShowBean>() {
+                                    @Override
+                                    public void onResponse(CommunityShowBean response) {
+                                        communityShowBean = response;
+                                        dataBeans = new ArrayList<>();
+                                        for (CommunityShowBean.DataBean dataBean : communityShowBean.getData()) {
+                                            if (dataBean.getArea().equals(areaTwo.getText())) {
+                                                dataBeans.add(dataBean);
+                                            }
+
+                                        }
+                                        communityShowDetailsAdapter.setDataBeans(dataBeans);
+                                        // 刷新成功后 ,停止刷新
+                                        pullToRefreshListView.onRefreshComplete();
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+
+                                    }
+                                }, CommunityShowBean.class);
+                    }
+
+                    @Override
+                    public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                        i++;
+                        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/UgcsService/getUserShows?area=&order_kind=0&sex=&page=" + i + "&i_=869765028748315&t_=1463625469422&p_=30611&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
+                                new Response.Listener<CommunityShowBean>() {
+                                    @Override
+                                    public void onResponse(CommunityShowBean response) {
+                                        communityShowBean = response;
+                                        dataBeans = new ArrayList<>();
+                                        for (CommunityShowBean.DataBean dataBean : communityShowBean.getData()) {
+                                            if (dataBean.getArea().equals(areaTwo.toString())) {
+                                                dataBeans.add(dataBean);
+                                            }
+
+                                        }
+                                        communityShowDetailsAdapter.setDataBeans(dataBeans);
+                                        pullToRefreshListView.onRefreshComplete();
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+
+                                    }
+                                }, CommunityShowBean.class);
+                    }
+                });
+
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 break;
 
         }

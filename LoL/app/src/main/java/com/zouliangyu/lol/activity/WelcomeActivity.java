@@ -9,6 +9,8 @@ import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.BaseActivity;
 import cn.jpush.android.api.JPushInterface;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by zouliangyu on 16/5/10.
  * 欢迎页
@@ -32,6 +34,7 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+<<<<<<< HEAD
         timeTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +53,10 @@ public class WelcomeActivity extends BaseActivity {
                 timeTv.setText(millisUntilFinished / 1000 + "s");
             }
 
+=======
+
+        new Handler().postDelayed(new Runnable() {
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             @Override
             public void onFinish() {
                 timeTv.setText("跳转");
@@ -80,5 +87,17 @@ public class WelcomeActivity extends BaseActivity {
     protected void onRestart() {
         super.onRestart();
         time.start();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
     }
 }

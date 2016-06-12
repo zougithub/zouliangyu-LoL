@@ -1,7 +1,10 @@
 package com.zouliangyu.lol.activity;
 
 import android.graphics.Color;
+<<<<<<< HEAD
 import android.media.AudioManager;
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
@@ -38,6 +41,7 @@ public class MoreRingActivity extends BaseActivity {
     private ImageView leftIv;
     private TextView titleTv;
     int i = 1;
+
 
 
     @Override
@@ -117,6 +121,7 @@ public class MoreRingActivity extends BaseActivity {
                 }, MoreRingBean.class);
 
 
+<<<<<<< HEAD
         // 上拉加载, 下拉刷新
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
@@ -137,6 +142,16 @@ public class MoreRingActivity extends BaseActivity {
                             }
                         }, MoreRingBean.class);
             }
+=======
+        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MoreRingAdapter.ViewHolder holder = (MoreRingAdapter.ViewHolder) view.getTag();
+
+                url = moreRingBean.getData().get(position - 1).getPath_url();
+                Log.d("MoreRingActivity", url);
+                mediaPlayer = MediaPlayer.create(MoreRingActivity.this, Uri.parse(url));
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
             @Override
             // 上拉
@@ -160,6 +175,51 @@ public class MoreRingActivity extends BaseActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
+
+        // 上拉加载, 下拉刷新
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            // 下拉
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/AroundService/ring?page=1&i_=869765028748315&t_=1463627310419&p_=3602&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&",
+                        new Response.Listener<MoreRingBean>() {
+                            @Override
+                            public void onResponse(MoreRingBean response) {
+                                moreRingAdapter.setMoreRingBean(response);
+                                pullToRefreshListView.onRefreshComplete();
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }, MoreRingBean.class);
+            }
+
+            @Override
+            // 上拉
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+                VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/AroundService/ring?page=2&i_=869765028748315&t_=1463627310419&p_=3602&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&",
+                        new Response.Listener<MoreRingBean>() {
+                            @Override
+                            public void onResponse(MoreRingBean response) {
+                                moreRingBean.getData().addAll(response.getData());
+                                moreRingAdapter.setMoreRingBean(moreRingBean);
+                                pullToRefreshListView.onRefreshComplete();
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }, MoreRingBean.class);
+            }
+        });
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         pullToRefreshListView.setAdapter(moreRingAdapter);
     }
 }

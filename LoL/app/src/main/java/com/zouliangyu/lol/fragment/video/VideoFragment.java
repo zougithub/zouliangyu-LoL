@@ -21,6 +21,7 @@ import java.util.List;
 public class VideoFragment extends BaseFragment {
     private TabLayout videoTab;
     private ViewPager videoVp;
+    // tab
     private VideoPagerAdapter videoPagerAdapter;
 
     @Override

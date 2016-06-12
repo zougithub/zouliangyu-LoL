@@ -13,7 +13,11 @@ import com.zouliangyu.lol.base.BaseFragment;
 
 /**
  * Created by zouliangyu on 16/5/9.
+<<<<<<< HEAD
  * <p/>
+=======
+ * <p>
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
  * 更多
  */
 public class MoreFragment extends BaseFragment implements View.OnClickListener {

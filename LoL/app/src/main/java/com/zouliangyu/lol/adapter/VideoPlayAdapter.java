@@ -32,7 +32,10 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
     private Context context;
     // 接口对象
     private MyItemClickListener myItemClickListener;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     // 设置接口对象
     public void setMyItemClickListener(MyItemClickListener myItemClickListener) {
         this.myItemClickListener = myItemClickListener;
@@ -66,6 +69,7 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
         Picasso.with(context).load(videoBean.getData().get(pos).getCatword_id().get(position).getPic_url()).
                 placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(holder.topIv);
         holder.bottomTv.setText(videoBean.getData().get(pos).getCatword_id().get(position).getName());
+<<<<<<< HEAD
 
         // 如果接口对象不为空, 则开始对itemview设置监听
         if (myItemClickListener != null) {
@@ -77,6 +81,14 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
                     // 调用接口对象的方法
                     myItemClickListener.onItemClickListener(pos);
 
+=======
+        if (myItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = holder.getLayoutPosition();
+                    myItemClickListener.onItemClickListener(pos);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 }
             });
         }
@@ -100,6 +112,10 @@ public class VideoPlayAdapter extends RecyclerView.Adapter<VideoPlayAdapter.MyVi
         }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     }
 
 

@@ -86,6 +86,10 @@ public class HeroFreeFragment extends BaseFragment implements HeroFreeAdapter.My
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     @Override
     public void onItemClickListener(int position) {
         String enName = allHeroBean.getFree().get(position).getEnName();

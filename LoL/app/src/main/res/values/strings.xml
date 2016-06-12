@@ -105,9 +105,12 @@
     <string name="free_one">周免</string>
     <string name="discount">折扣</string>
     <string name="publisher">发布者</string>
+<<<<<<< HEAD
     <string name="free_publish">周免发布</string>
     <string name="publish_time">周三下午</string>
     <string name="exit">注销</string>
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
 
 </resources>

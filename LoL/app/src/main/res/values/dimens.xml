@@ -23,6 +23,9 @@
     <dimen name="jpush_width">280dp</dimen>
     <dimen name="collect_hero_height">150dp</dimen>
     <dimen name="hero_height">200dp</dimen>
+<<<<<<< HEAD
     <dimen name="banner_height">120dp</dimen>
     <dimen name="search_btn_height">35dp</dimen>
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 </resources>

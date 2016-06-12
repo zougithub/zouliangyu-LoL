@@ -38,17 +38,29 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
     private VideoDetailsItemDetailsBean videoDetailsItemDetailsBean;
     private MediaController mediaController;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     // 标题
     private ImageView titleLeft;
     private TextView titleTv;
     private ImageView titleRight;
     private TextView title; // 视频上面的文字
+<<<<<<< HEAD
     // 菜单
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private PopupWindow popupWindow;
     private ImageView collectIv;
     private LinearLayout refresh;
     private TextView cancelTv;
+<<<<<<< HEAD
     // 加入数据库的
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private String ids;
     private String titles;
     private String desc;
@@ -67,7 +79,11 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
     @Override
     protected void initView() {
         videoView = (VideoView) findViewById(R.id.videoview);
+<<<<<<< HEAD
         // 初始化标题栏
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         titleLeft = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         titleRight = (ImageView) findViewById(R.id.title_right_iv);
@@ -95,13 +111,28 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
         videoUrl = intent.getStringExtra("videoUrl");
 
         urls = "http://lol.zhangyoubao.com/apis/rest/ItemsService/videoInfo?itemid=" + ids + "&i_=EAC1B788-00BC-454A-A9B9-460852CFC011&t_=1438761089&p_=5612&v_=40050303&d_=ios&osv_=8.3&version=0&a_=lol";
+<<<<<<< HEAD
         // 一个包含媒体播放器(MediaPlayer)控件的视图
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         mediaController = new MediaController(this);
         // 获取数据
         VolleySingle.addRequest(urls, new Response.Listener<VideoDetailsItemDetailsBean>() {
             @Override
             public void onResponse(VideoDetailsItemDetailsBean response) {
                 videoDetailsItemDetailsBean = response;
+<<<<<<< HEAD
+=======
+
+                Uri uri = Uri.parse(videoDetailsItemDetailsBean.getData().getSd_url());
+
+                videoView.setMediaController(mediaController);
+
+                videoView.setVideoURI(uri);
+                videoView.requestFocus();
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 titleLeft.setImageResource(R.mipmap.global_back_d);
                 titleTv.setText("掌游宝");
                 titleRight.setImageResource(R.mipmap.global_btn_more_d);
@@ -125,7 +156,10 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
         popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(this).inflate(R.layout.article_popup, null);
         collectIv = (ImageView) view.findViewById(R.id.collect_iv);
+<<<<<<< HEAD
         view.findViewById(R.id.share).setOnClickListener(this);
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         refresh = (LinearLayout) view.findViewById(R.id.refresh);
         cancelTv = (TextView) view.findViewById(R.id.cancel_tv);
 
@@ -134,7 +168,10 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
         cancelTv.setOnClickListener(this);
 
 
+<<<<<<< HEAD
         // 数据库中文章的集合
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         List<Article> articles = articleDao.queryBuilder().list();
         if (articles.size() > 0) {
             for (Article article : articles) {
@@ -197,6 +234,37 @@ public class VideoDetailsItemDetailsAty extends BaseActivity implements View.OnC
                     articleDao.deleteByKey(Long.valueOf(ids));
                     isCollect = false;
                 }
+<<<<<<< HEAD
+=======
+
+                break;
+            case R.id.refresh:
+                VolleySingle.addRequest(urls, new Response.Listener<VideoDetailsItemDetailsBean>() {
+                    @Override
+                    public void onResponse(VideoDetailsItemDetailsBean response) {
+                        videoDetailsItemDetailsBean = response;
+
+                        Uri uri = Uri.parse(videoDetailsItemDetailsBean.getData().getSd_url());
+
+                        videoView.setMediaController(mediaController);
+
+                        videoView.setVideoURI(uri);
+                        videoView.requestFocus();
+
+                        titleLeft.setImageResource(R.mipmap.global_back_d);
+                        titleTv.setText("掌游宝");
+                        titleRight.setImageResource(R.mipmap.global_btn_more_d);
+                        title.setText(videoDetailsItemDetailsBean.getData().getTitle());
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, VideoDetailsItemDetailsBean.class);
+                popupWindow.dismiss();
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 break;
             // 刷新
             case R.id.refresh:

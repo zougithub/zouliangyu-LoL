@@ -9,13 +9,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.bean.CommunityShowBean;
+<<<<<<< HEAD
 import java.util.List;
+=======
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by zouliangyu on 16/5/20.
  */
 public class CommunityShowDetailsAdapter extends BaseAdapter {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private Context context;
     private List<CommunityShowBean.DataBean> dataBeans;
     private ViewHolder viewHolder;

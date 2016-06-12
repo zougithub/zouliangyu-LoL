@@ -9,7 +9,11 @@
         android:id="@+id/information_tab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height_two"
+<<<<<<< HEAD
         android:background="@color/colorTitleBackground" />
+=======
+        android:background="@color/colorTitleBackground"/>
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
 
     <android.support.v4.view.ViewPager

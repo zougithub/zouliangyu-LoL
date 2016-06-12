@@ -33,7 +33,10 @@
         <!--</LinearLayout>-->
 
         <LinearLayout
+<<<<<<< HEAD
             android:id="@+id/share"
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

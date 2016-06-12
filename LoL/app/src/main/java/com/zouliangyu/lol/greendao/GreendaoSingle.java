@@ -17,6 +17,10 @@ public class GreendaoSingle {
 
     private HeroDao heroDao;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private Context context;
     private DaoMaster.DevOpenHelper helper;
 

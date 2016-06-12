@@ -51,6 +51,10 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
     private String enName; // 名字
     private String dataUrls; // 根据名字拼接的网址
     private String imgUrls; // 图片集合的网址
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private AllHeroIntroduceBean allHeroIntroduceBean;
     private String code; // 代号 例如:深渊巨口
 
@@ -76,10 +80,18 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
         codeTv = (TextView) findViewById(R.id.aty_hero_item_details_code);
         nameTv = (TextView) findViewById(R.id.aty_hero_item_details_name);
         typeTv = (TextView) findViewById(R.id.aty_hero_item_details_type);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         // 标题
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         leftIv.setOnClickListener(this);
+        // 收藏
+        collectIv = (ImageView) findViewById(R.id.collect_hero_iv);
+        collectIv.setOnClickListener(this);
+
         // 收藏
         collectIv = (ImageView) findViewById(R.id.collect_hero_iv);
         collectIv.setOnClickListener(this);
@@ -89,7 +101,12 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initData() {
         heroDao = GreendaoSingle.getInstance().getHeroDao();
+<<<<<<< HEAD
         // 标题栏
+=======
+
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         leftIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText("英雄介绍");
         titleTv.setTextColor(Color.WHITE);
@@ -138,6 +155,35 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
                         }
                     }
                 }
+<<<<<<< HEAD
+=======
+                useWay.setText(allHeroIntroduceBean.getTips());
+                answerWay.setText(allHeroIntroduceBean.getOpponentTips());
+                descriptionTv.setText(allHeroIntroduceBean.getDescription());
+
+
+                codeTv.setText(allHeroIntroduceBean.getDisplayName());
+                nameTv.setText(allHeroIntroduceBean.getTitle());
+                typeTv.setText(allHeroIntroduceBean.getTags());
+
+
+                code = allHeroIntroduceBean.getDisplayName();
+                id = allHeroIntroduceBean.getId();
+
+
+                // 查询数据库
+                List<Hero> heros = heroDao.queryBuilder().list();
+                if (heros.size() > 0) {
+                    // 遍历数据
+                    for (Hero hero : heros) {
+                        // 如果数据库中有
+                        if (hero.getId().toString().equals(id)) {
+                            collectIv.setImageResource(R.mipmap.hero_fav);
+                            isCollect = true;
+                        }
+                    }
+                }
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             }
         }, new Response.ErrorListener() {
             @Override
@@ -166,6 +212,7 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
+
     }
 
 
@@ -175,7 +222,10 @@ public class HeroDetailsActivity extends BaseActivity implements View.OnClickLis
             case R.id.title_left_iv:
                 finish();
                 break;
+<<<<<<< HEAD
             // 收藏
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             case R.id.collect_hero_iv:
                 Hero hero = new Hero();
                 if (isCollect == false) {

@@ -9,8 +9,12 @@
         android:id="@+id/item_ring_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_centerVertical="true"
         android:text="11111"/>
+=======
+        android:layout_centerVertical="true" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
     <ImageView
         android:id="@+id/item_ring_iv"

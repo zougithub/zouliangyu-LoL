@@ -34,19 +34,31 @@ public class InformationBannerPagerAdapter extends PagerAdapter {
         return view == object;
     }
 
+<<<<<<< HEAD
     // 增加页卡 返回当前position的新View
+=======
+    // 加载item
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
 
         try {
             container.addView(mList.get(position % mList.size()));
+<<<<<<< HEAD
         } catch (IllegalStateException error) {
+=======
+        }catch (IllegalStateException error) {
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             Log.d("InformationBannerPagerA", "没啥事");
         }
         return mList.get(position % mList.size());
     }
 
+<<<<<<< HEAD
     // 删除页卡
+=======
+    // 销毁item
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView(mList.get(position % mList.size()));

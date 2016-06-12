@@ -33,6 +33,8 @@ public class MoreTopicActivity extends BaseActivity {
     // 加载拼接的
     int i = 1;
 
+    int i = 1;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_more_topic;
@@ -43,7 +45,11 @@ public class MoreTopicActivity extends BaseActivity {
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.more_topic_listview);
         // 设置上拉下拉事件
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+<<<<<<< HEAD
         // 初始化标题
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         leftIv = (ImageView) findViewById(R.id.title_left_iv);
         titleTv = (TextView) findViewById(R.id.title_tv);
         // finish本界面
@@ -72,6 +78,10 @@ public class MoreTopicActivity extends BaseActivity {
                     public void onResponse(MoreTopicBean response) {
                         moreTopicBean = response;
                         moreTopicAdapter.setMoreTopicBean(moreTopicBean);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -100,7 +110,10 @@ public class MoreTopicActivity extends BaseActivity {
                             @Override
                             public void onResponse(MoreTopicBean response) {
                                 moreTopicAdapter.setMoreTopicBean(response);
+<<<<<<< HEAD
                                 // 停止刷新
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                                 pullToRefreshListView.onRefreshComplete();
                             }
                         }, new Response.ErrorListener() {
@@ -111,7 +124,10 @@ public class MoreTopicActivity extends BaseActivity {
             }
 
             @Override
+<<<<<<< HEAD
             // 上拉
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 i++;
                 VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/TopicsService/all?page=" + i + "&i_=869765028748315&t_=1463627159120&p_=29705&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
@@ -120,7 +136,10 @@ public class MoreTopicActivity extends BaseActivity {
                             public void onResponse(MoreTopicBean response) {
                                 moreTopicBean.getData().addAll(response.getData());
                                 moreTopicAdapter.setMoreTopicBean(moreTopicBean);
+<<<<<<< HEAD
                                 // 停止刷新
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                                 pullToRefreshListView.onRefreshComplete();
                             }
                         }, new Response.ErrorListener() {

@@ -25,7 +25,11 @@ import it.sephiroth.android.library.picasso.Picasso;
  * 视频的Item详情页
  */
 public class VideoDetailsAty extends BaseActivity {
+<<<<<<< HEAD
     // 标题
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private TextView titleTv;
     private ImageView exitIv;
 
@@ -86,7 +90,11 @@ public class VideoDetailsAty extends BaseActivity {
         exitIv.setImageResource(R.mipmap.global_back_d);
         titleTv.setText(name);
         titleTv.setTextColor(Color.WHITE);
+<<<<<<< HEAD
         // 介绍
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         Picasso.with(this).load(img).error(R.mipmap.photo_default).placeholder(R.mipmap.photo_default).into(imageView);
         nameTv.setText(name);
         descTv.setText(desc);
@@ -165,9 +173,12 @@ public class VideoDetailsAty extends BaseActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 String times = simpleDateFormat.format(date);
 
+<<<<<<< HEAD
 
                 String videoUrl = videoPlayNewestDetailsBean.getData().get(position - 1).getVideo_url();
                 intent.putExtra("videoUrl", videoUrl);
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 intent.putExtra("ids", ids);
                 intent.putExtra("titles", titles);
                 intent.putExtra("desc", desc);

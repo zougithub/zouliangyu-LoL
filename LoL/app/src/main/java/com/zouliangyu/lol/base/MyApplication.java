@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import cn.jpush.android.api.JPushInterface;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by zouliangyu on 16/5/17.
  * 我们自己的Application

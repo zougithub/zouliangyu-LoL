@@ -27,6 +27,10 @@ public class CommunityFriendDetailsAty extends BaseActivity implements View.OnCl
     private TextView titleTv;
     private ImageView leftIv;
     private Button find;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
     @Override
     protected int getLayout() {
@@ -49,6 +53,10 @@ public class CommunityFriendDetailsAty extends BaseActivity implements View.OnCl
 
         find = (Button) findViewById(R.id.find);
         find.setOnClickListener(this);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     }
 
     @Override

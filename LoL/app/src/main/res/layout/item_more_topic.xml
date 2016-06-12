@@ -18,6 +18,10 @@
         android:layout_below="@id/item_more_topic_name_tv"
         android:layout_alignLeft="@id/item_more_topic_name_tv"
         android:layout_marginTop="@dimen/layout_marginLeft"
+<<<<<<< HEAD
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"/>
+=======
+        android:scaleType="fitXY" />
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 </RelativeLayout>

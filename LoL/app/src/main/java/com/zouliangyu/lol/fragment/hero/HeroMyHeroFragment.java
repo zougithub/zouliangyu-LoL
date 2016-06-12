@@ -48,7 +48,11 @@ public class HeroMyHeroFragment extends BaseFragment {
                     @Override
                     public void onResponse(MyHeroBean response) {
                         myHeroBean = response;
+<<<<<<< HEAD
                         myHeroAdapter.setMyHeroBean(myHeroBean);
+=======
+                        myHeroAdapter.setMyHeroBean(response);
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                         areaTv.setText(response.getServerName());
                     }
                 }, new Response.ErrorListener() {

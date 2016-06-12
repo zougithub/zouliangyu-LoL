@@ -55,7 +55,11 @@ public class MoreNovelDetailsItemDetailsAty extends BaseActivity {
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         exitIv = (ImageView) findViewById(R.id.title_left_iv);
         title = (TextView) findViewById(R.id.title_tv);
+<<<<<<< HEAD
         // 小说介绍
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         imageView = (ImageView) findViewById(R.id.novel_item_iv);
         nameTv = (TextView) findViewById(R.id.novel_item_title);
         descTv = (TextView) findViewById(R.id.novel_item_desc);
@@ -75,15 +79,27 @@ public class MoreNovelDetailsItemDetailsAty extends BaseActivity {
         String name = intent.getStringExtra("name");
         String desc = intent.getStringExtra("desc");
         String imageUrl = intent.getStringExtra("imageUrl");
+<<<<<<< HEAD
         // 设置标题
         title.setText(name);
         title.setTextColor(Color.WHITE);
         exitIv.setImageResource(R.mipmap.global_back_d);
         // 小说介绍
+=======
+
+        title.setText(name);
+        title.setTextColor(Color.WHITE);
+        exitIv.setImageResource(R.mipmap.global_back_d);
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         Picasso.with(this).load(imageUrl).placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default)
                 .into(imageView);
         nameTv.setText(name);
         descTv.setText(desc);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
         moreNovelDetailsItemDetailsAdapter = new MoreNovelDetailsItemDetailsAdapter(this);
         // 获取数据
@@ -118,6 +134,42 @@ public class MoreNovelDetailsItemDetailsAty extends BaseActivity {
                     }
                 }, MoreNovelItemDetailsBean.class);
 
+<<<<<<< HEAD
+=======
+        // 获取数据
+        VolleySingle.addRequest("http://lol.zhangyoubao.com/apis/rest/ItemsService/novels?catid=10195&catwordid=" + ids + "&page=1&i_=869765028748315&t_=1463627448626&p_=28223&v_=400801&a_=lol&pkg_=com.anzogame.lol&d_=android&osv_=22&cha=AppChina&u_=&modle_=vivo+Xplay5A&%20HTTP/1.1",
+                new Response.Listener<MoreNovelItemDetailsBean>() {
+                    @Override
+                    public void onResponse(MoreNovelItemDetailsBean response) {
+                        moreNovelItemDetailsBean = response;
+                        moreNovelDetailsItemDetailsAdapter.setMoreNovelItemDetailsBean(moreNovelItemDetailsBean);
+                        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent intent = new Intent(MoreNovelDetailsItemDetailsAty.this, InformationItemDetailsAty.class);
+                                String ids = moreNovelItemDetailsBean.getData().get(position - 1).getItem_id();
+                                String title = moreNovelItemDetailsBean.getData().get(position - 1).getTitle();
+                                String desc = moreNovelItemDetailsBean.getData().get(position - 1).getDesc();
+                                int time = moreNovelItemDetailsBean.getData().get(position - 1).getPublished();
+                                Date date = new Date(time);
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                                String times = simpleDateFormat.format(date);
+                                intent.putExtra("ids", ids);
+                                intent.putExtra("title", title);
+                                intent.putExtra("desc", desc);
+                                intent.putExtra("times", times);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, MoreNovelItemDetailsBean.class);
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
         // 上拉加载, 下拉刷新
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
@@ -131,7 +183,10 @@ public class MoreNovelDetailsItemDetailsAty extends BaseActivity {
                             public void onResponse(MoreNovelItemDetailsBean response) {
                                 moreNovelItemDetailsBean = response;
                                 moreNovelDetailsItemDetailsAdapter.setMoreNovelItemDetailsBean(moreNovelItemDetailsBean);
+<<<<<<< HEAD
                                 // 下拉完成 , 调用此方法, 停止刷新
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                                 pullToRefreshListView.onRefreshComplete();
 
                             }

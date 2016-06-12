@@ -32,7 +32,11 @@ public class MoreTopicDetailsActivity extends BaseActivity {
     private MoreTopicDetailsAdapter moreTopicDetailsAdapter;
     // 最上面图片
     private ImageView topImage;
+<<<<<<< HEAD
     // 标题
+=======
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private ImageView leftTv;
     private TextView titleTv;
 
@@ -63,9 +67,14 @@ public class MoreTopicDetailsActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+<<<<<<< HEAD
         // 设置上拉下拉事件
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         // 设置标题栏
+=======
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         titleTv.setText("精彩专栏");
         titleTv.setTextColor(Color.WHITE);
         leftTv.setImageResource(R.mipmap.global_back_d);
@@ -73,12 +82,17 @@ public class MoreTopicDetailsActivity extends BaseActivity {
         moreTopicDetailsAdapter = new MoreTopicDetailsAdapter(this);
         Intent intent = getIntent();
         ids = intent.getStringExtra("ids");
+<<<<<<< HEAD
         // 设置最上面图片
         String imageUrl = intent.getStringExtra("imageUrl");
         Picasso.with(this).load(imageUrl).placeholder(R.mipmap.photo_default)
                 .error(R.mipmap.photo_default).into(topImage);
         urls = "http://lol.zhangyoubao.com/apis/rest/TopicsService/items?topicid=" + ids + "&page=1&i_=600BEB19-A58C-436C-9E3C-12E0581B0BEA&t_=1463646958&p_=23219&v_=40080001&d_=ios&osv_=9.3.1&version=0&a_=lol%20HTTP/1.1";
         // 获取数据
+=======
+        String imageUrl = intent.getStringExtra("imageUrl");
+        urls = "http://lol.zhangyoubao.com/apis/rest/TopicsService/items?topicid=" + ids + "&page=1&i_=600BEB19-A58C-436C-9E3C-12E0581B0BEA&t_=1463646958&p_=23219&v_=40080001&d_=ios&osv_=9.3.1&version=0&a_=lol%20HTTP/1.1";
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
         VolleySingle.addRequest(urls, new Response.Listener<MoreTopicDetailsBean>() {
             @Override
             public void onResponse(MoreTopicDetailsBean response) {
@@ -93,6 +107,7 @@ public class MoreTopicDetailsActivity extends BaseActivity {
         }, MoreTopicDetailsBean.class);
 
 
+<<<<<<< HEAD
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -100,6 +115,18 @@ public class MoreTopicDetailsActivity extends BaseActivity {
                 String title = moreTopicDetailsBean.getData().get(position - 1).getTitle();
                 String desc = moreTopicDetailsBean.getData().get(position - 1).getDesc();
                 int time = moreTopicDetailsBean.getData().get(position - 1).getPublished();
+=======
+        Picasso.with(this).load(imageUrl).placeholder(R.mipmap.photo_default).error(R.mipmap.photo_default).into(topImage);
+
+
+        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String ids = moreTopicDetailsBean.getData().get(position).getId();
+                String title = moreTopicDetailsBean.getData().get(position).getTitle();
+                String desc = moreTopicDetailsBean.getData().get(position).getDesc();
+                int time = moreTopicDetailsBean.getData().get(position).getPublished();
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 Date date = new Date(time);
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
                 String times = simpleDateFormat.format(date);
@@ -122,7 +149,10 @@ public class MoreTopicDetailsActivity extends BaseActivity {
                     public void onResponse(MoreTopicDetailsBean response) {
                         moreTopicDetailsBean = response;
                         moreTopicDetailsAdapter.setMoreTopicDetailsBean(moreTopicDetailsBean);
+<<<<<<< HEAD
                         // 刷新成功后停止
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                         pullToRefreshListView.onRefreshComplete();
                     }
                 }, new Response.ErrorListener() {

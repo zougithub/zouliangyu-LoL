@@ -16,8 +16,16 @@ import com.zouliangyu.lol.R;
 import com.zouliangyu.lol.base.VolleySingle;
 import com.zouliangyu.lol.bean.AllHeroBean;
 import com.zouliangyu.lol.bean.AllHeroImgBean;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
+=======
+import com.zouliangyu.lol.bean.AllHeroTypeBean;
+
+import java.util.ArrayList;
+import java.util.List;
+
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 import it.sephiroth.android.library.picasso.Picasso;
 
 /**
@@ -26,7 +34,11 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHolder> {
     private Context context;
+<<<<<<< HEAD
     private String enName;
+=======
+    private String name;
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
     private List<AllHeroBean.AllBean> allBeans;
 
     // 接口
@@ -58,15 +70,23 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         // 获取英雄的图片的集合的第一张
+<<<<<<< HEAD
         enName = allBeans.get(position).getEnName();
         VolleySingle.addRequest("http://box.dwstatic.com/apiHeroSkin.php?hero=" + enName + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1",
+=======
+        name = allBeans.get(position).getEnName();
+        VolleySingle.addRequest("http://box.dwstatic.com/apiHeroSkin.php?hero=" + name + "&v=180&OSType=iOS9.3.1&versionName=3.0.1%20HTTP/1.1",
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
                         List<AllHeroImgBean> allHeroImgBeans = gson.fromJson(response, new TypeToken<ArrayList<AllHeroImgBean>>() {
                         }.getType());
+<<<<<<< HEAD
                         // Bitmap.Config.RGB_565   图片压缩质量参数
+=======
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
                         Picasso.with(context).load(allHeroImgBeans.get(0).getSmallImg())
                                 .config(Bitmap.Config.RGB_565).placeholder(R.mipmap.photo_default).
                                 error(R.mipmap.photo_default).into(holder.topIv);
@@ -117,6 +137,12 @@ public class AllHeroAdapter extends RecyclerView.Adapter<AllHeroAdapter.ViewHold
 
 
         }
+<<<<<<< HEAD
+=======
+
+
+    }
+>>>>>>> 946912944adbc1def3419ef8318c7545267f0068
 
 
     }
